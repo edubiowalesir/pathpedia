@@ -117,8 +117,82 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .quiz-opt.wrong{border-color:var(--danger);background:#fee2e2;color:#991b1b}
 .quiz-opt.reveal{border-color:var(--success);background:#dcfce7;color:#166534}
 .quiz-score{font-size:36px;font-weight:700;color:var(--primary);text-align:center;margin:16px 0}
-@media print{.header,.search-section,.nav-tabs,.back-btn,.t-btn,.check-btn{display:none!important}body{background:#fff}.detail-section{break-inside:avoid}}
+@media print{.header,.search-section,.nav-tabs,.back-btn,.t-btn,.check-btn,.no-print{display:none!important}body{background:#fff}.detail-section{break-inside:avoid;border:1px solid #ddd;margin-bottom:8px}.print-only{display:block!important}}
 @media(max-width:600px){.stats-row{grid-template-columns:1fr 1fr}.detail-grid{grid-template-columns:1fr}.detail-section.full{grid-column:1}.header-top{flex-direction:column;text-align:center}}
+/* ===== PHASE 5 STYLES ===== */
+/* Body Map */
+.bodymap-wrap{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.bodymap-svg-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px;flex:0 0 280px;text-align:center}
+.bodymap-svg-wrap svg{max-width:260px}
+.body-part{cursor:pointer;transition:all 0.2s;fill:var(--color,#93c5fd)}
+.body-part:hover,.body-part.active{fill:var(--primary)!important;filter:brightness(1.1)}
+.bodymap-results{flex:1;min-width:220px}
+.bodymap-tip{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+/* Bookmarks */
+.bm-btn{position:absolute;top:8px;right:8px;background:none;border:none;font-size:18px;cursor:pointer;z-index:2;line-height:1}
+.bm-btn.saved{color:#f59e0b}
+/* Hindi */
+.hi{display:none;font-size:11px;color:var(--muted);font-style:italic}
+body.hindi .hi{display:inline}
+body.hindi .en-only{display:none}
+/* Quiz Analytics */
+.qa-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.qa-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px}
+.qa-bar-fill{height:8px;border-radius:4px;background:var(--primary);transition:width 0.5s}
+/* PDF Export */
+.print-only{display:none}
+@media print{
+  .print-header{display:block!important;text-align:center;border-bottom:2px solid #1a6b4a;padding-bottom:12px;margin-bottom:16px}
+  .print-header h1{font-size:22px;color:#1a6b4a}
+  .print-header p{font-size:12px;color:#666}
+}
+/* PWA Install */
+.pwa-banner{position:fixed;bottom:16px;right:16px;background:var(--primary);color:#fff;border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:1000;display:none;max-width:280px}
+.pwa-banner button{background:rgba(255,255,255,0.2);border:none;color:#fff;padding:6px 12px;border-radius:7px;font-family:inherit;font-size:12px;cursor:pointer;margin-top:8px;margin-right:6px}
+.fab-bm{position:fixed;bottom:80px;right:16px;background:var(--primary);color:#fff;width:44px;height:44px;border-radius:50%;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:500;display:none;align-items:center;justify-content:center}
+/* ===== PHASE 6 STYLES ===== */
+/* Flashcards */
+.flashcard-wrap{perspective:1000px;width:100%;max-width:520px;margin:0 auto 20px;height:240px;cursor:pointer}
+.flashcard-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d}
+.flashcard-wrap.flipped .flashcard-inner{transform:rotateY(180deg)}
+.flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;border:2px solid var(--border)}
+.flashcard-front{background:linear-gradient(135deg,var(--primary),#0f4532);color:#fff}
+.flashcard-back{background:var(--card);color:var(--text);transform:rotateY(180deg)}
+.fc-progress{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.fc-dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:background 0.3s}
+.fc-dot.known{background:var(--success)}
+.fc-dot.unknown{background:var(--danger)}
+.fc-dot.current{background:var(--primary)}
+.fc-btns{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.fc-btn{padding:8px 20px;border-radius:8px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.fc-known{background:var(--success);color:#fff}
+.fc-unknown{background:var(--danger);color:#fff}
+.fc-flip{background:var(--primary-light);color:var(--primary)}
+/* India Map */
+.india-map-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.india-svg-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:12px;flex:0 0 300px}
+.india-state{fill:#bbf7d0;stroke:#fff;stroke-width:0.8;cursor:pointer;transition:fill 0.2s}
+.india-state:hover{fill:var(--primary)!important}
+.india-state.selected{fill:var(--primary)!important}
+.india-state.high-burden{fill:#fca5a5}
+.india-state.medium-burden{fill:#fde68a}
+.india-state.low-burden{fill:#bbf7d0}
+.map-legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:11px}
+.legend-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
+.legend-dot{width:12px;height:12px;border-radius:3px}
+.india-info{flex:1;min-width:220px}
+/* NCERT Browser */
+.ncert-class-btn{padding:8px 14px;border:1.5px solid var(--border);background:var(--card);border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;color:var(--text);transition:all 0.2s;font-weight:500}
+.ncert-class-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.ncert-chapter-card{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:10px}
+.ncert-chapter-card h4{font-size:13px;font-weight:600;color:var(--primary);margin-bottom:8px}
+/* Language selector */
+.lang-btn{padding:5px 10px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;border-radius:6px;font-family:'Outfit',sans-serif;font-size:11px;cursor:pointer;margin-right:4px;transition:all 0.2s}
+.lang-btn.active-lang{background:rgba(255,255,255,0.3);font-weight:600}
+body.lang-ta .lang-ta-text,.lang-bn-text,.lang-hi-text{display:none}
+body.lang-ta .lang-ta-text{display:inline}
+body.lang-bn .lang-bn-text{display:inline}
+body.lang-hi .lang-hi-text,.body.hindi .lang-hi-text{display:inline}
 </style>
 </head>
 <body>
@@ -126,10 +200,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="header-top">
     <div class="logo">
       <div class="logo-icon">🔬</div>
-      <div><h1>PathoPedia</h1><span>Complete Disease Encyclopedia | Class 6–12 | NCERT | Phase 3</span></div>
+      <div><h1>PathoPedia</h1><span>Complete Disease Encyclopedia | Class 6–12 | NCERT | Phase 6 — Complete</span></div>
     </div>
     <div class="header-right">
       <div id="prog-mini" style="font-size:11px;color:rgba(255,255,255,0.8)">📊 Loading...</div>
+      <button class="lang-btn active-lang" id="lang-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')">हि</button>
+      <button class="lang-btn" id="lang-bn" onclick="setLang('bn')">বাং</button>
+      <button class="lang-btn" id="lang-ta" onclick="setLang('ta')">தமி</button>
       <button class="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</button>
     </div>
   </div>
@@ -138,8 +216,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     <button class="nav-tab" onclick="showPage('symptoms')">🩺 Symptoms</button>
     <button class="nav-tab" onclick="showPage('encyclopedia')">📚 Encyclopedia</button>
     <button class="nav-tab" onclick="showPage('categories')">🗂 Categories</button>
+    <button class="nav-tab" onclick="showPage('bodymap')">🫀 Body Map</button>
+    <button class="nav-tab" onclick="showPage('indiamap')">🗺️ India Map</button>
+    <button class="nav-tab" onclick="showPage('flashcards')">🎮 Flashcards</button>
+    <button class="nav-tab" onclick="showPage('ncert')">📖 NCERT</button>
     <button class="nav-tab" onclick="showPage('quiz')">🧠 Quiz</button>
-    <button class="nav-tab" onclick="showPage('progress')">📊 My Progress</button>
+    <button class="nav-tab" onclick="showPage('progress')">📊 Progress</button>
+    <button class="nav-tab" onclick="showPage('bookmarks')">🔖 Bookmarks</button>
     <button class="nav-tab" onclick="showPage('teacher')">👩‍🏫 Teacher</button>
   </div>
 </div>
@@ -224,6 +307,212 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     <p style="font-size:12px;color:var(--muted)">Track which diseases you have studied. Automatically updated when you view a disease.</p>
   </div>
   <div id="prog-content"></div>
+</div></div>
+
+<div id="page-bodymap" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🫀 Interactive Body Map</h2>
+    <p style="font-size:12px;color:var(--muted)">Click on any body part to see diseases affecting that area.</p>
+  </div>
+  <div class="bodymap-wrap">
+    <div class="bodymap-svg-wrap">
+      <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <!-- Head -->
+        <ellipse class="body-part" id="bp-head" cx="100" cy="40" rx="32" ry="36" style="--color:#bfdbfe" onclick="showBodyPart('head')" title="Head/Brain"/>
+        <!-- Neck -->
+        <rect class="body-part" id="bp-neck" x="88" y="72" width="24" height="20" rx="4" style="--color:#c7d2fe" onclick="showBodyPart('neck')"/>
+        <!-- Chest/Lungs -->
+        <rect class="body-part" id="bp-lungs" x="60" y="92" width="80" height="70" rx="12" style="--color:#bbf7d0" onclick="showBodyPart('lungs')"/>
+        <!-- Heart (overlay) -->
+        <ellipse class="body-part" id="bp-heart" cx="88" cy="120" rx="16" ry="14" style="--color:#fca5a5" onclick="showBodyPart('heart')"/>
+        <!-- Abdomen/Liver -->
+        <rect class="body-part" id="bp-liver" x="60" y="162" width="80" height="50" rx="10" style="--color:#fde68a" onclick="showBodyPart('liver')"/>
+        <!-- Intestines -->
+        <rect class="body-part" id="bp-intestine" x="62" y="212" width="76" height="48" rx="10" style="--color:#d9f99d" onclick="showBodyPart('intestine')"/>
+        <!-- Kidneys -->
+        <ellipse class="body-part" id="bp-kidney-l" cx="68" cy="178" rx="12" ry="16" style="--color:#fed7aa" onclick="showBodyPart('kidney')"/>
+        <ellipse class="body-part" id="bp-kidney-r" cx="132" cy="178" rx="12" ry="16" style="--color:#fed7aa" onclick="showBodyPart('kidney')"/>
+        <!-- Skin (border) -->
+        <rect class="body-part" id="bp-skin" x="55" y="88" width="90" height="180" rx="14" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-dasharray="5,3" onclick="showBodyPart('skin')" style="cursor:pointer"/>
+        <!-- Arms -->
+        <rect class="body-part" id="bp-arm-l" x="20" y="92" width="36" height="110" rx="14" style="--color:#e9d5ff" onclick="showBodyPart('limbs')"/>
+        <rect class="body-part" id="bp-arm-r" x="144" y="92" width="36" height="110" rx="14" style="--color:#e9d5ff" onclick="showBodyPart('limbs')"/>
+        <!-- Legs -->
+        <rect class="body-part" id="bp-leg-l" x="65" y="262" width="32" height="120" rx="14" style="--color:#fbcfe8" onclick="showBodyPart('limbs')"/>
+        <rect class="body-part" id="bp-leg-r" x="103" y="262" width="32" height="120" rx="14" style="--color:#fbcfe8" onclick="showBodyPart('limbs')"/>
+        <!-- Blood/Lymph -->
+        <ellipse class="body-part" id="bp-blood" cx="100" cy="145" rx="8" ry="8" style="--color:#fca5a5" onclick="showBodyPart('blood')"/>
+        <!-- Labels -->
+        <text x="100" y="38" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#1e40af" pointer-events="none">Brain</text>
+        <text x="100" y="132" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#166534" pointer-events="none">Lungs</text>
+        <text x="88" y="122" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#991b1b" pointer-events="none">Heart</text>
+        <text x="100" y="192" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#854d0e" pointer-events="none">Liver</text>
+        <text x="68" y="180" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7c3aed" pointer-events="none">Kidney</text>
+        <text x="132" y="180" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7c3aed" pointer-events="none">Kidney</text>
+        <text x="100" y="238" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#166534" pointer-events="none">Intestine</text>
+        <text x="33" y="150" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">Arm</text>
+        <text x="162" y="150" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">Arm</text>
+        <text x="81" y="322" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#9f1239" pointer-events="none">Leg</text>
+        <text x="119" y="322" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#9f1239" pointer-events="none">Leg</text>
+        <text x="155" y="100" text-anchor="start" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">- - - Skin</text>
+      </svg>
+      <div class="bodymap-tip">👆 Tap any part to see diseases</div>
+    </div>
+    <div class="bodymap-results" id="bodymap-results">
+      <div style="background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
+        <div style="font-size:32px;margin-bottom:8px">👆</div>
+        Click any body part on the diagram to see diseases affecting that area.
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== INDIA MAP PAGE ===== -->
+<div id="page-indiamap" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🗺️ India Disease Burden Map</h2>
+    <p style="font-size:12px;color:var(--muted)">Click any state to see its major disease burden and health statistics.</p>
+  </div>
+  <div class="india-map-wrap">
+    <div class="india-svg-wrap">
+      <!-- Simplified India SVG Map with major states -->
+      <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <!-- North India -->
+        <rect class="india-state high-burden" id="state-up" x="160" y="100" width="90" height="60" rx="4" onclick="showState('up')" title="Uttar Pradesh"/>
+        <text x="205" y="133" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Uttar Pradesh</text>
+        <rect class="india-state high-burden" id="state-bihar" x="250" y="115" width="60" height="45" rx="4" onclick="showState('bihar')"/>
+        <text x="280" y="140" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Bihar</text>
+        <rect class="india-state medium-burden" id="state-raj" x="80" y="90" width="80" height="70" rx="4" onclick="showState('rajasthan')"/>
+        <text x="120" y="128" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Rajasthan</text>
+        <rect class="india-state low-burden" id="state-delhi" x="155" y="90" width="30" height="22" rx="3" onclick="showState('delhi')"/>
+        <text x="170" y="104" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Delhi</text>
+        <rect class="india-state low-burden" id="state-hp" x="155" y="50" width="45" height="38" rx="4" onclick="showState('himachal')"/>
+        <text x="178" y="71" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">HP</text>
+        <rect class="india-state medium-burden" id="state-punjab" x="110" y="55" width="45" height="38" rx="4" onclick="showState('punjab')"/>
+        <text x="133" y="76" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#854d0e" pointer-events="none">Punjab</text>
+        <rect class="india-state medium-burden" id="state-haryana" x="130" y="85" width="38" height="26" rx="3" onclick="showState('haryana')"/>
+        <text x="149" y="100" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#854d0e" pointer-events="none">Haryana</text>
+        <!-- East India -->
+        <rect class="india-state high-burden" id="state-jharkhand" x="250" y="155" width="55" height="40" rx="4" onclick="showState('jharkhand')"/>
+        <text x="278" y="177" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Jharkhand</text>
+        <rect class="india-state high-burden" id="state-odisha" x="248" y="192" width="60" height="50" rx="4" onclick="showState('odisha')"/>
+        <text x="278" y="219" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Odisha</text>
+        <rect class="india-state medium-burden" id="state-wb" x="305" y="135" width="50" height="65" rx="4" onclick="showState('westbengal')"/>
+        <text x="330" y="170" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">West Bengal</text>
+        <rect class="india-state medium-burden" id="state-assam" x="330" y="95" width="55" height="40" rx="4" onclick="showState('assam')"/>
+        <text x="357" y="117" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Assam</text>
+        <!-- Central India -->
+        <rect class="india-state medium-burden" id="state-mp" x="138" y="155" width="85" height="60" rx="4" onclick="showState('mp')"/>
+        <text x="180" y="187" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Madhya Pradesh</text>
+        <rect class="india-state high-burden" id="state-cg" x="205" y="175" width="50" height="55" rx="4" onclick="showState('chhattisgarh')"/>
+        <text x="230" y="205" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Chhattisgarh</text>
+        <!-- West India -->
+        <rect class="india-state medium-burden" id="state-gujarat" x="70" y="158" width="75" height="65" rx="4" onclick="showState('gujarat')"/>
+        <text x="107" y="192" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Gujarat</text>
+        <rect class="india-state low-burden" id="state-maha" x="110" y="210" width="100" height="65" rx="4" onclick="showState('maharashtra')"/>
+        <text x="160" y="245" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Maharashtra</text>
+        <!-- South India -->
+        <rect class="india-state low-burden" id="state-telangana" x="165" y="272" width="60" height="45" rx="4" onclick="showState('telangana')"/>
+        <text x="195" y="297" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Telangana</text>
+        <rect class="india-state low-burden" id="state-ap" x="200" y="270" width="60" height="50" rx="4" onclick="showState('ap')"/>
+        <text x="230" y="297" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Andhra Pradesh</text>
+        <rect class="india-state low-burden" id="state-karnataka" x="130" y="275" width="70" height="60" rx="4" onclick="showState('karnataka')"/>
+        <text x="165" y="307" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Karnataka</text>
+        <rect class="india-state low-burden" id="state-kerala" x="130" y="330" width="50" height="70" rx="4" onclick="showState('kerala')"/>
+        <text x="155" y="368" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Kerala</text>
+        <rect class="india-state low-burden" id="state-tn" x="175" y="315" width="70" height="80" rx="4" onclick="showState('tamilnadu')"/>
+        <text x="210" y="357" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Tamil Nadu</text>
+        <!-- J&K -->
+        <rect class="india-state low-burden" id="state-jk" x="105" y="18" width="55" height="38" rx="4" onclick="showState('jk')"/>
+        <text x="133" y="39" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">J&amp;K</text>
+        <!-- Legend -->
+        <rect x="10" y="430" width="12" height="10" rx="2" fill="#fca5a5"/>
+        <text x="26" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">High burden</text>
+        <rect x="100" y="430" width="12" height="10" rx="2" fill="#fde68a"/>
+        <text x="116" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">Medium</text>
+        <rect x="178" y="430" width="12" height="10" rx="2" fill="#bbf7d0"/>
+        <text x="194" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">Lower burden</text>
+      </svg>
+    </div>
+    <div class="india-info" id="india-info">
+      <div style="background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
+        <div style="font-size:32px;margin-bottom:8px">🗺️</div>
+        Click any state on the map to see its disease burden, major health issues, and relevant government schemes.
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== FLASHCARDS PAGE ===== -->
+<div id="page-flashcards" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🎮 Flashcard Mode</h2>
+    <p style="font-size:12px;color:var(--muted)">Tap the card to flip it. Mark Known ✓ or Unknown ✗ to track your revision.</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+    <select class="ws-select" id="fc-cat">
+      <option value="all">All Categories</option>
+      <option value="bacterial">Bacterial</option>
+      <option value="viral">Viral</option>
+      <option value="fungal">Fungal</option>
+      <option value="parasitic">Parasitic</option>
+      <option value="nutritional">Nutritional</option>
+      <option value="genetic">Genetic</option>
+      <option value="environmental">Environmental</option>
+      <option value="std">STD</option>
+    </select>
+    <select class="ws-select" id="fc-mode">
+      <option value="name">Name → Pathogen</option>
+      <option value="vector">Name → Vector</option>
+      <option value="sci">Name → Scientific Name</option>
+      <option value="vaccine">Name → Vaccine</option>
+      <option value="symptoms">Name → Key Symptoms</option>
+    </select>
+    <button class="ws-btn" onclick="startFlashcards()">Start Flashcards 🃏</button>
+  </div>
+  <div id="fc-progress-dots" class="fc-progress"></div>
+  <div class="flashcard-wrap" id="flashcard" onclick="flipCard()" style="display:none">
+    <div class="flashcard-inner">
+      <div class="flashcard-front">
+        <div id="fc-front-icon" style="font-size:40px;margin-bottom:10px"></div>
+        <div id="fc-front-text" style="font-size:18px;font-weight:700"></div>
+        <div style="font-size:12px;margin-top:10px;opacity:0.7">Tap to reveal answer</div>
+      </div>
+      <div class="flashcard-back">
+        <div id="fc-back-label" style="font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:1px"></div>
+        <div id="fc-back-text" style="font-size:15px;font-weight:600;color:var(--text);text-align:center"></div>
+        <div id="fc-back-hint" style="font-size:12px;color:var(--muted);margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-btns" id="fc-btns" style="display:none">
+    <button class="fc-btn fc-unknown" onclick="markCard(false)">✗ Don't Know</button>
+    <button class="fc-btn fc-flip" onclick="flipCard()">↩ Flip</button>
+    <button class="fc-btn fc-known" onclick="markCard(true)">✓ Know It</button>
+  </div>
+  <div id="fc-result" style="margin-top:12px"></div>
+  <div id="fc-start-msg" style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
+    <div style="font-size:36px;margin-bottom:8px">🃏</div>
+    Select a category and mode, then tap Start Flashcards.
+  </div>
+</div></div>
+
+<!-- ===== NCERT BROWSER PAGE ===== -->
+<div id="page-ncert" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">📖 NCERT Chapter Browser</h2>
+    <p style="font-size:12px;color:var(--muted)">Browse diseases by NCERT class and chapter. Perfect for exam preparation.</p>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="ncert-class-btns"></div>
+  <div id="ncert-content"></div>
+</div></div>
+
+<div id="page-bookmarks" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🔖 My Bookmarks</h2>
+    <p style="font-size:12px;color:var(--muted)">Diseases you have saved for quick revision. Tap the 🔖 icon on any disease card to bookmark it.</p>
+  </div>
+  <div id="bm-content"></div>
 </div></div>
 
 <div id="page-teacher" class="page"><div class="main">
@@ -325,6 +614,44 @@ const DB = [
 {id:'hiv',name:'HIV / AIDS',sci:'Human Immunodeficiency Virus',type:'std',icon:'❤️‍🩹',pathogen:'RNA Retrovirus',vector:'Blood, sexual contact, mother to child',incubation:'2–4 weeks (acute HIV); AIDS: 8–10 years without treatment',riskGroups:'Unprotected sex, IV drug users, transfusion recipients, infants of HIV+ mothers',classification:{kingdom:'Virus',family:'Retroviridae',genus:'Lentivirus',species:'HIV-1 (global), HIV-2 (West Africa)'},habitat:'Targets and destroys CD4+ T helper cells; integrates into host genome',lifecycle:['HIV binds CD4 receptor + CCR5 co-receptor on T helper cell','Viral RNA reverse-transcribed to DNA','Viral DNA integrates into host genome (provirus)','Host cell replicates virus with every division','CD4 count drops → AIDS when CD4 <200 cells/μL'],transmission:['Unprotected sexual intercourse','Sharing needles (IV drug users)','Blood transfusion (very rare with screened blood)','Mother to child — pregnancy, delivery, breastfeeding','NOT by casual contact, coughing, touching, mosquitoes'],symptomsEarly:['Acute retroviral syndrome 2–4 weeks: fever, rash, sore throat','Lymph node swelling','Mouth ulcers','Then latent — no symptoms for years'],symptomsSevere:['AIDS-defining illnesses: PCP pneumonia, Kaposi sarcoma','TB — most common AIDS-defining illness in India','Cryptococcal meningitis','CMV retinitis — blindness','Wasting syndrome'],organs:'Immune system (CD4 T cells), Lymph nodes, Lungs, Brain, GI tract, Skin',globalData:{cases:'39 million living with HIV (2022 UNAIDS)',deaths:'630,000/yr (2022)',countries:'Sub-Saharan Africa 70% of cases',trend:'ART has transformed HIV to manageable condition'},indiaData:{cases:'~2.4 million living with HIV',deaths:'~42,000/yr',states:'Andhra Pradesh, Telangana, Maharashtra, Karnataka, Tamil Nadu',season:'Year-round'},diagnosis:['HIV ELISA (screening)','4th Generation Ag/Ab combo test','CD4 count (monitors immune status)','Viral Load PCR (monitors treatment response)'],testCost:'All HIV testing FREE at ICTC govt hospitals',medicines:[{name:'Tenofovir + Lamivudine + Dolutegravir (TLD)',use:'First-line ART in India — 1 tablet/day',source:'Synthetic antiretrovirals'},{name:'PrEP',use:'Prevention for high-risk individuals',source:'Tenofovir + Emtricitabine'},{name:'PEP',use:'Emergency — within 72 hours of exposure',source:'Antiretroviral combination'}],duration:'ART is lifelong; modern treatment allows normal life expectancy',vaccines:'No HIV vaccine yet',precautions:['Consistent correct condom use','Never share needles','Safe blood transfusion (screened blood)','PMTCT — prevent mother-to-child transmission','PrEP for high-risk'],govtSchemes:'NACP; Free ART at 900+ ART centres; ICTC free testing; PPTCT',emergency:['CD4 below 50 — opportunistic infection risk very high','Any fever in HIV patient — take seriously','Signs of meningitis — severe headache, neck stiffness'],firstAid:['Needlestick: wash with soap+water immediately, start PEP within 72 hours','Sexual exposure: PEP within 72 hours','Go to nearest ICTC or govt hospital'],helplines:['iCall HIV: 1097','NACO: naco.gov.in','Emergency: 108'],ncert:{class:'Class 12 Ch.8',keyTerms:'Retrovirus, CD4 T cell, Reverse transcriptase, ART, AIDS, PCP, Kaposi sarcoma, NACP',examQ:['Why does HIV destroy the immune system? (4 marks)','What is ART? Why must it be lifelong? (2 marks)','How is HIV different from AIDS? (2 marks)']},symptoms:['fever','weight loss','fatigue','swollen lymph nodes','rash','night sweats','mouth ulcers','breathlessness']},
 
 {id:'hepatitisB',name:'Hepatitis B',sci:'Hepatitis B Virus',type:'std',icon:'🟡',pathogen:'DNA Hepadnavirus',vector:'Blood, sexual contact, mother to child',incubation:'60–150 days',riskGroups:'Unvaccinated, healthcare workers, IV drug users, infants of HBsAg+ mothers',classification:{kingdom:'Virus',family:'Hepadnaviridae',genus:'Orthohepadnavirus',species:'Hepatitis B virus'},habitat:'Infects and replicates in hepatocytes (liver cells)',lifecycle:['Virus enters blood → reaches liver','Infects hepatocytes — replicates','Immune response attacks infected liver cells','Acute: immune clears in 90%','Chronic: persists >6 months → cirrhosis → HCC'],transmission:['Sexual intercourse (unprotected)','Blood exposure (needles, transfusion, tattoo)','Mother to newborn at birth (perinatal — major route in India)','NOT by casual contact, food, water, coughing'],symptomsEarly:['Fatigue and weakness','Nausea and vomiting','Loss of appetite','Mild fever'],symptomsSevere:['Jaundice','Dark urine and pale stools','Liver enlargement','Fulminant hepatitis (rare)','Chronic: cirrhosis, liver failure, HCC'],organs:'Liver (primary), Bile ducts',globalData:{cases:'296 million chronically infected (2019)',deaths:'820,000/yr from cirrhosis + HCC',countries:'Highest in Africa and Western Pacific',trend:'Vaccine available — dramatic reduction in new infections'},indiaData:{cases:'~40 million chronic HBV carriers',deaths:'~100,000/yr from cirrhosis and HCC',states:'All states; high in tribal communities',season:'Year-round'},diagnosis:['HBsAg (confirms active infection)','Anti-HBc IgM — acute HBV','HBV DNA PCR (viral load)','LFT + ultrasound + fibroscan'],testCost:'HBsAg ₹100–300 | HBV DNA ₹1500–3000 | Free at govt hospitals',medicines:[{name:'Tenofovir Disoproxil Fumarate (TDF)',use:'First-line oral antiviral for chronic HBV',source:'Synthetic nucleotide analogue'},{name:'Entecavir',use:'Alternative first-line oral antiviral',source:'Synthetic guanosine analogue'},{name:'Pegylated Interferon alpha',use:'Finite treatment — 48 weeks for selected patients',source:'Recombinant protein'}],duration:'Acute: self-limiting 90%; Chronic: lifelong antiviral',vaccines:'HBV vaccine (3 doses — at birth, 6 weeks, 10 weeks in India UIP); 95% effective',precautions:['HBV vaccination — birth dose critical','Screening pregnant women for HBsAg','Safe sex practices','Never share needles/razors/toothbrush','Blood screening before transfusion'],govtSchemes:'HBV in UIP since 2002; NACP includes HBV testing at ICTC; Free antiviral at govt hospitals',emergency:['Signs of liver failure: confusion, jaundice, abdominal swelling','Vomiting blood (oesophageal varices)','Acute liver failure — transplant emergency'],firstAid:['Needlestick: HBIG + vaccine within 24 hours','Rest and avoid alcohol completely','Hospital for post-exposure management'],helplines:['NVHCP: 1800-11-2549','Emergency: 108'],ncert:{class:'Class 12 Ch.8',keyTerms:'Hepadnavirus, HBsAg, HBeAg, Cirrhosis, HCC, Reverse transcriptase, Perinatal, Tenofovir',examQ:['How is Hepatitis B different from Hepatitis A in transmission and chronicity? (4 marks)','What is the significance of the HBsAg test? (2 marks)','Why is the birth dose of HBV vaccine critical? (2 marks)']},symptoms:['jaundice','fatigue','nausea','abdominal pain','dark urine','loss of appetite','fever']}
+
+// ===== PHASE 4: BACTERIAL =====
+,{id:'plague',name:'Plague',sci:'Yersinia pestis',type:'bacterial',icon:'🐀',pathogen:'Gram-negative coccobacillus',vector:'Flea bite; respiratory droplets (pneumonic)',incubation:'1–7 days (bubonic); 1–3 days (pneumonic)',riskGroups:'People near rodents, hunters, travellers to endemic areas',classification:{kingdom:'Bacteria',phylum:'Proteobacteria',family:'Yersiniaceae',genus:'Yersinia',species:'Y. pestis'},habitat:'Rodents as reservoir; flea as vector; soil near rodent burrows',lifecycle:['Infected flea bites human — injects Y. pestis','Bacteria travel to nearest lymph node','Massive lymph node swelling — bubo forms','Without treatment: bacteria enter blood (septicaemic)','Lung involvement — pneumonic plague (human-to-human droplets)'],transmission:['Bite of infected rat flea (bubonic — most common)','Direct contact with infected animal tissue','Respiratory droplets from pneumonic plague patient','NOT casual contact for bubonic; pneumonic is highly contagious'],symptomsEarly:['Sudden high fever 38–41°C','Chills and headache','Extreme weakness','Swollen painful lymph nodes (bubo) at groin/armpit/neck'],symptomsSevere:['Bubo becomes very large and painful','Septicaemia — skin turning black (gangrene)','Pneumonic — cough with bloody sputum','DIC — disseminated intravascular coagulation','Death within 24–72 hours if untreated'],organs:'Lymph nodes (bubonic), Blood (septicaemic), Lungs (pneumonic), Skin (gangrene)',globalData:{cases:'1,000–3,000/yr (WHO)',deaths:'100–200/yr with treatment; near 100% untreated pneumonic',countries:'DRC, Madagascar, USA (rare), India (historical)',trend:'Eliminated from India; sporadic global cases; bioterrorism concern'},indiaData:{cases:'India plague-free since 1994; last outbreak Surat 1994',deaths:'56 deaths in 1994 Surat pneumonic outbreak',states:'Historical: Surat 1994; Uttarkashi 2004 suspected',season:'Monsoon — rat activity increases'},diagnosis:['Bubo aspirate — Gram stain and culture (gold standard)','Blood culture (septicaemic)','PCR (most sensitive)','Rapid antigen F1 test'],testCost:'Free at NCDC and ICMR labs during outbreak',medicines:[{name:'Streptomycin',use:'Drug of choice — IM injection',source:'Streptomyces griseus'},{name:'Gentamicin',use:'Alternative to streptomycin',source:'Micromonospora purpurea'},{name:'Doxycycline',use:'Oral — less severe or prophylaxis',source:'Synthetic tetracycline'}],duration:'10–14 days antibiotic course',vaccines:'Killed whole-cell vaccine (not widely available); no routine vaccine',precautions:['Rodent control around homes and grain stores','Flea control (insecticides on pets)','Avoid handling dead animals in endemic areas','PPE for healthcare workers with pneumonic patients','Report unusual rodent die-offs to health authorities'],govtSchemes:'IDSP surveillance; NCDC rapid response team; National Plague Control Programme (historical)',emergency:['Any bubo + fever — isolate and test immediately','Pneumonic plague — full PPE and strict isolation','Report to district health officer within hours'],firstAid:['Isolate patient from others','PPE for all contacts (pneumonic)','Start antibiotics IMMEDIATELY — every hour counts','Report to 108 and district health authority'],helplines:['NCDC: 011-23921401','IDSP: 11023','Emergency: 108'],ncert:{class:'Class 9 Ch.13',keyTerms:'Yersinia pestis, Bubo, Bubonic plague, Pneumonic plague, Xenopsylla cheopis, Black Death, DIC',examQ:['What are the three forms of plague? How does each differ? (4 marks)','Name the vector of plague. Why is rodent control important? (2 marks)','Why is pneumonic plague more dangerous than bubonic? (2 marks)']},symptoms:['fever','swollen lymph nodes','headache','weakness','chills','cough','breathlessness']}
+
+,{id:'diphtheria',name:'Diphtheria',sci:'Corynebacterium diphtheriae',type:'bacterial',icon:'🦠',pathogen:'Gram-positive rod (toxin-producing)',vector:'Respiratory droplets; direct contact',incubation:'2–5 days',riskGroups:'Unvaccinated children, elderly, crowded living conditions',classification:{kingdom:'Bacteria',phylum:'Actinobacteria',family:'Corynebacteriaceae',genus:'Corynebacterium',species:'C. diphtheriae'},habitat:'Upper respiratory tract of humans; skin (cutaneous diphtheria)',lifecycle:['Bacteria colonise throat/larynx','Phage-encoded diphtheria toxin (DT) produced','Toxin B binds cell → toxin A enters → inhibits EF-2','Stops protein synthesis → cell death','Grey-white pseudomembrane forms in throat — airway obstruction'],transmission:['Respiratory droplets from infected person or carrier','Direct contact with skin lesions (cutaneous diphtheria)','Asymptomatic carriers transmit infection'],symptomsEarly:['Sore throat and mild fever','Malaise and neck swelling','Grey-white pseudomembrane on tonsils (pathognomonic)','Bull neck appearance (cervical lymphadenopathy)'],symptomsSevere:['Airway obstruction — barking cough, stridor','Myocarditis — heart rhythm problems (weeks after)','Neuropathy — palatal palsy, limb weakness','Renal tubular necrosis'],organs:'Throat/larynx (local), Heart (myocarditis), Peripheral nerves, Kidneys',globalData:{cases:'Rare in vaccinated countries; resurgence in low-coverage areas',deaths:'5–10% case fatality even with treatment',countries:'India, Indonesia, Yemen, Haiti — highest burden',trend:'Resurgence in India and SE Asia due to vaccine gaps'},indiaData:{cases:'Thousands annually — major resurgence 2017–2023',deaths:'High case fatality in unvaccinated children',states:'Kerala, UP, Assam, Manipur — resurgence outbreaks',season:'Year-round; monsoon season spikes'},diagnosis:['Throat swab — culture on Loeffler/tellurite medium','Albert stain (shows metachromatic granules)','Elek test — confirms toxin production','PCR (definitive)'],testCost:'Culture ₹300–600 | Free at govt labs',medicines:[{name:'Diphtheria Antitoxin (DAT)',use:'EMERGENCY — neutralises circulating toxin; given ASAP before lab results',source:'Equine antitoxin (horse serum)'},{name:'Penicillin G',use:'Kills bacteria — stops toxin production',source:'Penicillium fungi'},{name:'Erythromycin',use:'Alternative for penicillin-allergic patients',source:'Streptomyces erythreus'}],duration:'14 days antibiotic; antitoxin single dose; cardiac monitoring 4–6 weeks',vaccines:'DTP vaccine — 6 weeks, 10 weeks, 14 weeks + boosters in India UIP; Td booster every 10 years',precautions:['Complete DTP vaccination on schedule','Booster doses for adults','Isolation until 2 negative cultures','Contact tracing and prophylaxis'],govtSchemes:'DTP in UIP; Mission Indradhanush; AEFI surveillance',emergency:['Stridor — airway about to obstruct','Tracheotomy may be needed','Cardiac monitoring for arrhythmia','Antitoxin within first 24 hours'],firstAid:['Do not try to remove pseudomembrane','Hospital immediately','Keep patient calm (cardiac strain risk)','Call 108'],helplines:['Emergency: 108','Immunisation: 1800-11-2549'],ncert:{class:'Class 9 Ch.13, Class 12 Ch.8',keyTerms:'Corynebacterium diphtheriae, Diphtheria toxin, Pseudomembrane, DAT, DTP vaccine, Myocarditis, EF-2 inhibition, Bull neck',examQ:['How does diphtheria toxin cause cell death? (3 marks)','What is the role of antitoxin in diphtheria treatment? (2 marks)','Why can a child die from diphtheria even weeks after throat symptoms resolve? (3 marks)']},symptoms:['sore throat','fever','neck swelling','difficulty breathing','grey throat membrane','weakness','hoarse voice']}
+
+,{id:'leptospirosis',name:'Leptospirosis (Weil Disease)',sci:'Leptospira interrogans',type:'bacterial',icon:'🐀',pathogen:'Gram-negative spirochaete',vector:'Water or soil contaminated with infected animal urine',incubation:'2–30 days (usually 5–14 days)',riskGroups:'Farmers, sewer workers, flood-affected populations, veterinarians',classification:{kingdom:'Bacteria',phylum:'Spirochaetota',family:'Leptospiraceae',genus:'Leptospira',species:'L. interrogans (many serovars)'},habitat:'Kidneys of carrier animals (rats, cattle, pigs, dogs); survives weeks in warm moist soil/water',lifecycle:['Leptospira enter through broken skin or mucous membranes in flood water','Bacteria enter bloodstream (leptospiraemia)','Spread to liver, kidneys, lungs, brain','Phase 2 (immune phase): organ damage from immune response — Weils disease'],transmission:['Contact with water/soil contaminated with infected animal urine','Flood water mixes with rat urine (major urban risk)','Occupational — farmers, sewer workers, abattoir workers','Swimming in contaminated water','Pet dogs (important urban source)'],symptomsEarly:['Sudden high fever — biphasic (two episodes)','Severe headache','Muscle pain especially calves — very characteristic','Red eyes (conjunctival suffusion — no discharge)'],symptomsSevere:['Weils disease: Jaundice + Renal failure + Bleeding','Acute kidney injury','Pulmonary haemorrhage (ARDS) — severe','Meningitis','Myocarditis'],organs:'Liver (jaundice), Kidneys, Lungs (haemorrhage), Meninges, Eyes',globalData:{cases:'1 million severe cases/yr (WHO)',deaths:'58,000/yr globally',countries:'Tropical countries; SE Asia, India, Brazil',trend:'Rising due to urbanisation, flooding, climate change'},indiaData:{cases:'Significant annual burden; monsoon outbreaks',deaths:'Significant in flood outbreaks',states:'Kerala, Tamil Nadu, Gujarat, Maharashtra, Andaman Islands',season:'Monsoon July–October especially post-flood'},diagnosis:['MAT — Microscopic Agglutination Test (gold standard)','IgM ELISA (early diagnosis — Day 5 onwards)','PCR (most sensitive early)','Leptospira culture (blood in first week)'],testCost:'IgM ELISA ₹500–1000 | MAT at reference labs | Free at govt hospitals during outbreaks',medicines:[{name:'Doxycycline',use:'First-line for mild/moderate; also flood chemoprophylaxis',source:'Synthetic tetracycline'},{name:'Penicillin G (IV)',use:'Severe Weils disease — hospitalised patients',source:'Penicillium fungi'},{name:'Ceftriaxone',use:'Alternative for severe disease',source:'Synthetic cephalosporin'}],duration:'7 days antibiotic; severe disease: 7–10 days IV',vaccines:'No India vaccine; Doxycycline prophylaxis (200mg weekly) for flood exposure',precautions:['Rubber boots and gloves during flood wading','Avoid swimming in contaminated water','Rat control','Doxycycline prophylaxis for high-risk flood workers','Wash hands after animal contact','Vaccinate pet dogs'],govtSchemes:'Kerala annual monsoon preparedness — doxycycline prophylaxis; IDSP surveillance; NVBDCP guidelines',emergency:['Jaundice + decreasing urine output — Weils disease — ICU','Coughing blood (pulmonary haemorrhage)','Altered consciousness'],firstAid:['Doxycycline if flood exposure confirmed','Hospital for any jaundice or reduced urine','ORS for hydration','Avoid further water contact'],helplines:['Kerala flood helpline (seasonal)','IDSP: 11023','Emergency: 108'],ncert:{class:'Class 12 Ch.8',keyTerms:'Leptospira, Spirochaete, Weils disease, MAT, Zoonosis, Conjunctival suffusion, Flood fever, Leptospiraemia',examQ:['Why does leptospirosis increase during floods? (3 marks)','Name the characteristic early sign of leptospirosis. (1 mark)','What is Weils disease? (2 marks)']},symptoms:['fever','severe headache','muscle pain','red eyes','jaundice','decreased urine','breathlessness','calf pain']}
+
+,{id:'meningitis',name:'Bacterial Meningitis',sci:'Neisseria meningitidis',type:'bacterial',icon:'🧠',pathogen:'Gram-negative diplococcus (meningococcal) / Gram-positive (pneumococcal)',vector:'Respiratory droplets; close contact',incubation:'1–10 days (usually 3–4 days)',riskGroups:'Children under 5, adolescents, college students, pilgrims, asplenic patients',classification:{kingdom:'Bacteria',phylum:'Proteobacteria',genus:'Neisseria (meningococcal), Streptococcus (pneumococcal)',species:'N. meningitidis (serogroups A,B,C,W,Y); S. pneumoniae'},habitat:'Nasopharynx of asymptomatic human carriers (10–35% of population)',lifecycle:['Bacteria colonise nasopharynx from carrier','Breach mucosal barrier → enter bloodstream','Bacteraemia — rapid multiplication','Cross blood-brain barrier','Inflammation of meninges — raised intracranial pressure','Endotoxin release → septic shock and DIC'],transmission:['Respiratory droplets and close contact (kissing, sharing drinks)','Not highly contagious — requires prolonged close contact','Pilgrimage gatherings (Hajj/Kumbh) — meningococcal outbreaks','Dormitories and military camps'],symptomsEarly:['Sudden high fever','Severe headache — worst of life','Neck stiffness (meningism)','Nausea and vomiting','Photophobia — fear of light'],symptomsSevere:['Non-blanching petechial/purpuric rash — EMERGENCY (meningococcal septicaemia)','Kernig sign positive','Brudzinski sign positive','Altered consciousness and seizures','Waterhouse-Friderichsen syndrome — adrenal failure + septic shock','Death within 24 hours if untreated'],organs:'Meninges, Brain, Adrenal glands, Skin (petechiae), Blood (DIC)',globalData:{cases:'1.2 million cases/yr; 135,000 deaths/yr (WHO)',deaths:'5–10% even with treatment; 70%+ untreated',countries:'Sub-Saharan Africa Meningitis Belt; worldwide clusters',trend:'Declining with vaccine; serogroup B — no universal vaccine yet'},indiaData:{cases:'Significant; outbreaks in crowded settings',deaths:'High case fatality — often misdiagnosed',states:'Delhi, UP, Bihar; pilgrimage outbreaks at Kumbh Mela',season:'Winter and dry season — meningococcal peaks'},diagnosis:['Lumbar puncture/Spinal tap — CSF analysis (MOST IMPORTANT)','CSF: turbid, high WBC neutrophils, high protein, low glucose','CSF Gram stain and culture','Blood culture','PCR on CSF (most sensitive)'],testCost:'LP and CSF analysis ₹500–1500 | Free at govt hospitals | PCR ₹2000–3000',medicines:[{name:'Ceftriaxone (IV)',use:'First-line broad-spectrum — started empirically before results',source:'Synthetic cephalosporin'},{name:'Dexamethasone (IV)',use:'Before or with antibiotics — reduces inflammation and deafness risk',source:'Synthetic corticosteroid'},{name:'Benzylpenicillin',use:'If N. meningitidis confirmed and sensitive',source:'Penicillium fungi'}],duration:'7–14 days IV antibiotics; ICU in severe cases',vaccines:'MCV4 (meningococcal A,C,W,Y); PCV13 for pneumococcal; MenACWY mandatory for Hajj pilgrims',precautions:['Vaccination for high-risk groups (pilgrims, military, dormitory students)','Rifampicin chemoprophylaxis for close contacts of meningococcal cases','Early recognition — every hour matters','Hajj vaccine certificate mandatory'],govtSchemes:'Meningococcal vaccine mandatory for Hajj pilgrims (DGHS); PCV in UIP; IDSP surveillance',emergency:['Non-blanching rash + fever = MEDICAL EMERGENCY — call 108 immediately','Cannot wait for diagnosis — benzylpenicillin IM if available','Child with fever + neck stiffness — hospital within 30 minutes'],firstAid:['Call 108 immediately','Lay patient flat if drowsy','Do NOT give aspirin','Hospital is the only treatment'],helplines:['Emergency: 108','NIMHANS: 080-46110007'],ncert:{class:'Class 9 Ch.13, Class 12 Ch.8',keyTerms:'Neisseria meningitidis, Lumbar puncture, CSF, Kernig sign, Brudzinski sign, Petechial rash, Meningism, Waterhouse-Friderichsen',examQ:['What is the significance of a non-blanching rash in a child with fever? (2 marks)','Describe the CSF findings in bacterial meningitis. (3 marks)','What are Kernig and Brudzinski signs? (2 marks)']},symptoms:['severe headache','neck stiffness','high fever','nausea','vomiting','photophobia','rash','confusion','seizures']}
+
+// ===== PHASE 4: VIRAL =====
+,{id:'hepatitisA',name:'Hepatitis A',sci:'Hepatitis A Virus (HAV)',type:'viral',icon:'🟡',pathogen:'RNA Picornavirus (Hepatovirus)',vector:'Contaminated food and water (faecal-oral)',incubation:'15–50 days (average 28 days)',riskGroups:'Children, travellers to endemic areas, poor sanitation areas',classification:{kingdom:'Virus',family:'Picornaviridae',genus:'Hepatovirus',species:'Hepatitis A virus'},habitat:'Survives in contaminated water and food; resists freezing and mild acid',lifecycle:['Virus ingested through contaminated food/water','Absorbed in small intestine — enters bloodstream','Travels to liver — replicates in hepatocytes','Liver inflammation develops','Virus shed in faeces — spreads to environment'],transmission:['Faecal-oral route (primary)','Contaminated water and shellfish','Raw fruits and vegetables washed in dirty water','Close contact with infected person','NOT bloodborne unlike Hepatitis B and C'],symptomsEarly:['Fatigue and nausea','Loss of appetite','Low-grade fever','Abdominal discomfort (right side — liver)'],symptomsSevere:['Jaundice — yellow skin and eyes','Dark urine (tea-coloured)','Pale/clay-coloured stools','Liver enlargement (hepatomegaly)','Fulminant hepatitis (rare, life-threatening)'],organs:'Liver (primary), Bile ducts, Digestive system',globalData:{cases:'~1.4 million symptomatic cases/yr',deaths:'~7,000/yr',countries:'Worldwide; highest in low-income countries',trend:'Vaccine available; endemic in South Asia'},indiaData:{cases:'Very common — major cause of acute hepatitis',deaths:'Low in young; higher in adults',states:'All states; monsoon outbreaks from contaminated water',season:'Monsoon — July to September'},diagnosis:['IgM anti-HAV antibody (definitive — current infection)','Liver function tests — elevated ALT/AST','Bilirubin levels','Ultrasound abdomen'],testCost:'IgM anti-HAV ₹600–1200 | LFT ₹300–600 | Free at govt labs',medicines:[{name:'No specific antiviral',use:'Self-limiting — supportive care only',source:'N/A'},{name:'IV Fluids',use:'If vomiting or not eating',source:'N/A'},{name:'Vitamin K',use:'If clotting affected (severe)',source:'Phytonadione'}],duration:'Most recover completely in 2–6 weeks; NO chronic disease',vaccines:'Havrix/Avaxim — 2 doses; not in India UIP; recommended for travellers and children in endemic areas',precautions:['Drink boiled or purified water only','Wash hands thoroughly after toilet','Avoid raw shellfish','Cook food thoroughly','Hepatitis A vaccination'],govtSchemes:'Swachh Bharat Mission — clean water and sanitation; IDSP surveillance',emergency:['Severe vomiting — cannot keep fluids down','Confusion or altered consciousness (fulminant hepatitis)','Prolonged jaundice over 4 weeks'],firstAid:['Rest and adequate fluids','High-carbohydrate low-fat diet','Avoid alcohol completely','No unnecessary medications (hepatotoxic risk)'],helplines:['IDSP: 11023','Emergency: 108'],ncert:{class:'Class 9 Ch.13',keyTerms:'Hepatovirus, Jaundice, Hepatomegaly, IgM anti-HAV, LFT, Faecal-oral, Fulminant hepatitis',examQ:['How does Hepatitis A differ from Hepatitis B in transmission? (3 marks)','What is jaundice? Name two diseases that cause it. (2 marks)','Why does Hepatitis A not become chronic? (2 marks)']},symptoms:['fatigue','nausea','fever','jaundice','abdominal pain','loss of appetite','dark urine']}
+
+,{id:'japaneseencephalitis',name:'Japanese Encephalitis',sci:'Japanese Encephalitis Virus (JEV)',type:'viral',icon:'🦟',pathogen:'RNA Flavivirus',vector:'Culex tritaeniorhynchus mosquito; pigs and wading birds as amplifier hosts',incubation:'5–15 days',riskGroups:'Children in rural areas near rice fields and pig farms; travellers to SE Asia',classification:{kingdom:'Virus',family:'Flaviviridae',genus:'Flavivirus',species:'Japanese encephalitis virus'},habitat:'Pigs and herons (amplifier hosts); Culex mosquito transmits to humans (dead-end hosts)',lifecycle:['Culex mosquito bites infected pig/bird — picks up JEV','Infected Culex bites human — injects JEV','Virus replicates in lymph nodes then bloodstream','Crosses blood-brain barrier','Encephalitis — brain inflammation and neuron death'],transmission:['Bite of infected Culex mosquito (night-biting)','Pigs and herons are amplifier hosts — maintain virus','Humans are dead-end hosts — cannot transmit further','NOT person-to-person'],symptomsEarly:['Most infections (250:1 ratio) asymptomatic or mild flu-like','High fever','Headache and vomiting','Altered consciousness'],symptomsSevere:['Acute encephalitis — confusion, disorientation','Seizures (especially in children)','Parkinsonism — tremor, rigidity, mask-like face','Flaccid paralysis','Coma','Death or severe disability in 20–30% of clinical cases'],organs:'Brain (encephalitis), Cerebellum, Basal ganglia, Spinal cord',globalData:{cases:'68,000 clinical cases/yr (WHO)',deaths:'13,600–20,400/yr',countries:'South and SE Asia — India, China, SE Asia, Pacific',trend:'JE vaccine significantly reduced cases in India'},indiaData:{cases:'~1,500–4,000 clinical cases/yr',deaths:'25–30% case fatality',states:'UP (highest), Bihar, Assam, West Bengal, Karnataka, Tamil Nadu',season:'Monsoon and post-monsoon July–October; paddy field irrigation increases Culex'},diagnosis:['IgM antibody ELISA on CSF or serum (most practical)','RT-PCR on CSF or blood (early — limited window)','MRI brain — characteristic thalamic lesions (bilateral)','CSF analysis — lymphocytic pleocytosis'],testCost:'IgM ELISA ₹500–1000 | MRI brain ₹3000–8000 | Free at NIMHANS, SGPGI',medicines:[{name:'No specific antiviral',use:'Supportive care only — ICU management',source:'N/A'},{name:'Mannitol',use:'Reduces raised intracranial pressure',source:'Sugar alcohol'},{name:'Anticonvulsants (Phenytoin)',use:'Controls seizures',source:'Synthetic'}],duration:'Acute illness 5–14 days; disability can be permanent',vaccines:'JE vaccine (SA-14-14-2 live attenuated) in UIP for endemic districts; JENVAC (Indian); 2-dose schedule',precautions:['JE vaccination in endemic areas','Mosquito protection (Culex bites at night — use nets)','Pig farms away from human habitation','Drain rice fields periodically','Larval control in rice fields'],govtSchemes:'JE vaccine in UIP for 112 endemic districts; NVBDCP JE control programme; ASHA workers for surveillance',emergency:['Child with fever + altered consciousness in JE-endemic area — hospital immediately','Seizures — anticonvulsants and ICU','Raised ICP — mannitol'],firstAid:['Seizure: protect head, do not restrain','Hospital immediately','Maintain airway','Call 108'],helplines:['Emergency: 108','NIMHANS: 080-46110007','NVBDCP: 1800-11-0151'],ncert:{class:'Class 12 Ch.8',keyTerms:'JEV, Culex, Flavivirus, Amplifier host, Dead-end host, Encephalitis, Parkinsonism, JE vaccine, Thalamic lesions',examQ:['Why are pigs important in transmission of Japanese Encephalitis? (3 marks)','Why is the human called a dead-end host in JE? (2 marks)','Distinguish the vector of JE from the dengue vector. (2 marks)']},symptoms:['fever','severe headache','vomiting','confusion','seizures','tremors','rigidity','altered consciousness']}
+
+,{id:'mumps',name:'Mumps',sci:'Mumps orthorubulavirus',type:'viral',icon:'🤒',pathogen:'RNA Paramyxovirus',vector:'Respiratory droplets and saliva',incubation:'16–18 days (range 12–25 days)',riskGroups:'Unvaccinated children and young adults, school and college students',classification:{kingdom:'Virus',family:'Paramyxoviridae',genus:'Orthorubulavirus',species:'Mumps orthorubulavirus'},habitat:'Replicates in upper respiratory tract then spreads to salivary glands',lifecycle:['Virus inhaled — infects upper respiratory epithelium','Spreads to regional lymph nodes (viraemia)','Targets salivary glands especially parotid','Can spread to testes, ovaries, brain, pancreas','Inflammatory response — organ swelling'],transmission:['Respiratory droplets (coughing, sneezing, talking)','Direct contact with saliva of infected person','Infectious from 2 days before to 5 days after parotid swelling'],symptomsEarly:['Low-grade fever','Headache and fatigue','Loss of appetite','Pain below ear/jaw (early sign)'],symptomsSevere:['Parotitis — painful swelling of parotid glands (pathognomonic) — chipmunk face','Orchitis — testicular inflammation in post-pubertal males (20–30%)','Oophoritis — ovarian inflammation in females','Aseptic meningitis (10%)','Encephalitis (rare)','Sensorineural deafness — most serious permanent complication','Pancreatitis'],organs:'Parotid glands (primary), Testes/Ovaries, Brain, Pancreas, Cochlea (deafness)',globalData:{cases:'Rare in vaccinated countries; outbreaks even in vaccinated communities due to waning immunity',deaths:'Very low mortality; significant morbidity',countries:'Worldwide; outbreaks in USA, UK even in vaccinated populations',trend:'Resurgence in India and SE Asia due to missed vaccinations'},indiaData:{cases:'Thousands annually; school outbreaks common',deaths:'Rare',states:'All states; school outbreaks in poorly vaccinated communities',season:'Winter and spring'},diagnosis:['Clinical — parotid swelling + fever','IgM antibody (serum or oral fluid)','RT-PCR on buccal swab, urine, or CSF','Serum amylase — elevated in parotitis'],testCost:'IgM ₹400–800 | RT-PCR ₹1000–2000 | Free at govt labs',medicines:[{name:'No specific antiviral',use:'Supportive care only',source:'N/A'},{name:'Paracetamol/Ibuprofen',use:'Pain and fever relief',source:'Synthetic'},{name:'Scrotal support + ice packs',use:'For orchitis — reduces pain',source:'N/A'}],duration:'Self-limiting 10–12 days; isolation 5 days after parotid swelling starts',vaccines:'MMR vaccine — 9 months and 15 months in India UIP; 2 doses give 88% protection',precautions:['MMR vaccination on schedule','Isolate cases for 5 days after parotid swelling onset','Hand hygiene and cover when coughing','Avoid sharing utensils during outbreak'],govtSchemes:'MMR in UIP; MR/MMR campaigns; Mission Indradhanush',emergency:['Testicular swelling (orchitis) — painful; doctor for anti-inflammatory','Severe headache + stiff neck (meningitis)','Hearing loss (sensorineural deafness — irreversible)'],firstAid:['Warm or cold compress on parotid swelling','Soft diet (chewing is painful)','Paracetamol for fever and pain','Orchitis: rest, support, ice packs, doctor visit','Isolate from school'],helplines:['Immunisation: 1800-11-2549','Emergency: 108'],ncert:{class:'Class 9 Ch.13',keyTerms:'Mumps orthorubulavirus, Parotitis, Orchitis, MMR vaccine, Paramyxovirus, Sensorineural deafness',examQ:['What is parotitis and which disease causes it? (1 mark)','Why can mumps lead to infertility in males? (2 marks)','Name the vaccine preventing mumps and its schedule in India. (2 marks)']},symptoms:['fever','parotid swelling','headache','fatigue','testicular pain','jaw pain','loss of appetite']}
+
+,{id:'chikungunya',name:'Chikungunya',sci:'Chikungunya virus (CHIKV)',type:'viral',icon:'🦟',pathogen:'RNA Alphavirus (Togaviridae)',vector:'Aedes aegypti and Aedes albopictus mosquitoes',incubation:'1–12 days (average 3–7 days)',riskGroups:'All ages; elderly and those with joint disease have more severe arthralgia',classification:{kingdom:'Virus',family:'Togaviridae',genus:'Alphavirus',species:'Chikungunya virus'},habitat:'Replicates in fibroblasts, muscle cells, and joint tissue; Aedes mosquito gut',lifecycle:['Aedes mosquito bites — injects CHIKV','Replicates in fibroblasts and macrophages','Viraemia — spreads through blood','Infects synovial cells of joints — intense inflammation','Immune response clears acute infection','Viral arthralgia can persist months to years'],transmission:['Bite of infected Aedes aegypti or Aedes albopictus (tiger mosquito)','Both are day-biting mosquitoes','Aedes albopictus more adaptable — spreads to cooler areas','NOT person-to-person'],symptomsEarly:['Sudden high fever 39–40°C','Severe joint pain (arthralgia) — hallmark sign','Joint swelling','Headache and rash'],symptomsSevere:['Debilitating joint pain — may persist months to years','Maculopapular rash on trunk and limbs','Rarely: neurological complications (encephalitis, GBS)','Neonatal chikungunya if mother infected near delivery','Ocular inflammation (uveitis, retinitis)'],organs:'Joints (synovial tissue), Skin, Occasionally brain, Eyes',globalData:{cases:'Hundreds of millions in outbreaks globally',deaths:'Very low mortality; high morbidity',countries:'Africa, Asia, Americas, Europe',trend:'2024: ongoing outbreaks in Americas; India major endemic country'},indiaData:{cases:'~1.9 million cases in 2023 — major outbreak year',deaths:'Negligible direct mortality',states:'Rajasthan, Karnataka, Maharashtra, Kerala, Tamil Nadu, Delhi',season:'Monsoon and post-monsoon July–November'},diagnosis:['RT-PCR on blood — first 5 days (most accurate early)','IgM ELISA — after day 5','IgG ELISA — past infection'],testCost:'RT-PCR ₹1000–2000 | IgM ELISA ₹400–800 | Free at NVBDCP labs',medicines:[{name:'Paracetamol',use:'First-line fever and joint pain relief',source:'Synthetic'},{name:'NSAIDs (Naproxen/Ibuprofen)',use:'For severe arthralgia — after acute phase',source:'Synthetic'},{name:'Hydroxychloroquine',use:'For chronic arthralgia persisting beyond 3 months',source:'Synthetic antimalarial'}],duration:'Acute fever 2–3 days; joint pain weeks to months; chronic arthritis up to 2–3 years',vaccines:'No approved vaccine; mRNA vaccine in Phase 3 trials 2024',precautions:['Eliminate Aedes breeding sites (same as dengue)','Day-time mosquito protection essential','Full-sleeve clothing and repellent','Mosquito nets even during day'],govtSchemes:'NVBDCP surveillance and control; same vector control as dengue; IDSP reporting',emergency:['Severe joint pain preventing movement — NSAIDs and physiotherapy','Neurological symptoms — hospital immediately','Neonatal chikungunya in newborn of infected mother'],firstAid:['Paracetamol for fever and pain','Rest affected joints','Cold compress on swollen joints','Adequate hydration'],helplines:['NVBDCP: 1800-11-0151','Emergency: 108'],ncert:{class:'Class 12 Ch.8',keyTerms:'Alphavirus, Chikungunya, Aedes aegypti, Arthralgia, Synovial inflammation, Togaviridae, Chronic arthritis',examQ:['What does the word chikungunya mean and why is it named so? (1 mark)','How does chikungunya differ from dengue though both share the same vector? (3 marks)','Why can chikungunya joint pain last for years? (2 marks)']},symptoms:['fever','severe joint pain','joint swelling','rash','headache','muscle pain','fatigue']}
+
+// ===== PHASE 4: PARASITIC =====
+,{id:'toxoplasmosis',name:'Toxoplasmosis',sci:'Toxoplasma gondii',type:'parasitic',icon:'🐱',pathogen:'Obligate intracellular protozoan',vector:'Cat faeces; undercooked meat; mother to fetus',incubation:'10–23 days acquired; congenital throughout pregnancy',riskGroups:'Pregnant women (risk to fetus), immunocompromised HIV/AIDS patients, cat owners',classification:{kingdom:'Protista',phylum:'Apicomplexa',class:'Conoidasida',family:'Sarcocystidae',genus:'Toxoplasma',species:'T. gondii'},habitat:'Definitive host: cats (sexual reproduction in intestine); intermediate hosts: all warm-blooded animals including humans (tissue cysts in brain and muscles)',lifecycle:['Cat sheds oocysts in faeces — only cats are definitive host','Oocysts sporulate in soil — infectious for 18 months','Humans ingest oocysts from soil/vegetables OR tissue cysts in undercooked meat','Tachyzoites spread through blood','Convert to bradyzoites — form cysts in brain and muscle — LIFELONG latency','In immunocompromised: cysts reactivate → toxoplasmic encephalitis'],transmission:['Ingesting oocysts from cat faeces (gardening, litter box)','Eating undercooked meat containing tissue cysts (pork, lamb)','Congenital: mother to fetus during primary infection in pregnancy','Blood transfusion or organ transplant (rare)'],symptomsEarly:['Usually ASYMPTOMATIC in healthy adults (90%)','Mild flu-like symptoms','Lymph node swelling (cervical)'],symptomsSevere:['In pregnancy: hydrocephalus, brain calcifications, chorioretinitis, stillbirth','In HIV/AIDS: toxoplasmic encephalitis — headache, confusion, focal neurological deficits, seizures','Ocular toxoplasmosis — chorioretinitis (most common ocular manifestation in India)'],organs:'Brain (cysts), Eyes (chorioretinitis), Heart, Liver, Fetal brain (congenital)',globalData:{cases:'30–50% of global population chronically infected (latent)',deaths:'High in AIDS-defining toxoplasmic encephalitis',countries:'Worldwide; highest in France, Latin America',trend:'Common in India; major AIDS-defining illness'},indiaData:{cases:'High seroprevalence 20–50% in adults',deaths:'Toxoplasmic encephalitis major cause of AIDS deaths',states:'All states; higher in cat-owning and meat-eating populations',season:'Year-round'},diagnosis:['IgM/IgG serology — Toxoplasma ELISA (most common)','PCR on CSF or blood (encephalitis)','MRI brain — ring-enhancing lesions (multiple) in AIDS','Ophthalmic exam — chorioretinitis','Avidity test — recent vs old infection in pregnancy'],testCost:'IgG/IgM ELISA ₹400–800 | MRI brain ₹3000–8000 | PCR ₹1500–2500',medicines:[{name:'Pyrimethamine + Sulfadiazine',use:'First-line for active toxoplasmosis and encephalitis',source:'Synthetic; Sulfadiazine: synthetic sulphonamide'},{name:'Folinic acid (Leucovorin)',use:'Given WITH pyrimethamine — prevents bone marrow suppression',source:'Synthetic folate'},{name:'Spiramycin',use:'For pregnant women with primary infection — reduces congenital transmission',source:'Streptomyces ambofaciens macrolide'}],duration:'6 weeks acute; lifelong secondary prophylaxis in HIV until CD4 >200',vaccines:'No human vaccine',precautions:['Cook meat to internal temperature >65°C','Wash hands after handling cats or soil','Pregnant women: do not change cat litter','Wash fruits and vegetables','Antenatal toxoplasma screening in high-risk pregnancies'],govtSchemes:'NACP — toxoplasma prophylaxis for HIV patients; ophthalmology services at govt hospitals',emergency:['HIV patient with headache + confusion + focal signs — toxoplasmic encephalitis till proved otherwise','Pregnant woman with primary infection — spiramycin immediately and specialist referral','Sudden vision loss (chorioretinitis)'],firstAid:['HIV patient with neurological symptoms — hospital immediately','Ophthalmology referral for eye symptoms'],helplines:['Emergency: 108','NACP: naco.gov.in','AIIMS ophthalmology: 011-26588500'],ncert:{class:'Class 12 Ch.8',keyTerms:'Toxoplasma gondii, Oocyst, Tachyzoite, Bradyzoite, Definitive host, Intermediate host, Congenital toxoplasmosis, Chorioretinitis',examQ:['Why is cat faeces a source of Toxoplasma infection? (2 marks)','Why are pregnant women and HIV patients at highest risk? (3 marks)','What is congenital toxoplasmosis and how is it prevented? (3 marks)']},symptoms:['swollen lymph nodes','fatigue','fever','headache','confusion','seizures','vision problems']}
+
+,{id:'giardiasis',name:'Giardiasis',sci:'Giardia lamblia',type:'parasitic',icon:'🪱',pathogen:'Flagellate protozoan',vector:'Contaminated water and food (faecal-oral)',incubation:'1–3 weeks (average 7–10 days)',riskGroups:'Children in daycare, travellers, poor sanitation areas, immunodeficient',classification:{kingdom:'Protista',phylum:'Metamonada',class:'Trepomonadea',family:'Hexamitidae',genus:'Giardia',species:'G. lamblia (also called G. intestinalis)'},habitat:'Small intestine of humans and animals; cysts survive weeks in cold water (resistant to chlorination)',lifecycle:['Cysts ingested from contaminated water or food','Excystation in duodenum — release trophozoites','Trophozoites attach to intestinal epithelium using ventral disc','Impair nutrient absorption especially fat-soluble vitamins','Encyst in colon — cysts excreted in faeces'],transmission:['Drinking contaminated water (cysts resist chlorination — need UV or boiling)','Faecal-oral — person to person (daycare, family)','Contaminated food','Swimming in contaminated water','Animal reservoir — beavers, dogs'],symptomsEarly:['Explosive watery foul-smelling diarrhoea','Flatulence and belching (sulphurous — rotten egg smell)','Abdominal cramps','Nausea'],symptomsSevere:['Chronic diarrhoea weeks to months if untreated','Steatorrhoea — fatty greasy stools (fat malabsorption)','Weight loss and malnutrition','Failure to thrive in children','Lactose intolerance (secondary)','Vitamin A, B12, folate deficiency'],organs:'Small intestine (duodenum and jejunum), Gallbladder (rare)',globalData:{cases:'200 million cases/yr globally (WHO)',deaths:'Very low; malnutrition in children significant',countries:'Worldwide; most common intestinal parasite in many countries',trend:'Common cause of travellers diarrhoea and waterborne outbreaks'},indiaData:{cases:'Very common — major cause of childhood diarrhoea and malabsorption',deaths:'Mostly indirect — through malnutrition',states:'All states; highest in areas with poor water treatment',season:'Year-round; peaks monsoon'},diagnosis:['Stool microscopy — trophozoites (acute) or cysts','Stool antigen ELISA (most sensitive — 3 stool samples)','PCR (definitive)','Duodenal aspirate for difficult cases'],testCost:'Stool microscopy ₹100–200 | Stool antigen ELISA ₹400–800 | Free at govt labs',medicines:[{name:'Metronidazole',use:'First-line — 5–7 days course',source:'Synthetic nitroimidazole'},{name:'Tinidazole',use:'Single-dose alternative — better compliance',source:'Synthetic nitroimidazole'},{name:'Nitazoxanide',use:'Alternative — also covers other parasites',source:'Synthetic thiazolide'}],duration:'Metronidazole 5–7 days; Tinidazole single dose; re-treat if persistent',vaccines:'No vaccine',precautions:['Boil or filter water (chlorination alone insufficient)','Wash hands with soap after toilet and before eating','Wash fruits and vegetables thoroughly','Safe food handling in daycare centres'],govtSchemes:'National Deworming Day February and August; Jal Jeevan Mission — clean tap water; Swachh Bharat Mission',emergency:['Severe dehydration from diarrhoea','Malnutrition in child with chronic giardiasis'],firstAid:['ORS for dehydration','Avoid dairy products temporarily (lactose intolerance)','Doctor for metronidazole prescription','Check and treat all family members'],helplines:['Emergency: 108','ICDS Anganwadi for child malnutrition'],ncert:{class:'Class 9 Ch.13',keyTerms:'Giardia lamblia, Trophozoite, Cyst, Flagellate protozoan, Steatorrhoea, Faecal-oral, Malabsorption',examQ:['What is Giardia and how does it cause malabsorption? (3 marks)','Why is chlorination alone not enough to kill Giardia cysts? (2 marks)','Distinguish between trophozoite and cyst forms of Giardia. (2 marks)']},symptoms:['diarrhoea','flatulence','abdominal cramps','nausea','weight loss','greasy stools','fatigue']}
+
+// ===== PHASE 4: FUNGAL =====
+,{id:'aspergillosis',name:'Aspergillosis',sci:'Aspergillus fumigatus',type:'fungal',icon:'🍄',pathogen:'Filamentous mould (ubiquitous in environment)',vector:'Inhalation of airborne spores (conidia)',incubation:'Days to weeks depending on immune status',riskGroups:'Severely immunocompromised — neutropenic (leukaemia, bone marrow transplant), high-dose steroids, HIV, COPD, TB cavities',classification:{kingdom:'Fungi',phylum:'Ascomycota',class:'Eurotiomycetes',family:'Aspergillaceae',genus:'Aspergillus',species:'A. fumigatus (most common), A. flavus, A. niger, A. terreus'},habitat:'Soil, compost, decaying organic matter; ubiquitous in environment',lifecycle:['Inhalation of conidia (spores) — everyone inhales daily','In healthy: mucociliary clearance and macrophages destroy conidia','In immunocompromised: conidia germinate into hyphae','Hyphae invade blood vessels — angio-invasion — tissue infarction','Dissemination to brain, kidneys, heart'],transmission:['Inhalation of environmental conidia (NOT person-to-person)','Hospital outbreaks during construction (disturbs Aspergillus-laden soil)','Immunosuppressed patients most at risk'],symptomsEarly:['Allergic (ABPA) in asthma: wheeze, cough, mucus plugs','Aspergilloma: haemoptysis in TB cavity','Chronic pulmonary: cough, weight loss, fatigue'],symptomsSevere:['Invasive Aspergillosis (IA): fever unresponsive to antibiotics in neutropenic patient','Chest pain and haemoptysis','Angioinvasion — infarction of lung tissue','Disseminated — brain, kidneys, heart','Mortality of IA: 30–95%'],organs:'Lungs (primary), Brain, Sinuses, Heart (endocarditis), Kidneys',globalData:{cases:'~3 million serious fungal infections/yr globally; IA: 300,000/yr',deaths:'IA: 30–95% case fatality',countries:'Worldwide; immunocompromised patients at all hospitals',trend:'Rising due to more transplants, cancer chemotherapy, COVID-19 associated (CAPA)'},indiaData:{cases:'COVID-19 Associated Pulmonary Aspergillosis (CAPA) — major problem during COVID waves',deaths:'High case fatality; CAPA mortality significant 2021',states:'All states; large cancer hospitals see most cases',season:'Year-round; construction season risk'},diagnosis:['CT chest — halo sign (early IA) and air-crescent sign (later)','Galactomannan antigen (serum or BAL) — most useful biomarker','Beta-D-glucan (serum) — general fungal marker','Culture of BAL or tissue biopsy','Microscopy — septate hyphae with 45 degree branching'],testCost:'Galactomannan ₹1500–3000 | CT chest ₹3000–8000 | Culture ₹500–1000',medicines:[{name:'Voriconazole',use:'First-line for invasive aspergillosis — oral or IV',source:'Synthetic triazole'},{name:'Liposomal Amphotericin B',use:'Alternative — severe or voriconazole-refractory cases',source:'Amphotericin B from Streptomyces nodosus'},{name:'Isavuconazole',use:'Newer triazole — fewer side effects',source:'Synthetic triazole'}],duration:'IA: minimum 6–12 weeks voriconazole; continue until immunosuppression resolves',vaccines:'No vaccine',precautions:['HEPA filtration in rooms for severely immunocompromised patients','Avoid construction sites (disturbs Aspergillus)','Prophylactic antifungals for highest-risk patients','N95 masks during outdoor construction for immunosuppressed'],govtSchemes:'ICMR guidelines for invasive fungal infections; MUCOR/aspergillosis task force during COVID-19; free treatment at cancer hospitals',emergency:['Fever in neutropenic patient not responding to antibiotics — think Aspergillosis','Haemoptysis in TB cavity patient — aspergilloma rupture possible','Immunocompromised patient with new lung infiltrates — CT chest urgently'],firstAid:['Hospital immediately for any immunocompromised patient with fever','Do not delay antifungal therapy','Chest X-ray and CT first steps'],helplines:['Emergency: 108','Cancer hospital mycology departments'],ncert:{class:'Class 12 Ch.8',keyTerms:'Aspergillus fumigatus, Conidia, Invasive aspergillosis, Galactomannan, ABPA, Halo sign, Voriconazole, Opportunistic infection, CAPA',examQ:['What is an opportunistic fungal infection? Why more common in cancer patients? (3 marks)','Name the diagnostic marker for invasive aspergillosis. (1 mark)','What is ABPA and which patient group does it affect? (2 marks)']},symptoms:['fever','cough','breathlessness','chest pain','blood in cough','headache','wheezing']}
+
+,{id:'cryptococcosis',name:'Cryptococcosis',sci:'Cryptococcus neoformans',type:'fungal',icon:'🍄',pathogen:'Encapsulated yeast',vector:'Inhalation of desiccated yeast or spores from pigeon droppings',incubation:'Weeks to months (latent in lung until immunosuppression)',riskGroups:'HIV/AIDS patients with CD4 <100 — most common; organ transplant recipients; high-dose steroids',classification:{kingdom:'Fungi',phylum:'Basidiomycota',class:'Tremellomycetes',family:'Cryptococcaceae',genus:'Cryptococcus',species:'C. neoformans (HIV-associated), C. gattii (immunocompetent)'},habitat:'Soil enriched with pigeon droppings; decaying wood; widespread in environment',lifecycle:['Inhalation of desiccated yeast cells from environment','Primary pulmonary infection — usually asymptomatic in healthy','In immunocompromised: fails to be contained','Yeast disseminate via blood to CNS (polysaccharide capsule prevents phagocytosis)','Meningitis or meningoencephalitis — the most feared complication'],transmission:['Inhalation of environmental yeast (NOT person-to-person)','Pigeon droppings major environmental source in India'],symptomsEarly:['Pulmonary: cough, chest pain, mild fever','CNS: gradually worsening headache over weeks','Neck stiffness','Visual disturbances'],symptomsSevere:['Cryptococcal meningitis — AIDS-defining illness','Raised intracranial pressure — severe headache, vomiting, papilloedema','Altered consciousness and seizures','Blindness from optic nerve compression','Hydrocephalus','Without treatment: universally fatal'],organs:'Lungs (primary), Brain/Meninges (cryptococcal meningitis), Skin (umbilicated papules), Bone',globalData:{cases:'223,100 cases of cryptococcal meningitis/yr (WHO 2022)',deaths:'181,000/yr — 15% of AIDS deaths globally',countries:'Sub-Saharan Africa and South/SE Asia — highest burden',trend:'Major AIDS-defining illness; fluconazole prophylaxis reducing incidence'},indiaData:{cases:'Significant burden in HIV patients with low CD4',deaths:'Major cause of AIDS-related deaths',states:'All states; highest in high HIV prevalence states',season:'Year-round'},diagnosis:['India ink stain of CSF — capsulated yeast visible (simple, cheap, fast)','Cryptococcal antigen (CrAg) on serum or CSF (most sensitive)','CSF culture — gold standard (weeks)','MRI brain — soap bubble lesions (cryptococcomas)'],testCost:'India ink ₹50–100 | CrAg ₹300–600 | Free at NACP ART centres',medicines:[{name:'Liposomal Amphotericin B + Flucytosine',use:'Induction 2 weeks — most potent combination',source:'AmBisome from Streptomyces nodosus; Flucytosine: synthetic'},{name:'Fluconazole',use:'Consolidation 8 weeks + Maintenance lifelong in HIV',source:'Synthetic triazole'},{name:'Therapeutic lumbar punctures',use:'Reduces raised intracranial pressure — critical procedure',source:'Procedure'}],duration:'Induction 2 weeks → Consolidation 8 weeks → Maintenance lifelong until CD4 >100 on ART',vaccines:'No vaccine',precautions:['Avoid pigeon droppings (masks for immunocompromised near bird roosts)','Early ART initiation prevents CD4 from falling','CrAg screening for all HIV patients with CD4 <100 (WHO recommendation)','Fluconazole prophylaxis for HIV with CD4 <100'],govtSchemes:'NACP — CrAg screening at ART centres; Free fluconazole; Free AmBisome at some ART centres',emergency:['HIV patient with gradual headache — lumbar puncture for CrAg ASAP','Raised intracranial pressure — serial therapeutic LPs','100% fatal if untreated — do not miss'],firstAid:['Any HIV patient with headache for over 1 week — hospital immediately','Head of bed at 30 degrees, serial LPs','Do NOT give steroids in cryptococcal meningitis (worsens outcome)'],helplines:['iCall HIV: 1097','NACP: naco.gov.in','Emergency: 108'],ncert:{class:'Class 12 Ch.8',keyTerms:'Cryptococcus neoformans, Encapsulated yeast, India ink stain, CrAg, Cryptococcal meningitis, Pigeon droppings, Fluconazole, AIDS-defining illness',examQ:['What is the importance of the India ink stain in cryptococcosis? (2 marks)','Why is Cryptococcus more dangerous in HIV patients? (2 marks)','Name the classical environmental source of Cryptococcus. (1 mark)']},symptoms:['headache','fever','neck stiffness','visual disturbances','confusion','nausea','vomiting','cough']}
+
+// ===== PHASE 4: NUTRITIONAL =====
+,{id:'pellagra',name:'Pellagra (Vitamin B3 Deficiency)',sci:'Niacin (Vitamin B3) Deficiency',type:'nutritional',icon:'🥗',pathogen:'Not a pathogen — Niacin (Vitamin B3) deficiency',vector:'Diet based primarily on maize without niacin supplementation',incubation:'Develops over months of deficiency',riskGroups:'People with maize-dominant diet, alcoholics, malabsorption patients, Hartnup disease',classification:{kingdom:'Non-infectious',type:'Nutritional deficiency',category:'B vitamin deficiency',mechanism:'Niacin essential for NAD and NADP synthesis — critical for 400+ metabolic reactions'},habitat:'Affects skin, gut, and nervous system',lifecycle:['Inadequate niacin/tryptophan intake','NAD and NADP deficiency — impairs cellular energy production','Rapidly dividing cells most affected (skin, gut epithelium)','Skin exposed to sunlight develops dermatitis (Casal necklace)','Gut epithelium fails → diarrhoea','Neuronal damage → dementia'],transmission:['NOT infectious — dietary deficiency','Maize contains niacin in bound form (niacytin) — not bioavailable unless lime-treated','Alcoholism causes malabsorption and poor diet'],symptomsEarly:['Dermatitis on sun-exposed skin (face, neck, forearms, feet)','Casal necklace — ring of dermatitis around neck','Diarrhoea','Weakness and fatigue'],symptomsSevere:['4 Ds of Pellagra: Dermatitis, Diarrhoea, Dementia, Death','Dermatitis: red scaly hyperpigmented skin on sun-exposed areas','Diarrhoea: watery sometimes bloody','Dementia: confusion, memory loss, psychosis','Death: if untreated'],organs:'Skin (sun-exposed areas), GI tract (mucosa), Brain and nervous system',globalData:{cases:'Rare in developed countries (fortified foods); endemic parts of Africa and Asia',deaths:'Rare with treatment; significant in poverty and famine zones',countries:'Africa (maize-dependent regions), India (Deccan Plateau historically), China',trend:'India: eliminated from major regions; sporadic in drought-affected areas'},indiaData:{cases:'Historical endemic in Deccan Plateau (Andhra Pradesh, Telangana) — now rare',deaths:'Rare with food fortification',states:'Andhra Pradesh, Telangana (historical); sporadic nationally',season:'Worse in summer — sunlight triggers dermatitis'},diagnosis:['Clinical — 4 Ds (Dermatitis + Diarrhoea + Dementia)','24-hour urine N-methylnicotinamide (NMN) — low confirms niacin deficiency','Dietary history — maize-dominant diet'],testCost:'Urine NMN ₹500–1000 | Clinical diagnosis free',medicines:[{name:'Nicotinamide (Niacinamide)',use:'Preferred form — no flushing side effect; 100–300 mg/day',source:'Synthetic B3 vitamin'},{name:'Nicotinic acid (Niacin)',use:'Alternative — causes skin flushing',source:'Synthetic B3 vitamin'},{name:'High-protein diet',use:'Tryptophan-rich foods (eggs, milk, meat) as niacin precursor',source:'Dietary'}],duration:'Clinical improvement within days; full recovery 3–4 weeks',vaccines:'No vaccine — dietary prevention',precautions:['Dietary diversification beyond maize alone','Nixtamalisation of maize (lime-processing releases bound niacin)','B-vitamin supplementation for alcoholics','Fortification of cereals with niacin','Protein-rich diet'],govtSchemes:'Mid-day meal programme; POSHAN Abhiyaan; National Food Security Act; FSSAI food fortification; ICDS programmes',emergency:['Delirium or psychosis (dementia phase) — hospital','Severe diarrhoea — dehydration risk'],firstAid:['Nicotinamide tablets immediately','High-protein diet','Avoid sun exposure','ORS for diarrhoea'],helplines:['ICDS helpline','Emergency: 108'],ncert:{class:'Class 10 Life Processes; Class 11 Biomolecules',keyTerms:'Pellagra, Niacin, Nicotinamide, NAD, NADP, Casal necklace, 4 Ds, Nixtamalisation, Tryptophan',examQ:['What are the four Ds of pellagra? (2 marks)','Why does a maize-only diet lead to pellagra? (3 marks)','What is the role of niacin in the body? (2 marks)']},symptoms:['skin rash','sun-sensitive skin','diarrhoea','confusion','weakness','memory loss','mouth sores']}
+
+,{id:'beriberi',name:'Beriberi (Vitamin B1 Deficiency)',sci:'Thiamine (Vitamin B1) Deficiency',type:'nutritional',icon:'🥗',pathogen:'Not a pathogen — Thiamine (Vitamin B1) deficiency',vector:'Polished white rice diet without thiamine; alcoholism',incubation:'Weeks to months of deficiency; acute in heavy alcohol use',riskGroups:'People eating polished white rice as staple, alcoholics, hyperemesis gravidarum patients',classification:{kingdom:'Non-infectious',type:'Nutritional deficiency',category:'B vitamin deficiency',mechanism:'Thiamine is cofactor for pyruvate dehydrogenase — essential for ATP production and carbohydrate metabolism'},habitat:'Affects peripheral nerves (dry beriberi), heart (wet beriberi), and brain (Wernicke encephalopathy)',lifecycle:['Inadequate thiamine from polished rice diet','Thiamine pyrophosphate (TPP) depleted','Pyruvate accumulates — cannot enter Krebs cycle','Lactic acidosis develops','Nerve conduction fails (dry beriberi)','Heart failure (wet beriberi)','Brain affected (Wernicke encephalopathy in alcoholics)'],transmission:['NOT infectious — dietary deficiency','Polished white rice has bran removed — bran contains most thiamine','Alcoholism: poor absorption + poor diet','Processing and cooking destroys thiamine'],symptomsEarly:['Fatigue and weakness','Loss of appetite','Irritability','Peripheral tingling and numbness'],symptomsSevere:['Dry Beriberi: symmetric peripheral neuropathy — weakness and paralysis; wasting','Wet Beriberi: heart failure — oedema, breathlessness, cardiomegaly; sudden cardiac death','Wernicke Encephalopathy (alcoholics): confusion, ataxia, ophthalmoplegia — MEDICAL EMERGENCY','Korsakoff Syndrome: irreversible memory disorder (anterograde amnesia)'],organs:'Peripheral nerves (dry), Heart (wet), Brain (Wernicke/Korsakoff)',globalData:{cases:'Major problem in SE Asia (polished rice populations)',deaths:'Wet beriberi and Wernicke encephalopathy can be rapidly fatal',countries:'Myanmar, Thailand, Cambodia, India; widespread in alcoholics globally',trend:'Declining with rice fortification; persists in alcoholics'},indiaData:{cases:'Sporadic; states with high polished rice consumption; common in alcoholics',deaths:'Wernicke encephalopathy underdiagnosed in alcoholics',states:'Telangana, Odisha, West Bengal — rice-eating belt; alcoholic patients in all states',season:'Year-round'},diagnosis:['Whole blood thiamine (HPLC) — definitive','Erythrocyte transketolase activity (ETKA) — functional thiamine test','MRI brain — Wernicke: symmetric signal changes around third ventricle','Clinical diagnosis — improves dramatically within 24 hrs of thiamine (therapeutic trial)'],testCost:'Blood thiamine ₹1000–2000 | MRI brain ₹3000–8000',medicines:[{name:'Thiamine IV or IM',use:'Wernicke/wet beriberi — IV immediately; 100–500 mg',source:'Synthetic vitamin'},{name:'Thiamine oral',use:'Dry beriberi and prevention; 10–25 mg/day',source:'Synthetic vitamin'},{name:'Balanced diet',use:'Brown rice, whole grains, legumes, meat — thiamine-rich',source:'Dietary'}],duration:'Dramatic improvement within 24–48 hours of IV thiamine; neuropathy may take weeks',vaccines:'No vaccine — dietary prevention',precautions:['Eat unpolished or parboiled rice or brown rice (retain thiamine)','Fortified rice (FSSAI mandated rice fortification in India — ongoing rollout)','Thiamine supplementation for alcoholics (always give before glucose in emergency)','B-complex supplementation during prolonged illness'],govtSchemes:'Rice fortification under POSHAN Abhiyaan (1 fortified kernel per 100 grains); Anganwadi distribution of fortified foods; Mid-day meal programme',emergency:['Alcoholic patient with confusion + eye movement problems = Wernicke encephalopathy — IV thiamine IMMEDIATELY before glucose','Giving glucose before thiamine in deficient patient precipitates Wernicke','Wet beriberi with heart failure — IV thiamine + cardiac support'],firstAid:['Any alcoholic with confusion — IV thiamine before glucose at hospital','Do NOT give glucose drip before thiamine in suspected deficiency','Hospital immediately for Wernicke encephalopathy'],helplines:['Emergency: 108','NIMHANS: 080-46110007'],ncert:{class:'Class 10 Life Processes; Class 11 Biomolecules',keyTerms:'Thiamine, TPP, Pyruvate dehydrogenase, Dry beriberi, Wet beriberi, Wernicke encephalopathy, Korsakoff syndrome, Polished rice, Ataxia',examQ:['Why does eating polished white rice cause beriberi? (3 marks)','Distinguish between wet and dry beriberi. (3 marks)','What is Wernicke encephalopathy and how is it treated? (3 marks)']},symptoms:['weakness','peripheral numbness','tingling','oedema','breathlessness','confusion','unsteady gait','eye movement problems']}
+
+// ===== PHASE 4: ENVIRONMENTAL =====
+,{id:'kidneystones',name:'Kidney Stones',sci:'Nephrolithiasis / Urolithiasis',type:'environmental',icon:'🫘',pathogen:'Not a pathogen — mineral crystal deposits',vector:'Dehydration, diet, metabolic factors, infection',incubation:'Develops over months to years; pain appears when stone moves',riskGroups:'Males 30–60 years (3x more than females), hot climate workers, low fluid intake, high protein or salt diet',classification:{kingdom:'Non-infectious',type:'Metabolic disorder',category:'Urological condition',subtype:'Calcium oxalate (75–80%), Calcium phosphate (10%), Uric acid (5–10%), Struvite (5%), Cystine (<1%)'},habitat:'Kidney calyx and pelvis → ureter → bladder → urethra',lifecycle:['Supersaturation of urine with stone-forming minerals','Crystal nucleation (seed formation)','Crystal growth and aggregation','Stone forms in kidney — may stay silent for years','Stone moves into ureter → obstructs → intense renal colic','Passes through or causes obstruction requiring intervention'],transmission:['NOT infectious','Dehydration, hot climate, high protein diet, excess salt increase risk','High oxalate foods (spinach, nuts, tomatoes) → calcium oxalate stones','Gout → uric acid stones','UTI with Proteus → struvite stones'],symptomsEarly:['Often SILENT until stone moves','Dull flank pain when stone in kidney pelvis'],symptomsSevere:['Renal colic — sudden excruciating pain (worst pain described by patients)','Colicky pain from loin to groin to genitals (follows ureter path)','Haematuria — blood in urine (pink or red)','Nausea and vomiting (pain response)','Fever and chills — obstructed infected kidney is EMERGENCY'],organs:'Kidneys, Ureters, Urinary bladder, Urethra',globalData:{cases:'1 in 10 people develop kidney stone in lifetime; 150 million affected globally',deaths:'Low with treatment; obstructed infected kidney — urosepsis life-threatening',countries:'Worldwide; highest in North India (Stone Belt)',trend:'Rising due to changing diet, obesity, dehydration, climate change'},indiaData:{cases:'12% prevalence in North India — Kidney Stone Belt',deaths:'Rare with treatment; urosepsis from obstructed infected kidney significant',states:'Rajasthan, Gujarat, Maharashtra, Punjab, Haryana, Delhi — Stone Belt',season:'Summer — dehydration increases stone risk and movement'},diagnosis:['Urine analysis — haematuria, pH, crystals','Non-contrast CT KUB (gold standard — detects all stone types)','Ultrasound KUB (first-line — no radiation, detects >5mm stones)','X-ray KUB (calcium stones visible; uric acid stones not visible)'],testCost:'Ultrasound ₹300–600 | CT KUB ₹3000–6000 | Free at govt hospitals | Urine ₹50–100',medicines:[{name:'Tamsulosin (alpha-blocker)',use:'Medical expulsive therapy — relaxes ureter; helps pass stone <10mm',source:'Synthetic alpha-1 adrenergic blocker'},{name:'Diclofenac/Ketorolac',use:'Pain relief for renal colic (NSAIDs most effective)',source:'Synthetic NSAID'},{name:'Potassium Citrate',use:'Alkalinises urine — prevents calcium oxalate and uric acid stones',source:'Mineral salt'}],duration:'Most stones <5mm pass spontaneously in 2–4 weeks; >10mm: urological intervention (ESWL or PCNL)',vaccines:'No vaccine — dietary and hydration prevention',precautions:['Drink 2.5–3 litres of water daily (light yellow urine target)','Reduce excess salt and protein','Reduce high-oxalate foods for oxalate stone formers','Lemon juice — citrate prevents stone formation','Adequate dietary calcium (do not restrict — binds oxalate in gut)'],govtSchemes:'Free treatment at govt urology departments; ESIC and CGHS cover stone procedures; Ayushman Bharat covers PCNL and ESWL',emergency:['Fever + flank pain + blocked kidney = EMERGENCY — urosepsis risk','Renal colic not resolving after 1 hour — hospital for IV pain relief','Inability to pass urine (bilateral obstruction)'],firstAid:['Plenty of fluids unless vomiting','Diclofenac if available for pain','Strain urine to catch stone for analysis','Hospital immediately if fever accompanies pain'],helplines:['Emergency: 108','Urology departments at district hospitals'],ncert:{class:'Class 10 Life Processes; Class 11 Excretory System',keyTerms:'Nephrolithiasis, Renal colic, Haematuria, Calcium oxalate, Uric acid stone, Struvite, CT KUB, Tamsulosin, ESWL, PCNL',examQ:['What is renal colic and why is it so painful? (2 marks)','Name two dietary factors that increase kidney stone risk. (1 mark)','What is the most important prevention for kidney stones? (1 mark)']},symptoms:['severe flank pain','blood in urine','nausea','vomiting','frequent urination','fever','pain radiating to groin']}
+
+,{id:'livercirrhosis',name:'Liver Cirrhosis',sci:'Chronic Liver Disease with Fibrosis',type:'environmental',icon:'🫀',pathogen:'Not a pathogen — chronic liver damage leading to fibrosis',vector:'Alcohol, hepatitis B/C, NAFLD, autoimmune, drugs',incubation:'Develops over 10–20+ years of chronic liver injury',riskGroups:'Alcoholics (major cause in India), Hepatitis B/C patients, NAFLD patients with obesity',classification:{kingdom:'Non-infectious',type:'Chronic progressive liver disease',cause:'Alcoholic (50%), Hepatitis B/C (30%), NAFLD (15%), Autoimmune, Drugs'},habitat:'Affects the entire liver — loss of normal architecture and function',lifecycle:['Chronic liver injury from alcohol, HBV, HCV, or fat','Stellate cells activated → excess collagen deposition (fibrosis)','Normal liver tissue replaced by fibrous scar tissue','Loss of functional hepatocytes → liver function impairment','Portal hypertension (back-pressure in portal vein)','Complications: varices, ascites, encephalopathy, liver cancer'],transmission:['NOT infectious (unless underlying HBV/HCV)','Alcohol: dose and duration dependent','NAFLD: metabolic — obesity, diabetes, dyslipidaemia'],symptomsEarly:['Often SILENT (compensated cirrhosis) for years','Fatigue and weakness','Loss of appetite and weight loss','Nausea','Right upper quadrant discomfort'],symptomsSevere:['Ascites — abdominal swelling with fluid (most common complication)','Jaundice — liver cannot process bilirubin','Oesophageal varices — rupture → vomiting blood (life-threatening)','Hepatic encephalopathy — confusion, flapping tremor (asterixis)','Spontaneous Bacterial Peritonitis (SBP)','Hepatorenal syndrome — kidney failure','Hepatocellular Carcinoma (HCC) — liver cancer'],organs:'Liver (primary), Portal vein system, Oesophagus (varices), Brain (encephalopathy), Kidneys (HRS)',globalData:{cases:'100 million people with cirrhosis globally',deaths:'1.32 million/yr',countries:'India among highest — alcohol and HBV major causes',trend:'Rising due to NAFLD epidemic globally'},indiaData:{cases:'~10 million with cirrhosis in India (estimated)',deaths:'High — major cause of hospital mortality',states:'All states; Punjab, Haryana, UP — alcohol cirrhosis; all states — HBV cirrhosis',season:'Year-round; alcohol consumption peaks in winter'},diagnosis:['Liver function tests — bilirubin, ALT, AST, albumin, PT','Fibroscan (transient elastography) — measures liver stiffness','Ultrasound liver — nodular surface, shrunken liver, splenomegaly, ascites','Endoscopy — oesophageal/gastric varices','Liver biopsy — gold standard for fibrosis staging'],testCost:'LFT ₹300–600 | Fibroscan ₹2000–5000 | Ultrasound ₹300–600 | Free at govt hospitals',medicines:[{name:'Propranolol',use:'Beta-blocker — reduces portal pressure; prevents variceal bleeding',source:'Synthetic'},{name:'Spironolactone + Furosemide',use:'Diuretics — treatment of ascites',source:'Synthetic'},{name:'Lactulose',use:'Treats hepatic encephalopathy — reduces ammonia absorption',source:'Synthetic disaccharide'},{name:'Rifaximin',use:'Antibiotic — prevents hepatic encephalopathy recurrence',source:'Semi-synthetic rifamycin'}],duration:'Cirrhosis is irreversible; treat underlying cause; only liver transplant is curative',vaccines:'Hepatitis A and B vaccination ESSENTIAL for all cirrhosis patients',precautions:['Complete alcohol cessation (most important for alcoholic cirrhosis)','Treat HBV/HCV with antivirals','Control weight/diabetes/cholesterol (NAFLD)','Regular liver cancer surveillance (ultrasound every 6 months)','Salt restriction (reduces ascites)','Avoid NSAIDs and unnecessary drugs (hepatotoxic)'],govtSchemes:'Free HBV/HCV treatment at NVHCP centres; Liver transplant under Ayushman Bharat; AIIMS and govt teaching hospitals',emergency:['Vomiting blood (variceal bleed) — call 108 immediately','Confusion/unresponsive (hepatic encephalopathy)','Fever + abdominal pain + ascites (SBP)','Sudden decrease in urine (hepatorenal syndrome)'],firstAid:['Variceal bleed: NPO, call 108, IV line, endoscopy urgently','Hepatic encephalopathy: lactulose, hospital','Never give sedatives to cirrhosis patient (worsens encephalopathy)'],helplines:['Emergency: 108','ILBS Delhi: ilbs.in','AIIMS hepatology: 011-26588500'],ncert:{class:'Class 12 Ch.8 and Digestion chapters',keyTerms:'Cirrhosis, Fibrosis, Portal hypertension, Ascites, Hepatic encephalopathy, Oesophageal varices, Fibroscan, Hepatocellular carcinoma, Stellate cells',examQ:['What is cirrhosis and what causes it? (2 marks)','What is portal hypertension and what are its complications? (4 marks)','Why is alcohol cessation the most important treatment for alcoholic cirrhosis? (2 marks)']},symptoms:['fatigue','jaundice','abdominal swelling','vomiting blood','confusion','weight loss','swollen legs','easy bruising']}
 ];
 
 // ===== QUIZ QUESTIONS =====
@@ -369,6 +696,9 @@ function getOpts(correct,pool,n){
 const SYMS={general:['Fever','Chills','Fatigue','Weight loss','Night sweats','Loss of appetite','Weakness','Dizziness','Nausea','Vomiting'],respiratory:['Cough','Blood in cough','Breathlessness','Chest pain','Sore throat','Loss of smell','Loss of taste','Wheezing','Chest tightness'],gastro:['Diarrhoea','Constipation','Abdominal pain','Jaundice','Dark urine','Pelvic pain','Oedema','Dehydration'],neuro:['Headache','Neck stiffness','Rash','Skin lesions','Itching','Joint pain','Muscle pain','Limb weakness','Pale skin','Hair loss','Skin blisters','Swollen lymph nodes','Easy bruising','Prolonged bleeding','Blurred vision','Frequent urination','Excessive thirst','Palpitations','Confusion','Seizures']};
 
 let curPage='home',prevPage='home',selSym=[],activeFilter='all';
+let bookmarks=JSON.parse(localStorage.getItem('pp_bookmarks')||'[]');
+let quizHistory=JSON.parse(localStorage.getItem('pp_qhist')||'[]');
+const hindiNames={};
 let studied=JSON.parse(localStorage.getItem('pp_studied')||'[]');
 let quizQuestions=[],quizIdx=0,quizScore=0,quizAnswered=false;
 
@@ -398,13 +728,17 @@ function updateStudiedCount(){
 
 function dCard(d){
   const s=studied.includes(d.id)?'<span class="studied-badge">✓ Studied</span>':'';
-  return `<div class="disease-card" onclick="showDisease('${d.id}')">${s}
+  const isBm=typeof bookmarks!=='undefined'&&bookmarks.includes(d.id);
+  const hi=typeof hindiNames!=='undefined'&&hindiNames[d.id]?`<span class="hi"> (${hindiNames[d.id]})</span>`:'';
+  return `<div class="disease-card" style="position:relative" onclick="showDisease('${d.id}')">${s}
+    <button class="bm-btn${isBm?' saved':''}" data-bmid="${d.id}" onclick="toggleBookmark('${d.id}',event)" title="Bookmark">${isBm?'🔖':'☆'}</button>
     <div class="d-icon cat-${d.type}">${d.icon}</div>
-    <h3>${d.name}</h3>
-    <p style="font-style:italic">${d.sci}</p>
+    <h3>${d.name}${hi}</h3>
+    <p style="font-style:italic;font-size:10px">${d.sci}</p>
     <span class="badge badge-${d.type}">${d.type}</span>
-    <p style="margin-top:5px;font-size:11px">Vector: ${d.vector}</p>
+    <p style="margin-top:5px;font-size:11px;color:var(--muted)">Vector: ${d.vector}</p>
   </div>`;
+
 }
 
 function renderEnc(){
@@ -429,10 +763,12 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach((t,i)=>{
-    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','quiz','progress','teacher'][i]===id);
+    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','bodymap','indiamap','flashcards','ncert','quiz','progress','bookmarks','teacher'][i]===id);
   });
   curPage=id;
   if(id==='progress') renderProgress();
+  if(id==='bookmarks') renderBookmarks();
+  if(id==='ncert') renderNcert();
 }
 
 function showDisease(id){
@@ -499,14 +835,16 @@ function startQuiz(){
 function renderQuizQ(){
   if(quizIdx>=quizQuestions.length){
     const pct=Math.round((quizScore/quizQuestions.length)*100);
-    let grade=pct>=80?'Excellent! 🏆':pct>=60?'Good! 👍':'Keep studying! 📚';
+    const cat=document.getElementById('quiz-cat').value;
+    saveQuizHistory(quizScore,quizQuestions.length,cat);
+    let grade=pct>=80?'Excellent! 🏆':pct>=60?'Good! 👍':pct>=40?'Keep going! 💪':'Keep studying! 📚';
     document.getElementById('quiz-content').innerHTML=`<div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center">
       <div style="font-size:48px;margin-bottom:8px">🎯</div>
       <div class="quiz-score">${quizScore}/${quizQuestions.length}</div>
       <div style="font-size:20px;font-weight:600;margin-bottom:6px;color:var(--text)">${grade}</div>
       <div style="font-size:14px;color:var(--muted);margin-bottom:20px">You scored ${pct}% on this quiz.</div>
       <button class="ws-btn" onclick="startQuiz()">Try Again 🔄</button>
-      <button class="ws-btn" style="margin-left:10px;background:var(--secondary)" onclick="showPage('progress')">View Progress 📊</button>
+      <button class="ws-btn" style="margin-left:10px;background:var(--secondary)" onclick="showPage('progress')">View Progress & Analytics 📊</button>
     </div>`;
     return;
   }
@@ -549,15 +887,20 @@ function renderProgress(){
     const done=DB.filter(d=>d.type===c&&studied.includes(d.id)).length;
     return{c,total,done,pct:total?Math.round((done/total)*100):0};
   });
+  const avgScore=quizHistory.length?Math.round(quizHistory.reduce((a,b)=>a+b.pct,0)/quizHistory.length):0;
+  const bestScore=quizHistory.length?Math.max(...quizHistory.map(q=>q.pct)):0;
+  const totalQuizzes=quizHistory.length;
+  const catScores={};
+  quizHistory.forEach(q=>{if(!catScores[q.cat])catScores[q.cat]={total:0,count:0};catScores[q.cat].total+=q.pct;catScores[q.cat].count++;});
   document.getElementById('prog-content').innerHTML=`
     <div class="prog-card">
-      <h3 style="color:var(--text)">Overall Progress</h3>
+      <h3 style="color:var(--text)">📚 Study Progress</h3>
       <div style="font-size:32px;font-weight:700;color:var(--primary)">${studied.length} / ${DB.length}</div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:8px">diseases studied (${pct}%)</div>
       <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:${pct}%"></div></div>
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">By Category</h3>
+      <h3 style="color:var(--text)">📊 By Category</h3>
       ${catStats.map(s=>`<div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;color:var(--text)">
           <span>${s.c.charAt(0).toUpperCase()+s.c.slice(1)}</span>
@@ -567,16 +910,43 @@ function renderProgress(){
       </div>`).join('')}
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">Diseases Studied ✓</h3>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
-        ${studied.length?studied.map(id=>{const d=DB.find(x=>x.id===id);return d?`<span onclick="showDisease('${id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`:''}).join(''):'<span style="font-size:13px;color:var(--muted)">No diseases studied yet. Start exploring!</span>'}
+      <h3 style="color:var(--text)">🧠 Quiz Analytics</h3>
+      ${totalQuizzes===0?'<div style="font-size:13px;color:var(--muted)">No quizzes taken yet. Go to the Quiz tab to start!</div>':`
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:22px;font-weight:700;color:var(--primary)">${totalQuizzes}</div>
+          <div style="font-size:11px;color:var(--muted)">Quizzes</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:22px;font-weight:700;color:var(--success)">${avgScore}%</div>
+          <div style="font-size:11px;color:var(--muted)">Average</div>
+        </div>
+        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:22px;font-weight:700;color:var(--warning)">${bestScore}%</div>
+          <div style="font-size:11px;color:var(--muted)">Best</div>
+        </div>
       </div>
-      ${studied.length?`<button onclick="if(confirm('Reset all progress?')){studied=[];saveStudied();updateStudiedCount();renderProgress();}" style="font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit">Reset Progress</button>`:''}
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px">Score by category:</div>
+      ${Object.entries(catScores).map(([cat,data])=>{const avg=Math.round(data.total/data.count);const color=avg>=80?'var(--success)':avg>=60?'var(--warning)':'var(--danger)';return '<div class=\"qa-bar\"><span style=\"font-size:12px;min-width:90px;color:var(--text)\">'+cat.charAt(0).toUpperCase()+cat.slice(1)+'</span><div class=\"qa-bar-track\"><div class=\"qa-bar-fill\" style=\"width:'+avg+'%;background:'+color+'\"></div></div><span style=\"font-size:12px;font-weight:600;color:'+color+';min-width:36px;text-align:right\">'+avg+'%</span></div>';}).join('')}
+      <div style="margin-top:10px">
+        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Recent quiz history:</div>
+        <div style="max-height:160px;overflow-y:auto">
+          ${quizHistory.slice().reverse().slice(0,10).map(q=>{const color=q.pct>=80?'var(--success)':q.pct>=60?'var(--warning)':'var(--danger)';return '<div style=\"display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px\"><span style=\"color:var(--muted)\">'+q.date+' — '+(q.cat==='all'?'All':q.cat)+'</span><span style=\"font-weight:600;color:'+color+'\">'+q.score+'/'+q.total+' ('+q.pct+'%)</span></div>';}).join('')}
+        </div>
+        <button onclick="if(confirm('Clear quiz history?')){quizHistory=[];localStorage.removeItem('pp_qhist');renderProgress();}" style="margin-top:8px;font-size:11px;color:var(--danger);background:none;border:1px solid var(--danger);padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit">Clear Quiz History</button>
+      </div>`}
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">Not Yet Studied</h3>
+      <h3 style="color:var(--text)">✓ Diseases Studied</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+        ${studied.length?studied.map(id=>{const d=DB.find(x=>x.id===id);return d?'<span onclick=\"showDisease(''+id+'');\" style=\"padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer\">'+d.icon+' '+d.name+'</span>':''}).join(''):'<span style="font-size:13px;color:var(--muted)">No diseases studied yet. Start exploring!</span>'}
+      </div>
+      ${studied.length?'<button onclick=\"if(confirm('Reset study progress?')){studied=[];saveStudied();updateStudiedCount();renderProgress();}\" style=\"font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit\">Reset Study Progress</button>':''}
+    </div>
+    <div class="prog-card">
+      <h3 style="color:var(--text)">📖 Not Yet Studied</h3>
       <div style="display:flex;flex-wrap:wrap;gap:6px">
-        ${DB.filter(d=>!studied.includes(d.id)).map(d=>`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;color:var(--muted)">${d.icon} ${d.name}</span>`).join('')}
+        ${DB.filter(d=>!studied.includes(d.id)).map(d=>'<span onclick=\"showDisease(''+d.id+'');\" style=\"padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;color:var(--muted)\">'+d.icon+' '+d.name+'</span>').join('')}
       </div>
     </div>`;
 }
@@ -761,6 +1131,8 @@ function buildDetail(d){
           ${d.ncert.examQ.map(q=>`<div class="exam-q">${q}</div>`).join('')}
         </div>
         <button onclick="genWorksheetFor('${d.id}')" style="margin-top:10px;background:var(--secondary);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">📝 Generate Worksheet</button>
+        <button onclick="exportPDF('${d.id}')" style="margin-top:10px;margin-left:8px;background:var(--danger);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">🖨️ Print / PDF</button>
+        <button id="bm-detail-btn" onclick="toggleBookmark('${d.id}',event)" style="margin-top:10px;margin-left:8px;background:${typeof bookmarks!=='undefined'&&bookmarks.includes(d.id)?'#f59e0b':'var(--primary)'};color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">${typeof bookmarks!=='undefined'&&bookmarks.includes(d.id)?'🔖 Bookmarked':'🔖 Bookmark'}</button>
       </div>
     </div>
   </div>`;
@@ -772,8 +1144,406 @@ document.addEventListener('click',e=>{if(!e.target.closest('.search-box'))docume
 
 // Restore dark mode
 if(localStorage.getItem('pp_dark')==='1'){document.body.classList.add('dark');document.querySelector('.dark-toggle').textContent='☀️ Light Mode';}
+// Restore hindi mode
+if(localStorage.getItem('pp_hindi')==='1'){document.body.classList.add('hindi');document.getElementById('hindi-btn').textContent='🇬🇧 English';}
+
+// ===== PHASE 5: BODY MAP =====
+const bodyMap={
+  head:['meningitis','japaneseencephalitis','nipah','ebola','rabies','mumps','cryptococcosis'],
+  neck:['diphtheria','mumps','tuberculosis','plague'],
+  lungs:['tuberculosis','pneumonia','covid19','influenza','copd','aspergillosis','whoopingcough','chickenpox'],
+  heart:['hypertension','livercirrhosis','beriberi','rheumatic'],
+  liver:['hepatitisA','hepatitisB','hepatitisC','livercirrhosis','leptospirosis','malaria','kalazar','kwashiorkor'],
+  intestine:['cholera','typhoid','giardiasis','tapeworm','toxoplasmosis','kwashiorkor'],
+  kidney:['kidneystones','diabetes','hypertension','leptospirosis','malaria','livercirrhosis'],
+  skin:['leprosy','ringworm','chickenpox','measles','dengue','chikungunya','syphilis','scurvy','pellagra'],
+  limbs:['filariasis','haemophilia','rickets','beriberi','leprosy','sicklecell'],
+  blood:['malaria','anaemia','haemophilia','sicklecell','dengue','hiv','leukaemia']
+};
+const bodyPartLabels={head:'Brain / Head',neck:'Throat / Neck',lungs:'Lungs / Chest',heart:'Heart',liver:'Liver / Abdomen',intestine:'Intestines / Gut',kidney:'Kidneys',skin:'Skin',limbs:'Limbs / Joints / Bones',blood:'Blood / Immune System'};
+
+function showBodyPart(part){
+  document.querySelectorAll('.body-part').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll(`[id^="bp-${part}"]`).forEach(el=>el.classList.add('active'));
+  const ids=bodyMap[part]||[];
+  const diseases=ids.map(id=>DB.find(d=>d.id===id)).filter(Boolean);
+  const label=bodyPartLabels[part]||part;
+  const el=document.getElementById('bodymap-results');
+  if(!diseases.length){el.innerHTML=`<div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);color:var(--muted);font-size:13px">No diseases mapped for ${label} yet.</div>`;return;}
+  el.innerHTML=`<div style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px">Diseases affecting: ${label}</div>
+    <div class="disease-grid">${diseases.map(d=>dCard(d)).join('')}</div>`;
+}
+
+// ===== PHASE 5: BOOKMARKS =====
+function saveBookmarks(){localStorage.setItem('pp_bookmarks',JSON.stringify(bookmarks));}
+function toggleBookmark(id,e){
+  e&&e.stopPropagation();
+  if(bookmarks.includes(id)){bookmarks=bookmarks.filter(x=>x!==id);}
+  else{bookmarks.push(id);}
+  saveBookmarks();
+  renderBookmarks();
+  // update button if on detail page
+  const btn=document.getElementById('bm-detail-btn');
+  if(btn){btn.textContent=bookmarks.includes(id)?'🔖 Bookmarked':'🔖 Bookmark';btn.style.background=bookmarks.includes(id)?'#f59e0b':'var(--primary)';}
+  // update card badge
+  document.querySelectorAll(`[data-bmid="${id}"]`).forEach(b=>{b.textContent=bookmarks.includes(id)?'🔖':'☆';b.className='bm-btn'+(bookmarks.includes(id)?' saved':'');});
+}
+function renderBookmarks(){
+  if(curPage!=='bookmarks')return;
+  const el=document.getElementById('bm-content');
+  if(!bookmarks.length){el.innerHTML='<div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px"><div style="font-size:32px;margin-bottom:8px">🔖</div>No bookmarks yet. Tap the bookmark icon on any disease card.</div>';return;}
+  const list=bookmarks.map(id=>DB.find(d=>d.id===id)).filter(Boolean);
+  el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="font-size:13px;color:var(--muted)">${list.length} bookmark${list.length!==1?'s':''} saved</span><button onclick="if(confirm('Clear all bookmarks?')){bookmarks=[];saveBookmarks();renderBookmarks();}" style="font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit">Clear All</button></div>
+  <div class="disease-grid">${list.map(d=>dCardBm(d)).join('')}</div>`;
+}
+function dCardBm(d){
+  const isBm=bookmarks.includes(d.id);
+  return `<div class="disease-card" style="position:relative" onclick="showDisease('${d.id}')">
+    <button class="bm-btn${isBm?' saved':''}" data-bmid="${d.id}" onclick="toggleBookmark('${d.id}',event)" title="${isBm?'Remove bookmark':'Bookmark'}">${isBm?'🔖':'☆'}</button>
+    <div class="d-icon cat-${d.type}">${d.icon}</div>
+    <h3>${d.name}</h3>
+    <p style="font-style:italic;font-size:10px">${d.sci}</p>
+    <span class="badge badge-${d.type}">${d.type}</span>
+  </div>`;
+}
+
+// ===== PHASE 5: HINDI TOGGLE =====
+Object.assign(hindiNames,{
+  malaria:'मलेरिया',dengue:'डेंगू',tuberculosis:'तपेदिक (TB)',typhoid:'टाइफाइड',covid19:'कोविड-19',
+  cholera:'हैजा',leprosy:'कुष्ठ रोग',tetanus:'धनुष्टंकार',pneumonia:'निमोनिया',whoopingcough:'काली खांसी',
+  filariasis:'फाइलेरिया (हाथीपांव)',kalazar:'काला-आज़ार',tapeworm:'फीताकृमि',ringworm:'दाद',
+  candidiasis:'कैंडिडा (थ्रश)',anaemia:'खून की कमी (रक्ताल्पता)',rickets:'सूखा रोग (रिकेट्स)',
+  scurvy:'स्कर्वी',kwashiorkor:'क्वाशिओरकोर',sicklecell:'सिकल सेल रोग',haemophilia:'हीमोफीलिया',
+  diabetes:'मधुमेह (शुगर)',hypertension:'उच्च रक्तचाप',obesity:'मोटापा',copd:'सीओपीडी',
+  hiv:'एचआईवी / एड्स',hepatitisB:'हेपेटाइटिस बी',hepatitisC:'हेपेटाइटिस सी',
+  chickenpox:'चिकनपॉक्स (छोटी माता)',measles:'खसरा',rabies:'रेबीज',influenza:'फ्लू (इन्फ्लूएंजा)',
+  mumps:'गलसुआ',chikungunya:'चिकनगुनिया',nipah:'निपाह',zika:'जीका',
+  plague:'प्लेग',diphtheria:'डिफ्थीरिया',leptospirosis:'लेप्टोस्पाइरोसिस',
+  meningitis:'मस्तिष्क ज्वर (मेनिनजाइटिस)',hepatitisA:'हेपेटाइटिस ए',
+  japaneseencephalitis:'जापानी एन्सेफलाइटिस',ebola:'इबोला',
+  toxoplasmosis:'टॉक्सोप्लाज्मोसिस',giardiasis:'जियार्डिया',
+  aspergillosis:'एस्परजिलोसिस',cryptococcosis:'क्रिप्टोकोकोसिस',
+  pellagra:'पेलाग्रा',beriberi:'बेरी-बेरी',kidneystones:'गुर्दे की पथरी',livercirrhosis:'लिवर सिरोसिस',
+  downsyndrome:'डाउन सिंड्रोम',thalassemia:'थैलेसीमिया',
+  gonorrhoea:'सूजाक',syphilis:'सिफलिस',ringworm:'दाद'
+};
+function toggleHindi(){
+  document.body.classList.toggle('hindi');
+  const on=document.body.classList.contains('hindi');
+  document.getElementById('hindi-btn').textContent=on?'🇬🇧 English':'🇮🇳 हिंदी';
+  localStorage.setItem('pp_hindi',on?'1':'0');
+}
+
+// ===== PHASE 5: QUIZ ANALYTICS =====
+function saveQuizHistory(score,total,cat){
+  quizHistory.push({score,total,cat,date:new Date().toLocaleDateString('en-IN'),pct:Math.round((score/total)*100)});
+  if(quizHistory.length>50)quizHistory=quizHistory.slice(-50);
+  localStorage.setItem('pp_qhist',JSON.stringify(quizHistory));
+}
+
+// ===== PHASE 6: INDIA MAP =====
+const stateData={
+  up:{name:'Uttar Pradesh',burden:'High',diseases:['tuberculosis','typhoid','malaria','dengue','japanese encephalitis','kala-azar','polio (historical)'],stats:'Population: 24 crore | Under-5 mortality: High | TB cases: Highest in India | JE deaths: Major burden',schemes:'NIKSHAY, NHM UP, NKEP, Pulse Polio, Mission Shakti',facts:'UP contributes ~25% of India TB burden. JE is endemic in Gorakhpur, Basti divisions.'},
+  bihar:{name:'Bihar',burden:'High',diseases:['kala-azar','tuberculosis','malaria','typhoid','filariasis'],stats:'Population: 12 crore | Kala-azar: 90%+ of India cases | TB: 2nd highest nationally',schemes:'NKEP Kala-azar elimination, NIKSHAY, NFCP Filariasis',facts:'Muzaffarpur district — kala-azar capital of India. Lychee encephalitis also a problem.'},
+  rajasthan:{name:'Rajasthan',burden:'Medium',diseases:['malaria','dengue','tuberculosis','kidney stones (stone belt)','fluorosis'],stats:'Population: 7.5 crore | Kidney stone belt: North India | Fluorosis from groundwater fluoride',schemes:'NVBDCP, NIKSHAY, Jal Jeevan Mission (water quality)',facts:'Rajasthan is part of the Kidney Stone Belt. High fluoride in groundwater causes fluorosis in many districts.'},
+  gujarat:{name:'Gujarat',burden:'Medium',diseases:['sickle cell anaemia (tribal)','malaria','tuberculosis','chikungunya','leptospirosis (flood)'],stats:'Population: 7 crore | Sickle cell: High prevalence in tribal districts | Plague (Surat 1994)',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Gujarat has highest sickle cell burden in western India. Surat had India\'s last major plague outbreak in 1994.'},
+  maharashtra:{name:'Maharashtra',burden:'Medium',diseases:['tuberculosis','hiv','dengue','leptospirosis','cholera (monsoon)'],stats:'Population: 12 crore | HIV: Mumbai — one of highest urban HIV rates | TB: 3rd highest nationally',schemes:'NACP, NIKSHAY, NVBDCP, Maharashtra urban health',facts:'Mumbai\'s Dharavi was a major TB hotspot. Maharashtra leads India in HIV treatment adherence programmes.'},
+  wb:{name:'West Bengal',burden:'Medium',diseases:['kala-azar','malaria','filariasis','typhoid','hepatitis B (tribal)'],stats:'Population: 9.5 crore | Malaria endemic in Jungalmahal | Filariasis in coastal districts',schemes:'NKEP, NFCP, NVBDCP, NIKSHAY',facts:'Sundarbans has highest malaria density in eastern India. North Bengal is endemic for kala-azar.'},
+  odisha:{name:'Odisha',burden:'High',diseases:['malaria','sickle cell anaemia (tribal)','filariasis','tuberculosis','cholera (flood)'],stats:'Population: 4.5 crore | Malaria: Highest death rate in India | Sickle cell: Very high in tribal districts',schemes:'NVBDCP, National Sickle Cell Mission, NFCP, NIKSHAY',facts:'Odisha tribal districts (Koraput, Malkangiri) have among India\'s highest malaria mortality. SCD affects 3.5 lakh patients.'},
+  jharkhand:{name:'Jharkhand',burden:'High',diseases:['sickle cell anaemia','malaria','tuberculosis','kala-azar','filariasis'],stats:'Population: 3.5 crore | Tribal belt: High SCD + malaria dual burden | TB: Significant',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Jharkhand tribal communities bear highest combined burden of sickle cell, malaria and TB in India.'},
+  chhattisgarh:{name:'Chhattisgarh',burden:'High',diseases:['sickle cell anaemia','malaria','tuberculosis','filariasis'],stats:'Population: 2.9 crore | SCD: 20–30% prevalence in tribal groups | Bastar — high malaria',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Chhattisgarh tribal areas have Asia\'s highest sickle cell carrier rates (20–30%). Bastar is highly malaria-endemic.'},
+  mp:{name:'Madhya Pradesh',burden:'Medium',diseases:['malaria','tuberculosis','dengue','sickle cell anaemia (tribal)','kwashiorkor (child malnutrition)'],stats:'Population: 8.5 crore | Malnutrition: Among highest child wasting | SAM: Significant',schemes:'POSHAN Abhiyaan, NRC centres, NVBDCP, NIKSHAY',facts:'MP\'s tribal belt (Dhar, Jhabua, Alirajpur) has India\'s highest child malnutrition rates.'},
+  kerala:{name:'Kerala',burden:'Low',diseases:['nipah virus (outbreaks)','leptospirosis (monsoon)','hepatitis A','chikungunya','diabetes (highest)'],stats:'Population: 3.5 crore | Nipah outbreaks: 2018, 2019, 2023 | Diabetes: 22% prevalence — highest in India',schemes:'Kerala Nipah response, NVBDCP, NPCDCS',facts:'Kerala has India\'s best healthcare infrastructure but highest NCD burden. All 3 Nipah outbreaks in India originated in Kozhikode district.'},
+  karnataka:{name:'Karnataka',burden:'Low',diseases:['hiv','dengue','malaria (coastal + tribal)','tuberculosis'],stats:'Population: 6.7 crore | HIV: Belgaum — high trucking route prevalence | Dengue endemic',schemes:'NACP, NVBDCP, NIKSHAY',facts:'Karnataka\'s coastal districts (Dakshina Kannada) face highest malaria. Bengaluru has high dengue burden.'},
+  tamilnadu:{name:'Tamil Nadu',burden:'Low',diseases:['dengue','tuberculosis','filariasis (coastal)','hiv (Namakkal)','diabetes'],stats:'Population: 7.7 crore | Diabetes: Very high urban prevalence | Namakkal: Historical HIV hotspot from blood donations',schemes:'NACP, NVBDCP, NIKSHAY, NFCP',facts:'Tamil Nadu pioneered DOTS for TB. Namakkal blood donation scandal contributed to HIV spread in 1990s.'},
+  ap:{name:'Andhra Pradesh',burden:'Low',diseases:['hiv','malaria (tribal)','fluorosis','dengue'],stats:'Population: 5 crore | HIV: Declining but historically high | Fluorosis: Nalgonda district (high fluoride water)',schemes:'NACP, NVBDCP, Jal Jeevan Mission (fluoride)',facts:'AP had one of India\'s worst HIV epidemics — now under control. Nalgonda fluorosis is a public health landmark case.'},
+  telangana:{name:'Telangana',burden:'Low',diseases:['malaria (Adilabad tribal)','dengue','tuberculosis','pellagra (historical Deccan)'],stats:'Population: 3.5 crore | Pellagra: Historical endemic (maize diet) | Malaria in northern tribal belt',schemes:'NVBDCP, NIKSHAY, NPCDCS',facts:'Telangana\'s Deccan plateau was historically endemic for pellagra (niacin deficiency from maize diet) — now controlled.'},
+  assam:{name:'Assam',burden:'Medium',diseases:['malaria','japanese encephalitis','tuberculosis','kala-azar (border districts)'],stats:'Population: 3.5 crore | Malaria: High in Barak valley, Karbi Anglong | JE: Endemic',schemes:'NVBDCP, NIKSHAY, Mission Indradhanush',facts:'Assam\'s tea garden communities have disproportionate malaria and TB burden due to poor housing and nutrition.'},
+  punjab:{name:'Punjab',burden:'Medium',diseases:['hepatitis C (highest in India)','diabetes','hypertension','tuberculosis','drug addiction related infections'],stats:'Population: 2.9 crore | HCV: 3–7% prevalence — highest in India | Diabetes: Very high urban prevalence',schemes:'NVHCP HCV treatment, NPCDCS, NIKSHAY',facts:'Punjab has India\'s highest Hepatitis C burden, primarily from unsafe needle reuse. Malwa sub-region is most affected.'},
+  delhi:{name:'Delhi',burden:'Low',diseases:['dengue','chikungunya','tuberculosis','air pollution COPD','typhoid'],stats:'Population: 2 crore | Dengue: Annual outbreaks | Air quality: Worst in India — COPD and lung disease highest',schemes:'NVBDCP, NIKSHAY, Air quality action plan',facts:'Delhi has India\'s worst air quality. Respiratory diseases from pollution affect millions. Annual dengue outbreaks in monsoon.'},
+  himachal:{name:'Himachal Pradesh',burden:'Low',diseases:['tuberculosis (himalayan communities)','typhoid','hepatitis A'],stats:'Population: 0.7 crore | Relatively low burden | Good health infrastructure',schemes:'NIKSHAY, NHM HP',facts:'HP has India\'s best IMR among hilly states. Focus on high-altitude communities with limited healthcare access.'},
+  haryana:{name:'Haryana',burden:'Medium',diseases:['dengue','tuberculosis','diabetes','kidney stones (stone belt)'],stats:'Population: 2.5 crore | Part of Kidney Stone Belt | High urbanisation — NCDs rising',schemes:'NIKSHAY, NPCDCS, Jal Jeevan Mission',facts:'Haryana NCR area has very high dengue burden. Also part of India\'s Kidney Stone Belt.'},
+  jk:{name:'Jammu & Kashmir',burden:'Low',diseases:['tuberculosis','typhoid','hepatitis A'],stats:'Population: 1.2 crore | High-altitude communities | TB: Significant in Kashmir valley',schemes:'NIKSHAY, NHM J&K',facts:'Kashmir valley has high TB prevalence partly due to overcrowded housing. Altitude-related health issues also significant.'},
+  westbengal:{name:'West Bengal',burden:'Medium',diseases:['kala-azar','malaria','filariasis','typhoid','hepatitis B (tribal)'],stats:'Population: 9.5 crore | Malaria endemic in Jungalmahal | Filariasis in coastal districts',schemes:'NKEP, NFCP, NVBDCP, NIKSHAY',facts:'Sundarbans has highest malaria density in eastern India. North Bengal is endemic for kala-azar.'},
+};
+
+function showState(stateId){
+  document.querySelectorAll('.india-state').forEach(s=>s.classList.remove('selected'));
+  const el=document.getElementById('state-'+stateId);
+  if(el)el.classList.add('selected');
+  const data=stateData[stateId];
+  if(!data){document.getElementById('india-info').innerHTML='<div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);font-size:13px;color:var(--muted)">Data coming soon for this state.</div>';return;}
+  const burdenColor=data.burden==='High'?'var(--danger)':data.burden==='Medium'?'var(--warning)':'var(--success)';
+  const relDiseases=data.diseases.map(dn=>{
+    const d=DB.find(x=>x.name.toLowerCase().includes(dn.toLowerCase().split(' ')[0])||dn.toLowerCase().includes(x.name.toLowerCase().split(' ')[0]));
+    return d?`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`:`<span style="padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--muted)">${dn}</span>`;
+  }).join('');
+  document.getElementById('india-info').innerHTML=`
+    <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:10px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="font-size:24px">🏛️</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">${data.name}</div>
+          <div style="font-size:12px;padding:2px 10px;background:${burdenColor};color:#fff;border-radius:20px;display:inline-block;margin-top:3px">${data.burden} Disease Burden</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">${data.stats}</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Major Disease Concerns:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">${relDiseases}</div>
+      <div style="background:var(--bg);border-radius:8px;padding:10px;font-size:12px;color:var(--text);margin-bottom:8px">
+        <b>Key Facts:</b> ${data.facts}
+      </div>
+      <div style="font-size:12px;color:var(--muted)"><b>Active Govt Schemes:</b> ${data.schemes}</div>
+    </div>`;
+}
+
+// ===== PHASE 6: FLASHCARDS =====
+let fcCards=[],fcIdx=0,fcKnown=[],fcUnknown=[],fcFlipped=false;
+
+function startFlashcards(){
+  const cat=document.getElementById('fc-cat').value;
+  const mode=document.getElementById('fc-mode').value;
+  const pool=cat==='all'?[...DB]:DB.filter(d=>d.type===cat);
+  if(pool.length<2){alert('Not enough diseases in this category. Please select All or a larger category.');return;}
+  fcCards=[...pool].sort(()=>Math.random()-0.5);
+  fcIdx=0;fcKnown=[];fcUnknown=[];fcFlipped=false;
+  document.getElementById('fc-start-msg').style.display='none';
+  document.getElementById('fc-result').innerHTML='';
+  document.getElementById('flashcard').style.display='block';
+  document.getElementById('fc-btns').style.display='flex';
+  renderFCProgressDots();
+  showFC(mode);
+}
+
+function renderFCProgressDots(){
+  const dots=fcCards.map((_,i)=>{
+    let cls='fc-dot';
+    if(fcKnown.includes(i))cls+=' known';
+    else if(fcUnknown.includes(i))cls+=' unknown';
+    else if(i===fcIdx)cls+=' current';
+    return `<div class="${cls}"></div>`;
+  }).join('');
+  document.getElementById('fc-progress-dots').innerHTML=dots;
+}
+
+function showFC(mode){
+  if(fcIdx>=fcCards.length){showFCResults();return;}
+  const d=fcCards[fcIdx];
+  const modeMap={
+    name:{label:'Pathogen / Causative Agent',front:d.name,back:d.pathogen,hint:'Type: '+d.type},
+    vector:{label:'Mode of Transmission / Vector',front:d.name,back:d.vector,hint:'Incubation: '+d.incubation},
+    sci:{label:'Scientific Name',front:d.name,back:d.sci,hint:'Classification: '+Object.values(d.classification).slice(0,3).join(' → ')},
+    vaccine:{label:'Vaccine Available',front:d.name,back:d.vaccines.length>15?d.vaccines.split('(')[0].trim():'No vaccine available',hint:d.vaccines.length>15?'Preventable by vaccination':'No vaccine — prevention only'},
+    symptoms:{label:'Key Early Symptoms',front:d.name,back:d.symptomsEarly.slice(0,3).join(', '),hint:'Organs: '+d.organs.split(',')[0]}
+  };
+  const m=modeMap[mode||document.getElementById('fc-mode').value];
+  document.getElementById('fc-front-icon').textContent=d.icon;
+  document.getElementById('fc-front-text').textContent=m.front;
+  document.getElementById('fc-back-label').textContent=m.label;
+  document.getElementById('fc-back-text').textContent=m.back;
+  document.getElementById('fc-back-hint').textContent=m.hint;
+  // Reset flip
+  fcFlipped=false;
+  document.getElementById('flashcard').classList.remove('flipped');
+  renderFCProgressDots();
+}
+
+function flipCard(){
+  fcFlipped=!fcFlipped;
+  document.getElementById('flashcard').classList.toggle('flipped',fcFlipped);
+}
+
+function markCard(known){
+  if(known)fcKnown.push(fcIdx);else fcUnknown.push(fcIdx);
+  fcIdx++;
+  if(fcIdx>=fcCards.length){showFCResults();return;}
+  showFC(document.getElementById('fc-mode').value);
+}
+
+function showFCResults(){
+  const pct=Math.round((fcKnown.length/fcCards.length)*100);
+  const grade=pct>=80?'🏆 Excellent!':pct>=60?'👍 Good!':pct>=40?'💪 Keep going!':'📚 More study needed';
+  document.getElementById('flashcard').style.display='none';
+  document.getElementById('fc-btns').style.display='none';
+  document.getElementById('fc-progress-dots').innerHTML='';
+  document.getElementById('fc-result').innerHTML=`
+    <div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center">
+      <div style="font-size:40px;margin-bottom:8px">🃏</div>
+      <div style="font-size:28px;font-weight:700;color:var(--primary);margin-bottom:6px">${fcKnown.length}/${fcCards.length}</div>
+      <div style="font-size:18px;font-weight:600;margin-bottom:6px;color:var(--text)">${grade}</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Known: ${fcKnown.length} &nbsp;|&nbsp; Need review: ${fcUnknown.length}</div>
+      ${fcUnknown.length>0?`<div style="margin-bottom:16px">
+        <div style="font-size:12px;font-weight:600;color:var(--danger);margin-bottom:8px">Review these diseases:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+          ${fcUnknown.map(i=>`<span onclick="showDisease('${fcCards[i].id}')" style="padding:4px 10px;background:#fee2e2;color:var(--danger);border-radius:20px;font-size:12px;cursor:pointer">${fcCards[i].icon} ${fcCards[i].name}</span>`).join('')}
+        </div>
+      </div>`:''}
+      <button class="ws-btn" onclick="startFlashcards()">Try Again 🔄</button>
+      <button class="ws-btn" style="margin-left:8px;background:var(--secondary)" onclick="reviewUnknown()">Review Unknown 📚</button>
+    </div>`;
+}
+
+function reviewUnknown(){
+  if(!fcUnknown.length){alert('No unknown cards! Great job!');return;}
+  fcCards=fcUnknown.map(i=>fcCards[i]);
+  fcIdx=0;fcKnown=[];fcUnknown=[];fcFlipped=false;
+  document.getElementById('fc-result').innerHTML='';
+  document.getElementById('flashcard').style.display='block';
+  document.getElementById('fc-btns').style.display='flex';
+  renderFCProgressDots();
+  showFC(document.getElementById('fc-mode').value);
+}
+
+// ===== PHASE 6: NCERT BROWSER =====
+const ncertMap={
+  'Class 6':[
+    {chapter:'Chapter 7: Getting to Know Plants',topics:['Basic plant biology','No specific diseases']},
+    {chapter:'Chapter 13: Fun with Magnets',topics:['No diseases — physics chapter']}
+  ],
+  'Class 7':[
+    {chapter:'Chapter 2: Nutrition in Animals',topics:['Malnutrition','Kwashiorkor','Marasmus']},
+    {chapter:'Chapter 7: Weather, Climate and Adaptations',topics:['Climate-related diseases','Vector-borne disease seasons']}
+  ],
+  'Class 8':[
+    {chapter:'Chapter 2: Microorganisms — Friend and Foe',topics:['Bacteria: Tuberculosis, Cholera, Typhoid, Tetanus','Viruses: COVID-19, Influenza, Dengue, Polio','Fungi: Ringworm, Candidiasis','Protozoa: Malaria, Amoebic dysentery']}
+  ],
+  'Class 9':[
+    {chapter:'Chapter 13: Why Do We Fall Ill',topics:['Infectious diseases: Malaria, Dengue, Tuberculosis, Typhoid, Cholera, Diphtheria','Non-infectious diseases: Diabetes, Hypertension','Vaccine-preventable: Polio, Measles, Chickenpox, Hepatitis A','Means of spread: Air, Water, Vector, Direct contact','Immunisation and antibiotics']}
+  ],
+  'Class 10':[
+    {chapter:'Chapter 6: Life Processes — Nutrition',topics:['Nutritional deficiencies: Anaemia, Rickets, Scurvy, Kwashiorkor, Pellagra, Beriberi','Malnutrition and its consequences']},
+    {chapter:'Chapter 8: How do Organisms Reproduce',topics:['STDs: HIV/AIDS, Hepatitis B, Syphilis, Gonorrhoea','Reproductive health']}
+  ],
+  'Class 11':[
+    {chapter:'Chapter 17: Breathing and Exchange of Gases',topics:['Respiratory diseases: Asthma, COPD, Pneumonia, Tuberculosis, Influenza']},
+    {chapter:'Chapter 19: Excretory Products and Elimination',topics:['Kidney diseases: Kidney stones (Nephrolithiasis)','Kidney failure (from diabetes, hypertension)']},
+    {chapter:'Chapter 22: Chemical Coordination and Integration',topics:['Diabetes mellitus (insulin)','Thyroid disorders','Adrenal disorders']}
+  ],
+  'Class 12':[
+    {chapter:'Chapter 5: Principles of Inheritance and Variation',topics:['Genetic diseases: Haemophilia (X-linked recessive)','Sickle cell anaemia (autosomal recessive — point mutation)','Thalassemia (haemoglobinopathy)','Down syndrome (Trisomy 21 — non-disjunction)','Colour blindness']},
+    {chapter:'Chapter 6: Molecular Basis of Inheritance',topics:['Sickle cell anaemia — molecular basis (HbS)','Gene mutation and disease']},
+    {chapter:'Chapter 8: Human Health and Disease',topics:['Malaria (Plasmodium, life cycle)','Typhoid (Salmonella typhi, Widal test)','Pneumonia (Streptococcus pneumoniae)','Ringworm (Tinea — dermatophytes)','Ascariasis, Elephantiasis/Filariasis (Wuchereria bancrofti)','Amoebiasis (Entamoeba histolytica)','HIV/AIDS (Retrovirus, ART, CD4)','Cancer (basic concepts)','Dengue, Chikungunya','COVID-19 (introduced in supplements)','Innate and acquired immunity, Vaccines']}
+  ]
+};
+
+function renderNcert(){
+  const classes=Object.keys(ncertMap);
+  document.getElementById('ncert-class-btns').innerHTML=classes.map((c,i)=>
+    `<button class="ncert-class-btn${i===0?' active':''}" onclick="showNcertClass('${c}',this)">${c}</button>`
+  ).join('');
+  showNcertClass(classes[0],document.querySelector('.ncert-class-btn'));
+}
+
+function showNcertClass(cls,btn){
+  document.querySelectorAll('.ncert-class-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const chapters=ncertMap[cls]||[];
+  const content=chapters.map(ch=>{
+    const relDiseases=DB.filter(d=>d.ncert.class.includes(cls));
+    const chDiseases=relDiseases.filter(d=>ch.topics.some(t=>t.toLowerCase().includes(d.name.toLowerCase().split(' ')[0])||d.name.toLowerCase().includes(t.toLowerCase().split(' ')[0])||d.name.toLowerCase().includes(t.toLowerCase().split(',')[0].trim().toLowerCase())));
+    return `<div class="ncert-chapter-card">
+      <h4>📗 ${ch.chapter}</h4>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Topics: ${ch.topics.join(' | ')}</div>
+      ${chDiseases.length?`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Diseases to study:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        ${chDiseases.map(d=>`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`).join('')}
+      </div>`:
+      `<div style="font-size:12px;color:var(--muted)">Browse the full encyclopedia for general topics in this chapter.</div>`}
+    </div>`;
+  }).join('');
+  document.getElementById('ncert-content').innerHTML=content||`<div style="background:var(--card);border-radius:10px;padding:16px;border:1px solid var(--border);font-size:13px;color:var(--muted)">Browse relevant diseases from the encyclopedia for ${cls}. Use the search bar to find specific topics.</div>`;
+}
+
+// ===== PHASE 6: MULTI-LANGUAGE =====
+const translations={
+  en:{search:'Search disease, pathogen, or symptom...',home:'Home',symptoms:'Symptoms',encyclopedia:'Encyclopedia',quiz:'Quiz',progress:'Progress',bookmarks:'Bookmarks',teacher:'Teacher'},
+  hi:{search:'रोग, रोगाणु या लक्षण खोजें...',home:'होम',symptoms:'लक्षण',encyclopedia:'विश्वकोश',quiz:'प्रश्नोत्तरी',progress:'प्रगति',bookmarks:'बुकमार्क',teacher:'शिक्षक'},
+  bn:{search:'রোগ, জীবাণু বা উপসর্গ খুঁজুন...',home:'হোম',symptoms:'উপসর্গ',encyclopedia:'বিশ্বকোষ',quiz:'কুইজ',progress:'অগ্রগতি',bookmarks:'বুকমার্ক',teacher:'শিক্ষক'},
+  ta:{search:'நோய், நோய்க்கிருமி அல்லது அறிகுறி தேடுங்கள்...',home:'முகப்பு',symptoms:'அறிகுறிகள்',encyclopedia:'கலைக்களஞ்சியம்',quiz:'வினாடி வினா',progress:'முன்னேற்றம்',bookmarks:'புக்மார்க்',teacher:'ஆசிரியர்'}
+};
+
+const hindiDiseaseNames={
+  malaria:'मलेरिया',dengue:'डेंगू',tuberculosis:'तपेदिक',typhoid:'टाइफाइड',covid19:'कोविड-19',
+  cholera:'हैजा',leprosy:'कुष्ठ रोग',tetanus:'धनुष्टंकार',pneumonia:'निमोनिया',
+  whoopingcough:'काली खांसी',filariasis:'फाइलेरिया',kalazar:'काला-आज़ार',
+  tapeworm:'फीताकृमि',ringworm:'दाद',candidiasis:'थ्रश',anaemia:'रक्ताल्पता',
+  rickets:'सूखा रोग',scurvy:'स्कर्वी',kwashiorkor:'क्वाशिओरकोर',
+  sicklecell:'सिकल सेल रोग',haemophilia:'हीमोफीलिया',diabetes:'मधुमेह',
+  hypertension:'उच्च रक्तचाप',obesity:'मोटापा',copd:'सीओपीडी',
+  hiv:'एचआईवी/एड्स',hepatitisB:'हेपेटाइटिस बी',hepatitisC:'हेपेटाइटिस सी',
+  chickenpox:'छोटी माता',measles:'खसरा',rabies:'रेबीज',influenza:'फ्लू',
+  mumps:'गलसुआ',chikungunya:'चिकनगुनिया',nipah:'निपाह वायरस',
+  plague:'प्लेग',diphtheria:'डिफ्थीरिया',meningitis:'मस्तिष्क ज्वर',
+  hepatitisA:'हेपेटाइटिस ए',kidneystones:'गुर्दे की पथरी',livercirrhosis:'यकृत सिरोसिस',
+  pellagra:'पेलाग्रा',beriberi:'बेरी-बेरी',leptospirosis:'लेप्टोस्पायरोसिस'
+};
+
+let currentLang='en';
+function setLang(lang){
+  currentLang=lang;
+  localStorage.setItem('pp_lang',lang);
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active-lang'));
+  const btn=document.getElementById('lang-'+lang);
+  if(btn)btn.classList.add('active-lang');
+  // Update search placeholder
+  const t=translations[lang]||translations.en;
+  document.getElementById('globalSearch').placeholder=t.search;
+  // Toggle hindi class for disease name display
+  document.body.classList.remove('hindi');
+  if(lang==='hi'){
+    document.body.classList.add('hindi');
+    Object.assign(hindiNames,hindiDiseaseNames);
+  } else {
+    // Clear hindi names if switching back
+    if(lang==='en') Object.keys(hindiNames).forEach(k=>delete hindiNames[k]);
+  }
+  // Refresh current view
+  renderEnc();
+  const types=['viral','bacterial','parasitic','fungal','nutritional','genetic','environmental','std'];
+  types.forEach(t=>{const el=document.getElementById('h-'+t);if(el)el.innerHTML=DB.filter(d=>d.type===t).map(dCard).join('');});
+}
+
+// Override old toggleHindi to use new setLang
+function toggleHindi(){
+  if(currentLang==='hi')setLang('en');else setLang('hi');
+}
+
+// ===== PWA INSTALL =====
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();deferredPrompt=e;
+  const banner=document.getElementById('pwa-banner');
+  if(banner)banner.style.display='block';
+});
+function installPWA(){
+  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.then(()=>{deferredPrompt=null;const b=document.getElementById('pwa-banner');if(b)b.style.display='none';});}
+}
+function dismissPWA(){const b=document.getElementById('pwa-banner');if(b)b.style.display='none';}
+
+// ===== PDF EXPORT =====
+function exportPDF(diseaseId){
+  const d=DB.find(x=>x.id===diseaseId);
+  if(!d)return;
+  const ph=document.getElementById('print-header');
+  if(ph)ph.innerHTML=`<div class="print-header"><h1>PathoPedia — ${d.name}</h1><p>Scientific Name: ${d.sci} | Type: ${d.type} | NCERT: ${d.ncert.class}</p><p>Generated by PathoPedia — Complete Disease Encyclopedia for Indian Students</p></div>`;
+  window.print();
+}
 
 init();
+// Restore language
+const savedLang=localStorage.getItem('pp_lang');
+if(savedLang&&savedLang!=='en')setLang(savedLang);
 </script>
+<!-- PWA Install Banner -->
+<div id="pwa-banner" class="pwa-banner">
+  <div style="font-weight:600;margin-bottom:4px">📱 Install PathoPedia</div>
+  <div style="font-size:11px;opacity:0.85">Add to your home screen for offline access</div>
+  <div>
+    <button onclick="installPWA()">Install App</button>
+    <button onclick="dismissPWA()">Later</button>
+  </div>
+</div>
+<!-- Print Header (shown only when printing) -->
+<div id="print-header" class="print-only"></div>
 </body>
 </html>
