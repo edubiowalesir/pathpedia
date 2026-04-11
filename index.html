@@ -117,82 +117,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .quiz-opt.wrong{border-color:var(--danger);background:#fee2e2;color:#991b1b}
 .quiz-opt.reveal{border-color:var(--success);background:#dcfce7;color:#166534}
 .quiz-score{font-size:36px;font-weight:700;color:var(--primary);text-align:center;margin:16px 0}
-@media print{.header,.search-section,.nav-tabs,.back-btn,.t-btn,.check-btn,.no-print{display:none!important}body{background:#fff}.detail-section{break-inside:avoid;border:1px solid #ddd;margin-bottom:8px}.print-only{display:block!important}}
+@media print{.header,.search-section,.nav-tabs,.back-btn,.t-btn,.check-btn{display:none!important}body{background:#fff}.detail-section{break-inside:avoid}}
 @media(max-width:600px){.stats-row{grid-template-columns:1fr 1fr}.detail-grid{grid-template-columns:1fr}.detail-section.full{grid-column:1}.header-top{flex-direction:column;text-align:center}}
-/* ===== PHASE 5 STYLES ===== */
-/* Body Map */
-.bodymap-wrap{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
-.bodymap-svg-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px;flex:0 0 280px;text-align:center}
-.bodymap-svg-wrap svg{max-width:260px}
-.body-part{cursor:pointer;transition:all 0.2s;fill:var(--color,#93c5fd)}
-.body-part:hover,.body-part.active{fill:var(--primary)!important;filter:brightness(1.1)}
-.bodymap-results{flex:1;min-width:220px}
-.bodymap-tip{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
-/* Bookmarks */
-.bm-btn{position:absolute;top:8px;right:8px;background:none;border:none;font-size:18px;cursor:pointer;z-index:2;line-height:1}
-.bm-btn.saved{color:#f59e0b}
-/* Hindi */
-.hi{display:none;font-size:11px;color:var(--muted);font-style:italic}
-body.hindi .hi{display:inline}
-body.hindi .en-only{display:none}
-/* Quiz Analytics */
-.qa-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.qa-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px}
-.qa-bar-fill{height:8px;border-radius:4px;background:var(--primary);transition:width 0.5s}
-/* PDF Export */
-.print-only{display:none}
-@media print{
-  .print-header{display:block!important;text-align:center;border-bottom:2px solid #1a6b4a;padding-bottom:12px;margin-bottom:16px}
-  .print-header h1{font-size:22px;color:#1a6b4a}
-  .print-header p{font-size:12px;color:#666}
-}
-/* PWA Install */
-.pwa-banner{position:fixed;bottom:16px;right:16px;background:var(--primary);color:#fff;border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:1000;display:none;max-width:280px}
-.pwa-banner button{background:rgba(255,255,255,0.2);border:none;color:#fff;padding:6px 12px;border-radius:7px;font-family:inherit;font-size:12px;cursor:pointer;margin-top:8px;margin-right:6px}
-.fab-bm{position:fixed;bottom:80px;right:16px;background:var(--primary);color:#fff;width:44px;height:44px;border-radius:50%;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:500;display:none;align-items:center;justify-content:center}
-/* ===== PHASE 6 STYLES ===== */
-/* Flashcards */
-.flashcard-wrap{perspective:1000px;width:100%;max-width:520px;margin:0 auto 20px;height:240px;cursor:pointer}
-.flashcard-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d}
-.flashcard-wrap.flipped .flashcard-inner{transform:rotateY(180deg)}
-.flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;border:2px solid var(--border)}
-.flashcard-front{background:linear-gradient(135deg,var(--primary),#0f4532);color:#fff}
-.flashcard-back{background:var(--card);color:var(--text);transform:rotateY(180deg)}
-.fc-progress{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-.fc-dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:background 0.3s}
-.fc-dot.known{background:var(--success)}
-.fc-dot.unknown{background:var(--danger)}
-.fc-dot.current{background:var(--primary)}
-.fc-btns{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
-.fc-btn{padding:8px 20px;border-radius:8px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
-.fc-known{background:var(--success);color:#fff}
-.fc-unknown{background:var(--danger);color:#fff}
-.fc-flip{background:var(--primary-light);color:var(--primary)}
-/* India Map */
-.india-map-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
-.india-svg-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:12px;flex:0 0 300px}
-.india-state{fill:#bbf7d0;stroke:#fff;stroke-width:0.8;cursor:pointer;transition:fill 0.2s}
-.india-state:hover{fill:var(--primary)!important}
-.india-state.selected{fill:var(--primary)!important}
-.india-state.high-burden{fill:#fca5a5}
-.india-state.medium-burden{fill:#fde68a}
-.india-state.low-burden{fill:#bbf7d0}
-.map-legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:11px}
-.legend-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
-.legend-dot{width:12px;height:12px;border-radius:3px}
-.india-info{flex:1;min-width:220px}
-/* NCERT Browser */
-.ncert-class-btn{padding:8px 14px;border:1.5px solid var(--border);background:var(--card);border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;color:var(--text);transition:all 0.2s;font-weight:500}
-.ncert-class-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.ncert-chapter-card{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border);margin-bottom:10px}
-.ncert-chapter-card h4{font-size:13px;font-weight:600;color:var(--primary);margin-bottom:8px}
-/* Language selector */
-.lang-btn{padding:5px 10px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;border-radius:6px;font-family:'Outfit',sans-serif;font-size:11px;cursor:pointer;margin-right:4px;transition:all 0.2s}
-.lang-btn.active-lang{background:rgba(255,255,255,0.3);font-weight:600}
-body.lang-ta .lang-ta-text,.lang-bn-text,.lang-hi-text{display:none}
-body.lang-ta .lang-ta-text{display:inline}
-body.lang-bn .lang-bn-text{display:inline}
-body.lang-hi .lang-hi-text,.body.hindi .lang-hi-text{display:inline}
 </style>
 </head>
 <body>
@@ -200,14 +126,10 @@ body.lang-hi .lang-hi-text,.body.hindi .lang-hi-text{display:inline}
   <div class="header-top">
     <div class="logo">
       <div class="logo-icon">🔬</div>
-      <div><h1>PathoPedia</h1><span>Complete Disease Encyclopedia | Class 6–12 | NCERT | Phase 6 — Complete</span></div>
+      <div><h1>PathoPedia</h1><span>Complete Disease Encyclopedia | Class 6–12 | NCERT | Phase 4</span></div>
     </div>
     <div class="header-right">
       <div id="prog-mini" style="font-size:11px;color:rgba(255,255,255,0.8)">📊 Loading...</div>
-      <button class="lang-btn active-lang" id="lang-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')">हि</button>
-      <button class="lang-btn" id="lang-bn" onclick="setLang('bn')">বাং</button>
-      <button class="lang-btn" id="lang-ta" onclick="setLang('ta')">தமி</button>
       <button class="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</button>
     </div>
   </div>
@@ -216,13 +138,8 @@ body.lang-hi .lang-hi-text,.body.hindi .lang-hi-text{display:inline}
     <button class="nav-tab" onclick="showPage('symptoms')">🩺 Symptoms</button>
     <button class="nav-tab" onclick="showPage('encyclopedia')">📚 Encyclopedia</button>
     <button class="nav-tab" onclick="showPage('categories')">🗂 Categories</button>
-    <button class="nav-tab" onclick="showPage('bodymap')">🫀 Body Map</button>
-    <button class="nav-tab" onclick="showPage('indiamap')">🗺️ India Map</button>
-    <button class="nav-tab" onclick="showPage('flashcards')">🎮 Flashcards</button>
-    <button class="nav-tab" onclick="showPage('ncert')">📖 NCERT</button>
     <button class="nav-tab" onclick="showPage('quiz')">🧠 Quiz</button>
-    <button class="nav-tab" onclick="showPage('progress')">📊 Progress</button>
-    <button class="nav-tab" onclick="showPage('bookmarks')">🔖 Bookmarks</button>
+    <button class="nav-tab" onclick="showPage('progress')">📊 My Progress</button>
     <button class="nav-tab" onclick="showPage('teacher')">👩‍🏫 Teacher</button>
   </div>
 </div>
@@ -307,212 +224,6 @@ body.lang-hi .lang-hi-text,.body.hindi .lang-hi-text{display:inline}
     <p style="font-size:12px;color:var(--muted)">Track which diseases you have studied. Automatically updated when you view a disease.</p>
   </div>
   <div id="prog-content"></div>
-</div></div>
-
-<div id="page-bodymap" class="page"><div class="main">
-  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
-    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🫀 Interactive Body Map</h2>
-    <p style="font-size:12px;color:var(--muted)">Click on any body part to see diseases affecting that area.</p>
-  </div>
-  <div class="bodymap-wrap">
-    <div class="bodymap-svg-wrap">
-      <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" style="width:100%">
-        <!-- Head -->
-        <ellipse class="body-part" id="bp-head" cx="100" cy="40" rx="32" ry="36" style="--color:#bfdbfe" onclick="showBodyPart('head')" title="Head/Brain"/>
-        <!-- Neck -->
-        <rect class="body-part" id="bp-neck" x="88" y="72" width="24" height="20" rx="4" style="--color:#c7d2fe" onclick="showBodyPart('neck')"/>
-        <!-- Chest/Lungs -->
-        <rect class="body-part" id="bp-lungs" x="60" y="92" width="80" height="70" rx="12" style="--color:#bbf7d0" onclick="showBodyPart('lungs')"/>
-        <!-- Heart (overlay) -->
-        <ellipse class="body-part" id="bp-heart" cx="88" cy="120" rx="16" ry="14" style="--color:#fca5a5" onclick="showBodyPart('heart')"/>
-        <!-- Abdomen/Liver -->
-        <rect class="body-part" id="bp-liver" x="60" y="162" width="80" height="50" rx="10" style="--color:#fde68a" onclick="showBodyPart('liver')"/>
-        <!-- Intestines -->
-        <rect class="body-part" id="bp-intestine" x="62" y="212" width="76" height="48" rx="10" style="--color:#d9f99d" onclick="showBodyPart('intestine')"/>
-        <!-- Kidneys -->
-        <ellipse class="body-part" id="bp-kidney-l" cx="68" cy="178" rx="12" ry="16" style="--color:#fed7aa" onclick="showBodyPart('kidney')"/>
-        <ellipse class="body-part" id="bp-kidney-r" cx="132" cy="178" rx="12" ry="16" style="--color:#fed7aa" onclick="showBodyPart('kidney')"/>
-        <!-- Skin (border) -->
-        <rect class="body-part" id="bp-skin" x="55" y="88" width="90" height="180" rx="14" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-dasharray="5,3" onclick="showBodyPart('skin')" style="cursor:pointer"/>
-        <!-- Arms -->
-        <rect class="body-part" id="bp-arm-l" x="20" y="92" width="36" height="110" rx="14" style="--color:#e9d5ff" onclick="showBodyPart('limbs')"/>
-        <rect class="body-part" id="bp-arm-r" x="144" y="92" width="36" height="110" rx="14" style="--color:#e9d5ff" onclick="showBodyPart('limbs')"/>
-        <!-- Legs -->
-        <rect class="body-part" id="bp-leg-l" x="65" y="262" width="32" height="120" rx="14" style="--color:#fbcfe8" onclick="showBodyPart('limbs')"/>
-        <rect class="body-part" id="bp-leg-r" x="103" y="262" width="32" height="120" rx="14" style="--color:#fbcfe8" onclick="showBodyPart('limbs')"/>
-        <!-- Blood/Lymph -->
-        <ellipse class="body-part" id="bp-blood" cx="100" cy="145" rx="8" ry="8" style="--color:#fca5a5" onclick="showBodyPart('blood')"/>
-        <!-- Labels -->
-        <text x="100" y="38" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#1e40af" pointer-events="none">Brain</text>
-        <text x="100" y="132" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#166534" pointer-events="none">Lungs</text>
-        <text x="88" y="122" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#991b1b" pointer-events="none">Heart</text>
-        <text x="100" y="192" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#854d0e" pointer-events="none">Liver</text>
-        <text x="68" y="180" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7c3aed" pointer-events="none">Kidney</text>
-        <text x="132" y="180" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7c3aed" pointer-events="none">Kidney</text>
-        <text x="100" y="238" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#166534" pointer-events="none">Intestine</text>
-        <text x="33" y="150" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">Arm</text>
-        <text x="162" y="150" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">Arm</text>
-        <text x="81" y="322" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#9f1239" pointer-events="none">Leg</text>
-        <text x="119" y="322" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#9f1239" pointer-events="none">Leg</text>
-        <text x="155" y="100" text-anchor="start" font-size="8" font-family="sans-serif" fill="#6b21a8" pointer-events="none">- - - Skin</text>
-      </svg>
-      <div class="bodymap-tip">👆 Tap any part to see diseases</div>
-    </div>
-    <div class="bodymap-results" id="bodymap-results">
-      <div style="background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
-        <div style="font-size:32px;margin-bottom:8px">👆</div>
-        Click any body part on the diagram to see diseases affecting that area.
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<!-- ===== INDIA MAP PAGE ===== -->
-<div id="page-indiamap" class="page"><div class="main">
-  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
-    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🗺️ India Disease Burden Map</h2>
-    <p style="font-size:12px;color:var(--muted)">Click any state to see its major disease burden and health statistics.</p>
-  </div>
-  <div class="india-map-wrap">
-    <div class="india-svg-wrap">
-      <!-- Simplified India SVG Map with major states -->
-      <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" style="width:100%">
-        <!-- North India -->
-        <rect class="india-state high-burden" id="state-up" x="160" y="100" width="90" height="60" rx="4" onclick="showState('up')" title="Uttar Pradesh"/>
-        <text x="205" y="133" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Uttar Pradesh</text>
-        <rect class="india-state high-burden" id="state-bihar" x="250" y="115" width="60" height="45" rx="4" onclick="showState('bihar')"/>
-        <text x="280" y="140" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Bihar</text>
-        <rect class="india-state medium-burden" id="state-raj" x="80" y="90" width="80" height="70" rx="4" onclick="showState('rajasthan')"/>
-        <text x="120" y="128" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Rajasthan</text>
-        <rect class="india-state low-burden" id="state-delhi" x="155" y="90" width="30" height="22" rx="3" onclick="showState('delhi')"/>
-        <text x="170" y="104" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Delhi</text>
-        <rect class="india-state low-burden" id="state-hp" x="155" y="50" width="45" height="38" rx="4" onclick="showState('himachal')"/>
-        <text x="178" y="71" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">HP</text>
-        <rect class="india-state medium-burden" id="state-punjab" x="110" y="55" width="45" height="38" rx="4" onclick="showState('punjab')"/>
-        <text x="133" y="76" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#854d0e" pointer-events="none">Punjab</text>
-        <rect class="india-state medium-burden" id="state-haryana" x="130" y="85" width="38" height="26" rx="3" onclick="showState('haryana')"/>
-        <text x="149" y="100" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#854d0e" pointer-events="none">Haryana</text>
-        <!-- East India -->
-        <rect class="india-state high-burden" id="state-jharkhand" x="250" y="155" width="55" height="40" rx="4" onclick="showState('jharkhand')"/>
-        <text x="278" y="177" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Jharkhand</text>
-        <rect class="india-state high-burden" id="state-odisha" x="248" y="192" width="60" height="50" rx="4" onclick="showState('odisha')"/>
-        <text x="278" y="219" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Odisha</text>
-        <rect class="india-state medium-burden" id="state-wb" x="305" y="135" width="50" height="65" rx="4" onclick="showState('westbengal')"/>
-        <text x="330" y="170" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">West Bengal</text>
-        <rect class="india-state medium-burden" id="state-assam" x="330" y="95" width="55" height="40" rx="4" onclick="showState('assam')"/>
-        <text x="357" y="117" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Assam</text>
-        <!-- Central India -->
-        <rect class="india-state medium-burden" id="state-mp" x="138" y="155" width="85" height="60" rx="4" onclick="showState('mp')"/>
-        <text x="180" y="187" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Madhya Pradesh</text>
-        <rect class="india-state high-burden" id="state-cg" x="205" y="175" width="50" height="55" rx="4" onclick="showState('chhattisgarh')"/>
-        <text x="230" y="205" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#7f1d1d" pointer-events="none">Chhattisgarh</text>
-        <!-- West India -->
-        <rect class="india-state medium-burden" id="state-gujarat" x="70" y="158" width="75" height="65" rx="4" onclick="showState('gujarat')"/>
-        <text x="107" y="192" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#854d0e" pointer-events="none">Gujarat</text>
-        <rect class="india-state low-burden" id="state-maha" x="110" y="210" width="100" height="65" rx="4" onclick="showState('maharashtra')"/>
-        <text x="160" y="245" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Maharashtra</text>
-        <!-- South India -->
-        <rect class="india-state low-burden" id="state-telangana" x="165" y="272" width="60" height="45" rx="4" onclick="showState('telangana')"/>
-        <text x="195" y="297" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Telangana</text>
-        <rect class="india-state low-burden" id="state-ap" x="200" y="270" width="60" height="50" rx="4" onclick="showState('ap')"/>
-        <text x="230" y="297" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">Andhra Pradesh</text>
-        <rect class="india-state low-burden" id="state-karnataka" x="130" y="275" width="70" height="60" rx="4" onclick="showState('karnataka')"/>
-        <text x="165" y="307" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Karnataka</text>
-        <rect class="india-state low-burden" id="state-kerala" x="130" y="330" width="50" height="70" rx="4" onclick="showState('kerala')"/>
-        <text x="155" y="368" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Kerala</text>
-        <rect class="india-state low-burden" id="state-tn" x="175" y="315" width="70" height="80" rx="4" onclick="showState('tamilnadu')"/>
-        <text x="210" y="357" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#166534" pointer-events="none">Tamil Nadu</text>
-        <!-- J&K -->
-        <rect class="india-state low-burden" id="state-jk" x="105" y="18" width="55" height="38" rx="4" onclick="showState('jk')"/>
-        <text x="133" y="39" text-anchor="middle" font-size="6" font-family="sans-serif" fill="#166534" pointer-events="none">J&amp;K</text>
-        <!-- Legend -->
-        <rect x="10" y="430" width="12" height="10" rx="2" fill="#fca5a5"/>
-        <text x="26" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">High burden</text>
-        <rect x="100" y="430" width="12" height="10" rx="2" fill="#fde68a"/>
-        <text x="116" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">Medium</text>
-        <rect x="178" y="430" width="12" height="10" rx="2" fill="#bbf7d0"/>
-        <text x="194" y="440" font-size="8" font-family="sans-serif" fill="var(--muted)">Lower burden</text>
-      </svg>
-    </div>
-    <div class="india-info" id="india-info">
-      <div style="background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
-        <div style="font-size:32px;margin-bottom:8px">🗺️</div>
-        Click any state on the map to see its disease burden, major health issues, and relevant government schemes.
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<!-- ===== FLASHCARDS PAGE ===== -->
-<div id="page-flashcards" class="page"><div class="main">
-  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
-    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🎮 Flashcard Mode</h2>
-    <p style="font-size:12px;color:var(--muted)">Tap the card to flip it. Mark Known ✓ or Unknown ✗ to track your revision.</p>
-  </div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
-    <select class="ws-select" id="fc-cat">
-      <option value="all">All Categories</option>
-      <option value="bacterial">Bacterial</option>
-      <option value="viral">Viral</option>
-      <option value="fungal">Fungal</option>
-      <option value="parasitic">Parasitic</option>
-      <option value="nutritional">Nutritional</option>
-      <option value="genetic">Genetic</option>
-      <option value="environmental">Environmental</option>
-      <option value="std">STD</option>
-    </select>
-    <select class="ws-select" id="fc-mode">
-      <option value="name">Name → Pathogen</option>
-      <option value="vector">Name → Vector</option>
-      <option value="sci">Name → Scientific Name</option>
-      <option value="vaccine">Name → Vaccine</option>
-      <option value="symptoms">Name → Key Symptoms</option>
-    </select>
-    <button class="ws-btn" onclick="startFlashcards()">Start Flashcards 🃏</button>
-  </div>
-  <div id="fc-progress-dots" class="fc-progress"></div>
-  <div class="flashcard-wrap" id="flashcard" onclick="flipCard()" style="display:none">
-    <div class="flashcard-inner">
-      <div class="flashcard-front">
-        <div id="fc-front-icon" style="font-size:40px;margin-bottom:10px"></div>
-        <div id="fc-front-text" style="font-size:18px;font-weight:700"></div>
-        <div style="font-size:12px;margin-top:10px;opacity:0.7">Tap to reveal answer</div>
-      </div>
-      <div class="flashcard-back">
-        <div id="fc-back-label" style="font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:1px"></div>
-        <div id="fc-back-text" style="font-size:15px;font-weight:600;color:var(--text);text-align:center"></div>
-        <div id="fc-back-hint" style="font-size:12px;color:var(--muted);margin-top:8px"></div>
-      </div>
-    </div>
-  </div>
-  <div class="fc-btns" id="fc-btns" style="display:none">
-    <button class="fc-btn fc-unknown" onclick="markCard(false)">✗ Don't Know</button>
-    <button class="fc-btn fc-flip" onclick="flipCard()">↩ Flip</button>
-    <button class="fc-btn fc-known" onclick="markCard(true)">✓ Know It</button>
-  </div>
-  <div id="fc-result" style="margin-top:12px"></div>
-  <div id="fc-start-msg" style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">
-    <div style="font-size:36px;margin-bottom:8px">🃏</div>
-    Select a category and mode, then tap Start Flashcards.
-  </div>
-</div></div>
-
-<!-- ===== NCERT BROWSER PAGE ===== -->
-<div id="page-ncert" class="page"><div class="main">
-  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
-    <h2 style="font-size:17px;font-weight:600;color:var(--text)">📖 NCERT Chapter Browser</h2>
-    <p style="font-size:12px;color:var(--muted)">Browse diseases by NCERT class and chapter. Perfect for exam preparation.</p>
-  </div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="ncert-class-btns"></div>
-  <div id="ncert-content"></div>
-</div></div>
-
-<div id="page-bookmarks" class="page"><div class="main">
-  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
-    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🔖 My Bookmarks</h2>
-    <p style="font-size:12px;color:var(--muted)">Diseases you have saved for quick revision. Tap the 🔖 icon on any disease card to bookmark it.</p>
-  </div>
-  <div id="bm-content"></div>
 </div></div>
 
 <div id="page-teacher" class="page"><div class="main">
@@ -696,9 +407,6 @@ function getOpts(correct,pool,n){
 const SYMS={general:['Fever','Chills','Fatigue','Weight loss','Night sweats','Loss of appetite','Weakness','Dizziness','Nausea','Vomiting'],respiratory:['Cough','Blood in cough','Breathlessness','Chest pain','Sore throat','Loss of smell','Loss of taste','Wheezing','Chest tightness'],gastro:['Diarrhoea','Constipation','Abdominal pain','Jaundice','Dark urine','Pelvic pain','Oedema','Dehydration'],neuro:['Headache','Neck stiffness','Rash','Skin lesions','Itching','Joint pain','Muscle pain','Limb weakness','Pale skin','Hair loss','Skin blisters','Swollen lymph nodes','Easy bruising','Prolonged bleeding','Blurred vision','Frequent urination','Excessive thirst','Palpitations','Confusion','Seizures']};
 
 let curPage='home',prevPage='home',selSym=[],activeFilter='all';
-let bookmarks=JSON.parse(localStorage.getItem('pp_bookmarks')||'[]');
-let quizHistory=JSON.parse(localStorage.getItem('pp_qhist')||'[]');
-const hindiNames={};
 let studied=JSON.parse(localStorage.getItem('pp_studied')||'[]');
 let quizQuestions=[],quizIdx=0,quizScore=0,quizAnswered=false;
 
@@ -728,17 +436,13 @@ function updateStudiedCount(){
 
 function dCard(d){
   const s=studied.includes(d.id)?'<span class="studied-badge">✓ Studied</span>':'';
-  const isBm=typeof bookmarks!=='undefined'&&bookmarks.includes(d.id);
-  const hi=typeof hindiNames!=='undefined'&&hindiNames[d.id]?`<span class="hi"> (${hindiNames[d.id]})</span>`:'';
-  return `<div class="disease-card" style="position:relative" onclick="showDisease('${d.id}')">${s}
-    <button class="bm-btn${isBm?' saved':''}" data-bmid="${d.id}" onclick="toggleBookmark('${d.id}',event)" title="Bookmark">${isBm?'🔖':'☆'}</button>
+  return `<div class="disease-card" onclick="showDisease('${d.id}')">${s}
     <div class="d-icon cat-${d.type}">${d.icon}</div>
-    <h3>${d.name}${hi}</h3>
-    <p style="font-style:italic;font-size:10px">${d.sci}</p>
+    <h3>${d.name}</h3>
+    <p style="font-style:italic">${d.sci}</p>
     <span class="badge badge-${d.type}">${d.type}</span>
-    <p style="margin-top:5px;font-size:11px;color:var(--muted)">Vector: ${d.vector}</p>
+    <p style="margin-top:5px;font-size:11px">Vector: ${d.vector}</p>
   </div>`;
-
 }
 
 function renderEnc(){
@@ -763,12 +467,10 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach((t,i)=>{
-    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','bodymap','indiamap','flashcards','ncert','quiz','progress','bookmarks','teacher'][i]===id);
+    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','quiz','progress','teacher'][i]===id);
   });
   curPage=id;
   if(id==='progress') renderProgress();
-  if(id==='bookmarks') renderBookmarks();
-  if(id==='ncert') renderNcert();
 }
 
 function showDisease(id){
@@ -835,16 +537,14 @@ function startQuiz(){
 function renderQuizQ(){
   if(quizIdx>=quizQuestions.length){
     const pct=Math.round((quizScore/quizQuestions.length)*100);
-    const cat=document.getElementById('quiz-cat').value;
-    saveQuizHistory(quizScore,quizQuestions.length,cat);
-    let grade=pct>=80?'Excellent! 🏆':pct>=60?'Good! 👍':pct>=40?'Keep going! 💪':'Keep studying! 📚';
+    let grade=pct>=80?'Excellent! 🏆':pct>=60?'Good! 👍':'Keep studying! 📚';
     document.getElementById('quiz-content').innerHTML=`<div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center">
       <div style="font-size:48px;margin-bottom:8px">🎯</div>
       <div class="quiz-score">${quizScore}/${quizQuestions.length}</div>
       <div style="font-size:20px;font-weight:600;margin-bottom:6px;color:var(--text)">${grade}</div>
       <div style="font-size:14px;color:var(--muted);margin-bottom:20px">You scored ${pct}% on this quiz.</div>
       <button class="ws-btn" onclick="startQuiz()">Try Again 🔄</button>
-      <button class="ws-btn" style="margin-left:10px;background:var(--secondary)" onclick="showPage('progress')">View Progress & Analytics 📊</button>
+      <button class="ws-btn" style="margin-left:10px;background:var(--secondary)" onclick="showPage('progress')">View Progress 📊</button>
     </div>`;
     return;
   }
@@ -887,20 +587,15 @@ function renderProgress(){
     const done=DB.filter(d=>d.type===c&&studied.includes(d.id)).length;
     return{c,total,done,pct:total?Math.round((done/total)*100):0};
   });
-  const avgScore=quizHistory.length?Math.round(quizHistory.reduce((a,b)=>a+b.pct,0)/quizHistory.length):0;
-  const bestScore=quizHistory.length?Math.max(...quizHistory.map(q=>q.pct)):0;
-  const totalQuizzes=quizHistory.length;
-  const catScores={};
-  quizHistory.forEach(q=>{if(!catScores[q.cat])catScores[q.cat]={total:0,count:0};catScores[q.cat].total+=q.pct;catScores[q.cat].count++;});
   document.getElementById('prog-content').innerHTML=`
     <div class="prog-card">
-      <h3 style="color:var(--text)">📚 Study Progress</h3>
+      <h3 style="color:var(--text)">Overall Progress</h3>
       <div style="font-size:32px;font-weight:700;color:var(--primary)">${studied.length} / ${DB.length}</div>
       <div style="font-size:13px;color:var(--muted);margin-bottom:8px">diseases studied (${pct}%)</div>
       <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:${pct}%"></div></div>
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">📊 By Category</h3>
+      <h3 style="color:var(--text)">By Category</h3>
       ${catStats.map(s=>`<div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;color:var(--text)">
           <span>${s.c.charAt(0).toUpperCase()+s.c.slice(1)}</span>
@@ -910,43 +605,16 @@ function renderProgress(){
       </div>`).join('')}
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">🧠 Quiz Analytics</h3>
-      ${totalQuizzes===0?'<div style="font-size:13px;color:var(--muted)">No quizzes taken yet. Go to the Quiz tab to start!</div>':`
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
-        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:700;color:var(--primary)">${totalQuizzes}</div>
-          <div style="font-size:11px;color:var(--muted)">Quizzes</div>
-        </div>
-        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:700;color:var(--success)">${avgScore}%</div>
-          <div style="font-size:11px;color:var(--muted)">Average</div>
-        </div>
-        <div style="background:var(--bg);border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:22px;font-weight:700;color:var(--warning)">${bestScore}%</div>
-          <div style="font-size:11px;color:var(--muted)">Best</div>
-        </div>
-      </div>
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px">Score by category:</div>
-      ${Object.entries(catScores).map(([cat,data])=>{const avg=Math.round(data.total/data.count);const color=avg>=80?'var(--success)':avg>=60?'var(--warning)':'var(--danger)';return '<div class=\"qa-bar\"><span style=\"font-size:12px;min-width:90px;color:var(--text)\">'+cat.charAt(0).toUpperCase()+cat.slice(1)+'</span><div class=\"qa-bar-track\"><div class=\"qa-bar-fill\" style=\"width:'+avg+'%;background:'+color+'\"></div></div><span style=\"font-size:12px;font-weight:600;color:'+color+';min-width:36px;text-align:right\">'+avg+'%</span></div>';}).join('')}
-      <div style="margin-top:10px">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Recent quiz history:</div>
-        <div style="max-height:160px;overflow-y:auto">
-          ${quizHistory.slice().reverse().slice(0,10).map(q=>{const color=q.pct>=80?'var(--success)':q.pct>=60?'var(--warning)':'var(--danger)';return '<div style=\"display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px\"><span style=\"color:var(--muted)\">'+q.date+' — '+(q.cat==='all'?'All':q.cat)+'</span><span style=\"font-weight:600;color:'+color+'\">'+q.score+'/'+q.total+' ('+q.pct+'%)</span></div>';}).join('')}
-        </div>
-        <button onclick="if(confirm('Clear quiz history?')){quizHistory=[];localStorage.removeItem('pp_qhist');renderProgress();}" style="margin-top:8px;font-size:11px;color:var(--danger);background:none;border:1px solid var(--danger);padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit">Clear Quiz History</button>
-      </div>`}
-    </div>
-    <div class="prog-card">
-      <h3 style="color:var(--text)">✓ Diseases Studied</h3>
+      <h3 style="color:var(--text)">Diseases Studied ✓</h3>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
-        ${studied.length?studied.map(id=>{const d=DB.find(x=>x.id===id);return d?'<span onclick=\"showDisease(''+id+'');\" style=\"padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer\">'+d.icon+' '+d.name+'</span>':''}).join(''):'<span style="font-size:13px;color:var(--muted)">No diseases studied yet. Start exploring!</span>'}
+        ${studied.length?studied.map(id=>{const d=DB.find(x=>x.id===id);return d?`<span onclick="showDisease('${id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`:''}).join(''):'<span style="font-size:13px;color:var(--muted)">No diseases studied yet. Start exploring!</span>'}
       </div>
-      ${studied.length?'<button onclick=\"if(confirm('Reset study progress?')){studied=[];saveStudied();updateStudiedCount();renderProgress();}\" style=\"font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit\">Reset Study Progress</button>':''}
+      ${studied.length?`<button onclick="if(confirm('Reset all progress?')){studied=[];saveStudied();updateStudiedCount();renderProgress();}" style="font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit">Reset Progress</button>`:''}
     </div>
     <div class="prog-card">
-      <h3 style="color:var(--text)">📖 Not Yet Studied</h3>
+      <h3 style="color:var(--text)">Not Yet Studied</h3>
       <div style="display:flex;flex-wrap:wrap;gap:6px">
-        ${DB.filter(d=>!studied.includes(d.id)).map(d=>'<span onclick=\"showDisease(''+d.id+'');\" style=\"padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;color:var(--muted)\">'+d.icon+' '+d.name+'</span>').join('')}
+        ${DB.filter(d=>!studied.includes(d.id)).map(d=>`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;cursor:pointer;color:var(--muted)">${d.icon} ${d.name}</span>`).join('')}
       </div>
     </div>`;
 }
@@ -1131,8 +799,6 @@ function buildDetail(d){
           ${d.ncert.examQ.map(q=>`<div class="exam-q">${q}</div>`).join('')}
         </div>
         <button onclick="genWorksheetFor('${d.id}')" style="margin-top:10px;background:var(--secondary);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">📝 Generate Worksheet</button>
-        <button onclick="exportPDF('${d.id}')" style="margin-top:10px;margin-left:8px;background:var(--danger);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">🖨️ Print / PDF</button>
-        <button id="bm-detail-btn" onclick="toggleBookmark('${d.id}',event)" style="margin-top:10px;margin-left:8px;background:${typeof bookmarks!=='undefined'&&bookmarks.includes(d.id)?'#f59e0b':'var(--primary)'};color:#fff;border:none;padding:7px 14px;border-radius:7px;font-family:inherit;font-size:11px;cursor:pointer">${typeof bookmarks!=='undefined'&&bookmarks.includes(d.id)?'🔖 Bookmarked':'🔖 Bookmark'}</button>
       </div>
     </div>
   </div>`;
@@ -1144,406 +810,8 @@ document.addEventListener('click',e=>{if(!e.target.closest('.search-box'))docume
 
 // Restore dark mode
 if(localStorage.getItem('pp_dark')==='1'){document.body.classList.add('dark');document.querySelector('.dark-toggle').textContent='☀️ Light Mode';}
-// Restore hindi mode
-if(localStorage.getItem('pp_hindi')==='1'){document.body.classList.add('hindi');document.getElementById('hindi-btn').textContent='🇬🇧 English';}
-
-// ===== PHASE 5: BODY MAP =====
-const bodyMap={
-  head:['meningitis','japaneseencephalitis','nipah','ebola','rabies','mumps','cryptococcosis'],
-  neck:['diphtheria','mumps','tuberculosis','plague'],
-  lungs:['tuberculosis','pneumonia','covid19','influenza','copd','aspergillosis','whoopingcough','chickenpox'],
-  heart:['hypertension','livercirrhosis','beriberi','rheumatic'],
-  liver:['hepatitisA','hepatitisB','hepatitisC','livercirrhosis','leptospirosis','malaria','kalazar','kwashiorkor'],
-  intestine:['cholera','typhoid','giardiasis','tapeworm','toxoplasmosis','kwashiorkor'],
-  kidney:['kidneystones','diabetes','hypertension','leptospirosis','malaria','livercirrhosis'],
-  skin:['leprosy','ringworm','chickenpox','measles','dengue','chikungunya','syphilis','scurvy','pellagra'],
-  limbs:['filariasis','haemophilia','rickets','beriberi','leprosy','sicklecell'],
-  blood:['malaria','anaemia','haemophilia','sicklecell','dengue','hiv','leukaemia']
-};
-const bodyPartLabels={head:'Brain / Head',neck:'Throat / Neck',lungs:'Lungs / Chest',heart:'Heart',liver:'Liver / Abdomen',intestine:'Intestines / Gut',kidney:'Kidneys',skin:'Skin',limbs:'Limbs / Joints / Bones',blood:'Blood / Immune System'};
-
-function showBodyPart(part){
-  document.querySelectorAll('.body-part').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll(`[id^="bp-${part}"]`).forEach(el=>el.classList.add('active'));
-  const ids=bodyMap[part]||[];
-  const diseases=ids.map(id=>DB.find(d=>d.id===id)).filter(Boolean);
-  const label=bodyPartLabels[part]||part;
-  const el=document.getElementById('bodymap-results');
-  if(!diseases.length){el.innerHTML=`<div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);color:var(--muted);font-size:13px">No diseases mapped for ${label} yet.</div>`;return;}
-  el.innerHTML=`<div style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:10px">Diseases affecting: ${label}</div>
-    <div class="disease-grid">${diseases.map(d=>dCard(d)).join('')}</div>`;
-}
-
-// ===== PHASE 5: BOOKMARKS =====
-function saveBookmarks(){localStorage.setItem('pp_bookmarks',JSON.stringify(bookmarks));}
-function toggleBookmark(id,e){
-  e&&e.stopPropagation();
-  if(bookmarks.includes(id)){bookmarks=bookmarks.filter(x=>x!==id);}
-  else{bookmarks.push(id);}
-  saveBookmarks();
-  renderBookmarks();
-  // update button if on detail page
-  const btn=document.getElementById('bm-detail-btn');
-  if(btn){btn.textContent=bookmarks.includes(id)?'🔖 Bookmarked':'🔖 Bookmark';btn.style.background=bookmarks.includes(id)?'#f59e0b':'var(--primary)';}
-  // update card badge
-  document.querySelectorAll(`[data-bmid="${id}"]`).forEach(b=>{b.textContent=bookmarks.includes(id)?'🔖':'☆';b.className='bm-btn'+(bookmarks.includes(id)?' saved':'');});
-}
-function renderBookmarks(){
-  if(curPage!=='bookmarks')return;
-  const el=document.getElementById('bm-content');
-  if(!bookmarks.length){el.innerHTML='<div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px"><div style="font-size:32px;margin-bottom:8px">🔖</div>No bookmarks yet. Tap the bookmark icon on any disease card.</div>';return;}
-  const list=bookmarks.map(id=>DB.find(d=>d.id===id)).filter(Boolean);
-  el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="font-size:13px;color:var(--muted)">${list.length} bookmark${list.length!==1?'s':''} saved</span><button onclick="if(confirm('Clear all bookmarks?')){bookmarks=[];saveBookmarks();renderBookmarks();}" style="font-size:12px;color:var(--danger);background:none;border:1px solid var(--danger);padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit">Clear All</button></div>
-  <div class="disease-grid">${list.map(d=>dCardBm(d)).join('')}</div>`;
-}
-function dCardBm(d){
-  const isBm=bookmarks.includes(d.id);
-  return `<div class="disease-card" style="position:relative" onclick="showDisease('${d.id}')">
-    <button class="bm-btn${isBm?' saved':''}" data-bmid="${d.id}" onclick="toggleBookmark('${d.id}',event)" title="${isBm?'Remove bookmark':'Bookmark'}">${isBm?'🔖':'☆'}</button>
-    <div class="d-icon cat-${d.type}">${d.icon}</div>
-    <h3>${d.name}</h3>
-    <p style="font-style:italic;font-size:10px">${d.sci}</p>
-    <span class="badge badge-${d.type}">${d.type}</span>
-  </div>`;
-}
-
-// ===== PHASE 5: HINDI TOGGLE =====
-Object.assign(hindiNames,{
-  malaria:'मलेरिया',dengue:'डेंगू',tuberculosis:'तपेदिक (TB)',typhoid:'टाइफाइड',covid19:'कोविड-19',
-  cholera:'हैजा',leprosy:'कुष्ठ रोग',tetanus:'धनुष्टंकार',pneumonia:'निमोनिया',whoopingcough:'काली खांसी',
-  filariasis:'फाइलेरिया (हाथीपांव)',kalazar:'काला-आज़ार',tapeworm:'फीताकृमि',ringworm:'दाद',
-  candidiasis:'कैंडिडा (थ्रश)',anaemia:'खून की कमी (रक्ताल्पता)',rickets:'सूखा रोग (रिकेट्स)',
-  scurvy:'स्कर्वी',kwashiorkor:'क्वाशिओरकोर',sicklecell:'सिकल सेल रोग',haemophilia:'हीमोफीलिया',
-  diabetes:'मधुमेह (शुगर)',hypertension:'उच्च रक्तचाप',obesity:'मोटापा',copd:'सीओपीडी',
-  hiv:'एचआईवी / एड्स',hepatitisB:'हेपेटाइटिस बी',hepatitisC:'हेपेटाइटिस सी',
-  chickenpox:'चिकनपॉक्स (छोटी माता)',measles:'खसरा',rabies:'रेबीज',influenza:'फ्लू (इन्फ्लूएंजा)',
-  mumps:'गलसुआ',chikungunya:'चिकनगुनिया',nipah:'निपाह',zika:'जीका',
-  plague:'प्लेग',diphtheria:'डिफ्थीरिया',leptospirosis:'लेप्टोस्पाइरोसिस',
-  meningitis:'मस्तिष्क ज्वर (मेनिनजाइटिस)',hepatitisA:'हेपेटाइटिस ए',
-  japaneseencephalitis:'जापानी एन्सेफलाइटिस',ebola:'इबोला',
-  toxoplasmosis:'टॉक्सोप्लाज्मोसिस',giardiasis:'जियार्डिया',
-  aspergillosis:'एस्परजिलोसिस',cryptococcosis:'क्रिप्टोकोकोसिस',
-  pellagra:'पेलाग्रा',beriberi:'बेरी-बेरी',kidneystones:'गुर्दे की पथरी',livercirrhosis:'लिवर सिरोसिस',
-  downsyndrome:'डाउन सिंड्रोम',thalassemia:'थैलेसीमिया',
-  gonorrhoea:'सूजाक',syphilis:'सिफलिस',ringworm:'दाद'
-};
-function toggleHindi(){
-  document.body.classList.toggle('hindi');
-  const on=document.body.classList.contains('hindi');
-  document.getElementById('hindi-btn').textContent=on?'🇬🇧 English':'🇮🇳 हिंदी';
-  localStorage.setItem('pp_hindi',on?'1':'0');
-}
-
-// ===== PHASE 5: QUIZ ANALYTICS =====
-function saveQuizHistory(score,total,cat){
-  quizHistory.push({score,total,cat,date:new Date().toLocaleDateString('en-IN'),pct:Math.round((score/total)*100)});
-  if(quizHistory.length>50)quizHistory=quizHistory.slice(-50);
-  localStorage.setItem('pp_qhist',JSON.stringify(quizHistory));
-}
-
-// ===== PHASE 6: INDIA MAP =====
-const stateData={
-  up:{name:'Uttar Pradesh',burden:'High',diseases:['tuberculosis','typhoid','malaria','dengue','japanese encephalitis','kala-azar','polio (historical)'],stats:'Population: 24 crore | Under-5 mortality: High | TB cases: Highest in India | JE deaths: Major burden',schemes:'NIKSHAY, NHM UP, NKEP, Pulse Polio, Mission Shakti',facts:'UP contributes ~25% of India TB burden. JE is endemic in Gorakhpur, Basti divisions.'},
-  bihar:{name:'Bihar',burden:'High',diseases:['kala-azar','tuberculosis','malaria','typhoid','filariasis'],stats:'Population: 12 crore | Kala-azar: 90%+ of India cases | TB: 2nd highest nationally',schemes:'NKEP Kala-azar elimination, NIKSHAY, NFCP Filariasis',facts:'Muzaffarpur district — kala-azar capital of India. Lychee encephalitis also a problem.'},
-  rajasthan:{name:'Rajasthan',burden:'Medium',diseases:['malaria','dengue','tuberculosis','kidney stones (stone belt)','fluorosis'],stats:'Population: 7.5 crore | Kidney stone belt: North India | Fluorosis from groundwater fluoride',schemes:'NVBDCP, NIKSHAY, Jal Jeevan Mission (water quality)',facts:'Rajasthan is part of the Kidney Stone Belt. High fluoride in groundwater causes fluorosis in many districts.'},
-  gujarat:{name:'Gujarat',burden:'Medium',diseases:['sickle cell anaemia (tribal)','malaria','tuberculosis','chikungunya','leptospirosis (flood)'],stats:'Population: 7 crore | Sickle cell: High prevalence in tribal districts | Plague (Surat 1994)',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Gujarat has highest sickle cell burden in western India. Surat had India\'s last major plague outbreak in 1994.'},
-  maharashtra:{name:'Maharashtra',burden:'Medium',diseases:['tuberculosis','hiv','dengue','leptospirosis','cholera (monsoon)'],stats:'Population: 12 crore | HIV: Mumbai — one of highest urban HIV rates | TB: 3rd highest nationally',schemes:'NACP, NIKSHAY, NVBDCP, Maharashtra urban health',facts:'Mumbai\'s Dharavi was a major TB hotspot. Maharashtra leads India in HIV treatment adherence programmes.'},
-  wb:{name:'West Bengal',burden:'Medium',diseases:['kala-azar','malaria','filariasis','typhoid','hepatitis B (tribal)'],stats:'Population: 9.5 crore | Malaria endemic in Jungalmahal | Filariasis in coastal districts',schemes:'NKEP, NFCP, NVBDCP, NIKSHAY',facts:'Sundarbans has highest malaria density in eastern India. North Bengal is endemic for kala-azar.'},
-  odisha:{name:'Odisha',burden:'High',diseases:['malaria','sickle cell anaemia (tribal)','filariasis','tuberculosis','cholera (flood)'],stats:'Population: 4.5 crore | Malaria: Highest death rate in India | Sickle cell: Very high in tribal districts',schemes:'NVBDCP, National Sickle Cell Mission, NFCP, NIKSHAY',facts:'Odisha tribal districts (Koraput, Malkangiri) have among India\'s highest malaria mortality. SCD affects 3.5 lakh patients.'},
-  jharkhand:{name:'Jharkhand',burden:'High',diseases:['sickle cell anaemia','malaria','tuberculosis','kala-azar','filariasis'],stats:'Population: 3.5 crore | Tribal belt: High SCD + malaria dual burden | TB: Significant',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Jharkhand tribal communities bear highest combined burden of sickle cell, malaria and TB in India.'},
-  chhattisgarh:{name:'Chhattisgarh',burden:'High',diseases:['sickle cell anaemia','malaria','tuberculosis','filariasis'],stats:'Population: 2.9 crore | SCD: 20–30% prevalence in tribal groups | Bastar — high malaria',schemes:'National Sickle Cell Mission, NVBDCP, NIKSHAY',facts:'Chhattisgarh tribal areas have Asia\'s highest sickle cell carrier rates (20–30%). Bastar is highly malaria-endemic.'},
-  mp:{name:'Madhya Pradesh',burden:'Medium',diseases:['malaria','tuberculosis','dengue','sickle cell anaemia (tribal)','kwashiorkor (child malnutrition)'],stats:'Population: 8.5 crore | Malnutrition: Among highest child wasting | SAM: Significant',schemes:'POSHAN Abhiyaan, NRC centres, NVBDCP, NIKSHAY',facts:'MP\'s tribal belt (Dhar, Jhabua, Alirajpur) has India\'s highest child malnutrition rates.'},
-  kerala:{name:'Kerala',burden:'Low',diseases:['nipah virus (outbreaks)','leptospirosis (monsoon)','hepatitis A','chikungunya','diabetes (highest)'],stats:'Population: 3.5 crore | Nipah outbreaks: 2018, 2019, 2023 | Diabetes: 22% prevalence — highest in India',schemes:'Kerala Nipah response, NVBDCP, NPCDCS',facts:'Kerala has India\'s best healthcare infrastructure but highest NCD burden. All 3 Nipah outbreaks in India originated in Kozhikode district.'},
-  karnataka:{name:'Karnataka',burden:'Low',diseases:['hiv','dengue','malaria (coastal + tribal)','tuberculosis'],stats:'Population: 6.7 crore | HIV: Belgaum — high trucking route prevalence | Dengue endemic',schemes:'NACP, NVBDCP, NIKSHAY',facts:'Karnataka\'s coastal districts (Dakshina Kannada) face highest malaria. Bengaluru has high dengue burden.'},
-  tamilnadu:{name:'Tamil Nadu',burden:'Low',diseases:['dengue','tuberculosis','filariasis (coastal)','hiv (Namakkal)','diabetes'],stats:'Population: 7.7 crore | Diabetes: Very high urban prevalence | Namakkal: Historical HIV hotspot from blood donations',schemes:'NACP, NVBDCP, NIKSHAY, NFCP',facts:'Tamil Nadu pioneered DOTS for TB. Namakkal blood donation scandal contributed to HIV spread in 1990s.'},
-  ap:{name:'Andhra Pradesh',burden:'Low',diseases:['hiv','malaria (tribal)','fluorosis','dengue'],stats:'Population: 5 crore | HIV: Declining but historically high | Fluorosis: Nalgonda district (high fluoride water)',schemes:'NACP, NVBDCP, Jal Jeevan Mission (fluoride)',facts:'AP had one of India\'s worst HIV epidemics — now under control. Nalgonda fluorosis is a public health landmark case.'},
-  telangana:{name:'Telangana',burden:'Low',diseases:['malaria (Adilabad tribal)','dengue','tuberculosis','pellagra (historical Deccan)'],stats:'Population: 3.5 crore | Pellagra: Historical endemic (maize diet) | Malaria in northern tribal belt',schemes:'NVBDCP, NIKSHAY, NPCDCS',facts:'Telangana\'s Deccan plateau was historically endemic for pellagra (niacin deficiency from maize diet) — now controlled.'},
-  assam:{name:'Assam',burden:'Medium',diseases:['malaria','japanese encephalitis','tuberculosis','kala-azar (border districts)'],stats:'Population: 3.5 crore | Malaria: High in Barak valley, Karbi Anglong | JE: Endemic',schemes:'NVBDCP, NIKSHAY, Mission Indradhanush',facts:'Assam\'s tea garden communities have disproportionate malaria and TB burden due to poor housing and nutrition.'},
-  punjab:{name:'Punjab',burden:'Medium',diseases:['hepatitis C (highest in India)','diabetes','hypertension','tuberculosis','drug addiction related infections'],stats:'Population: 2.9 crore | HCV: 3–7% prevalence — highest in India | Diabetes: Very high urban prevalence',schemes:'NVHCP HCV treatment, NPCDCS, NIKSHAY',facts:'Punjab has India\'s highest Hepatitis C burden, primarily from unsafe needle reuse. Malwa sub-region is most affected.'},
-  delhi:{name:'Delhi',burden:'Low',diseases:['dengue','chikungunya','tuberculosis','air pollution COPD','typhoid'],stats:'Population: 2 crore | Dengue: Annual outbreaks | Air quality: Worst in India — COPD and lung disease highest',schemes:'NVBDCP, NIKSHAY, Air quality action plan',facts:'Delhi has India\'s worst air quality. Respiratory diseases from pollution affect millions. Annual dengue outbreaks in monsoon.'},
-  himachal:{name:'Himachal Pradesh',burden:'Low',diseases:['tuberculosis (himalayan communities)','typhoid','hepatitis A'],stats:'Population: 0.7 crore | Relatively low burden | Good health infrastructure',schemes:'NIKSHAY, NHM HP',facts:'HP has India\'s best IMR among hilly states. Focus on high-altitude communities with limited healthcare access.'},
-  haryana:{name:'Haryana',burden:'Medium',diseases:['dengue','tuberculosis','diabetes','kidney stones (stone belt)'],stats:'Population: 2.5 crore | Part of Kidney Stone Belt | High urbanisation — NCDs rising',schemes:'NIKSHAY, NPCDCS, Jal Jeevan Mission',facts:'Haryana NCR area has very high dengue burden. Also part of India\'s Kidney Stone Belt.'},
-  jk:{name:'Jammu & Kashmir',burden:'Low',diseases:['tuberculosis','typhoid','hepatitis A'],stats:'Population: 1.2 crore | High-altitude communities | TB: Significant in Kashmir valley',schemes:'NIKSHAY, NHM J&K',facts:'Kashmir valley has high TB prevalence partly due to overcrowded housing. Altitude-related health issues also significant.'},
-  westbengal:{name:'West Bengal',burden:'Medium',diseases:['kala-azar','malaria','filariasis','typhoid','hepatitis B (tribal)'],stats:'Population: 9.5 crore | Malaria endemic in Jungalmahal | Filariasis in coastal districts',schemes:'NKEP, NFCP, NVBDCP, NIKSHAY',facts:'Sundarbans has highest malaria density in eastern India. North Bengal is endemic for kala-azar.'},
-};
-
-function showState(stateId){
-  document.querySelectorAll('.india-state').forEach(s=>s.classList.remove('selected'));
-  const el=document.getElementById('state-'+stateId);
-  if(el)el.classList.add('selected');
-  const data=stateData[stateId];
-  if(!data){document.getElementById('india-info').innerHTML='<div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);font-size:13px;color:var(--muted)">Data coming soon for this state.</div>';return;}
-  const burdenColor=data.burden==='High'?'var(--danger)':data.burden==='Medium'?'var(--warning)':'var(--success)';
-  const relDiseases=data.diseases.map(dn=>{
-    const d=DB.find(x=>x.name.toLowerCase().includes(dn.toLowerCase().split(' ')[0])||dn.toLowerCase().includes(x.name.toLowerCase().split(' ')[0]));
-    return d?`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`:`<span style="padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--muted)">${dn}</span>`;
-  }).join('');
-  document.getElementById('india-info').innerHTML=`
-    <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:10px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="font-size:24px">🏛️</div>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:var(--text)">${data.name}</div>
-          <div style="font-size:12px;padding:2px 10px;background:${burdenColor};color:#fff;border-radius:20px;display:inline-block;margin-top:3px">${data.burden} Disease Burden</div>
-        </div>
-      </div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">${data.stats}</div>
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Major Disease Concerns:</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">${relDiseases}</div>
-      <div style="background:var(--bg);border-radius:8px;padding:10px;font-size:12px;color:var(--text);margin-bottom:8px">
-        <b>Key Facts:</b> ${data.facts}
-      </div>
-      <div style="font-size:12px;color:var(--muted)"><b>Active Govt Schemes:</b> ${data.schemes}</div>
-    </div>`;
-}
-
-// ===== PHASE 6: FLASHCARDS =====
-let fcCards=[],fcIdx=0,fcKnown=[],fcUnknown=[],fcFlipped=false;
-
-function startFlashcards(){
-  const cat=document.getElementById('fc-cat').value;
-  const mode=document.getElementById('fc-mode').value;
-  const pool=cat==='all'?[...DB]:DB.filter(d=>d.type===cat);
-  if(pool.length<2){alert('Not enough diseases in this category. Please select All or a larger category.');return;}
-  fcCards=[...pool].sort(()=>Math.random()-0.5);
-  fcIdx=0;fcKnown=[];fcUnknown=[];fcFlipped=false;
-  document.getElementById('fc-start-msg').style.display='none';
-  document.getElementById('fc-result').innerHTML='';
-  document.getElementById('flashcard').style.display='block';
-  document.getElementById('fc-btns').style.display='flex';
-  renderFCProgressDots();
-  showFC(mode);
-}
-
-function renderFCProgressDots(){
-  const dots=fcCards.map((_,i)=>{
-    let cls='fc-dot';
-    if(fcKnown.includes(i))cls+=' known';
-    else if(fcUnknown.includes(i))cls+=' unknown';
-    else if(i===fcIdx)cls+=' current';
-    return `<div class="${cls}"></div>`;
-  }).join('');
-  document.getElementById('fc-progress-dots').innerHTML=dots;
-}
-
-function showFC(mode){
-  if(fcIdx>=fcCards.length){showFCResults();return;}
-  const d=fcCards[fcIdx];
-  const modeMap={
-    name:{label:'Pathogen / Causative Agent',front:d.name,back:d.pathogen,hint:'Type: '+d.type},
-    vector:{label:'Mode of Transmission / Vector',front:d.name,back:d.vector,hint:'Incubation: '+d.incubation},
-    sci:{label:'Scientific Name',front:d.name,back:d.sci,hint:'Classification: '+Object.values(d.classification).slice(0,3).join(' → ')},
-    vaccine:{label:'Vaccine Available',front:d.name,back:d.vaccines.length>15?d.vaccines.split('(')[0].trim():'No vaccine available',hint:d.vaccines.length>15?'Preventable by vaccination':'No vaccine — prevention only'},
-    symptoms:{label:'Key Early Symptoms',front:d.name,back:d.symptomsEarly.slice(0,3).join(', '),hint:'Organs: '+d.organs.split(',')[0]}
-  };
-  const m=modeMap[mode||document.getElementById('fc-mode').value];
-  document.getElementById('fc-front-icon').textContent=d.icon;
-  document.getElementById('fc-front-text').textContent=m.front;
-  document.getElementById('fc-back-label').textContent=m.label;
-  document.getElementById('fc-back-text').textContent=m.back;
-  document.getElementById('fc-back-hint').textContent=m.hint;
-  // Reset flip
-  fcFlipped=false;
-  document.getElementById('flashcard').classList.remove('flipped');
-  renderFCProgressDots();
-}
-
-function flipCard(){
-  fcFlipped=!fcFlipped;
-  document.getElementById('flashcard').classList.toggle('flipped',fcFlipped);
-}
-
-function markCard(known){
-  if(known)fcKnown.push(fcIdx);else fcUnknown.push(fcIdx);
-  fcIdx++;
-  if(fcIdx>=fcCards.length){showFCResults();return;}
-  showFC(document.getElementById('fc-mode').value);
-}
-
-function showFCResults(){
-  const pct=Math.round((fcKnown.length/fcCards.length)*100);
-  const grade=pct>=80?'🏆 Excellent!':pct>=60?'👍 Good!':pct>=40?'💪 Keep going!':'📚 More study needed';
-  document.getElementById('flashcard').style.display='none';
-  document.getElementById('fc-btns').style.display='none';
-  document.getElementById('fc-progress-dots').innerHTML='';
-  document.getElementById('fc-result').innerHTML=`
-    <div style="background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);text-align:center">
-      <div style="font-size:40px;margin-bottom:8px">🃏</div>
-      <div style="font-size:28px;font-weight:700;color:var(--primary);margin-bottom:6px">${fcKnown.length}/${fcCards.length}</div>
-      <div style="font-size:18px;font-weight:600;margin-bottom:6px;color:var(--text)">${grade}</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Known: ${fcKnown.length} &nbsp;|&nbsp; Need review: ${fcUnknown.length}</div>
-      ${fcUnknown.length>0?`<div style="margin-bottom:16px">
-        <div style="font-size:12px;font-weight:600;color:var(--danger);margin-bottom:8px">Review these diseases:</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
-          ${fcUnknown.map(i=>`<span onclick="showDisease('${fcCards[i].id}')" style="padding:4px 10px;background:#fee2e2;color:var(--danger);border-radius:20px;font-size:12px;cursor:pointer">${fcCards[i].icon} ${fcCards[i].name}</span>`).join('')}
-        </div>
-      </div>`:''}
-      <button class="ws-btn" onclick="startFlashcards()">Try Again 🔄</button>
-      <button class="ws-btn" style="margin-left:8px;background:var(--secondary)" onclick="reviewUnknown()">Review Unknown 📚</button>
-    </div>`;
-}
-
-function reviewUnknown(){
-  if(!fcUnknown.length){alert('No unknown cards! Great job!');return;}
-  fcCards=fcUnknown.map(i=>fcCards[i]);
-  fcIdx=0;fcKnown=[];fcUnknown=[];fcFlipped=false;
-  document.getElementById('fc-result').innerHTML='';
-  document.getElementById('flashcard').style.display='block';
-  document.getElementById('fc-btns').style.display='flex';
-  renderFCProgressDots();
-  showFC(document.getElementById('fc-mode').value);
-}
-
-// ===== PHASE 6: NCERT BROWSER =====
-const ncertMap={
-  'Class 6':[
-    {chapter:'Chapter 7: Getting to Know Plants',topics:['Basic plant biology','No specific diseases']},
-    {chapter:'Chapter 13: Fun with Magnets',topics:['No diseases — physics chapter']}
-  ],
-  'Class 7':[
-    {chapter:'Chapter 2: Nutrition in Animals',topics:['Malnutrition','Kwashiorkor','Marasmus']},
-    {chapter:'Chapter 7: Weather, Climate and Adaptations',topics:['Climate-related diseases','Vector-borne disease seasons']}
-  ],
-  'Class 8':[
-    {chapter:'Chapter 2: Microorganisms — Friend and Foe',topics:['Bacteria: Tuberculosis, Cholera, Typhoid, Tetanus','Viruses: COVID-19, Influenza, Dengue, Polio','Fungi: Ringworm, Candidiasis','Protozoa: Malaria, Amoebic dysentery']}
-  ],
-  'Class 9':[
-    {chapter:'Chapter 13: Why Do We Fall Ill',topics:['Infectious diseases: Malaria, Dengue, Tuberculosis, Typhoid, Cholera, Diphtheria','Non-infectious diseases: Diabetes, Hypertension','Vaccine-preventable: Polio, Measles, Chickenpox, Hepatitis A','Means of spread: Air, Water, Vector, Direct contact','Immunisation and antibiotics']}
-  ],
-  'Class 10':[
-    {chapter:'Chapter 6: Life Processes — Nutrition',topics:['Nutritional deficiencies: Anaemia, Rickets, Scurvy, Kwashiorkor, Pellagra, Beriberi','Malnutrition and its consequences']},
-    {chapter:'Chapter 8: How do Organisms Reproduce',topics:['STDs: HIV/AIDS, Hepatitis B, Syphilis, Gonorrhoea','Reproductive health']}
-  ],
-  'Class 11':[
-    {chapter:'Chapter 17: Breathing and Exchange of Gases',topics:['Respiratory diseases: Asthma, COPD, Pneumonia, Tuberculosis, Influenza']},
-    {chapter:'Chapter 19: Excretory Products and Elimination',topics:['Kidney diseases: Kidney stones (Nephrolithiasis)','Kidney failure (from diabetes, hypertension)']},
-    {chapter:'Chapter 22: Chemical Coordination and Integration',topics:['Diabetes mellitus (insulin)','Thyroid disorders','Adrenal disorders']}
-  ],
-  'Class 12':[
-    {chapter:'Chapter 5: Principles of Inheritance and Variation',topics:['Genetic diseases: Haemophilia (X-linked recessive)','Sickle cell anaemia (autosomal recessive — point mutation)','Thalassemia (haemoglobinopathy)','Down syndrome (Trisomy 21 — non-disjunction)','Colour blindness']},
-    {chapter:'Chapter 6: Molecular Basis of Inheritance',topics:['Sickle cell anaemia — molecular basis (HbS)','Gene mutation and disease']},
-    {chapter:'Chapter 8: Human Health and Disease',topics:['Malaria (Plasmodium, life cycle)','Typhoid (Salmonella typhi, Widal test)','Pneumonia (Streptococcus pneumoniae)','Ringworm (Tinea — dermatophytes)','Ascariasis, Elephantiasis/Filariasis (Wuchereria bancrofti)','Amoebiasis (Entamoeba histolytica)','HIV/AIDS (Retrovirus, ART, CD4)','Cancer (basic concepts)','Dengue, Chikungunya','COVID-19 (introduced in supplements)','Innate and acquired immunity, Vaccines']}
-  ]
-};
-
-function renderNcert(){
-  const classes=Object.keys(ncertMap);
-  document.getElementById('ncert-class-btns').innerHTML=classes.map((c,i)=>
-    `<button class="ncert-class-btn${i===0?' active':''}" onclick="showNcertClass('${c}',this)">${c}</button>`
-  ).join('');
-  showNcertClass(classes[0],document.querySelector('.ncert-class-btn'));
-}
-
-function showNcertClass(cls,btn){
-  document.querySelectorAll('.ncert-class-btn').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  const chapters=ncertMap[cls]||[];
-  const content=chapters.map(ch=>{
-    const relDiseases=DB.filter(d=>d.ncert.class.includes(cls));
-    const chDiseases=relDiseases.filter(d=>ch.topics.some(t=>t.toLowerCase().includes(d.name.toLowerCase().split(' ')[0])||d.name.toLowerCase().includes(t.toLowerCase().split(' ')[0])||d.name.toLowerCase().includes(t.toLowerCase().split(',')[0].trim().toLowerCase())));
-    return `<div class="ncert-chapter-card">
-      <h4>📗 ${ch.chapter}</h4>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Topics: ${ch.topics.join(' | ')}</div>
-      ${chDiseases.length?`<div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">Diseases to study:</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px">
-        ${chDiseases.map(d=>`<span onclick="showDisease('${d.id}')" style="padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:20px;font-size:12px;cursor:pointer">${d.icon} ${d.name}</span>`).join('')}
-      </div>`:
-      `<div style="font-size:12px;color:var(--muted)">Browse the full encyclopedia for general topics in this chapter.</div>`}
-    </div>`;
-  }).join('');
-  document.getElementById('ncert-content').innerHTML=content||`<div style="background:var(--card);border-radius:10px;padding:16px;border:1px solid var(--border);font-size:13px;color:var(--muted)">Browse relevant diseases from the encyclopedia for ${cls}. Use the search bar to find specific topics.</div>`;
-}
-
-// ===== PHASE 6: MULTI-LANGUAGE =====
-const translations={
-  en:{search:'Search disease, pathogen, or symptom...',home:'Home',symptoms:'Symptoms',encyclopedia:'Encyclopedia',quiz:'Quiz',progress:'Progress',bookmarks:'Bookmarks',teacher:'Teacher'},
-  hi:{search:'रोग, रोगाणु या लक्षण खोजें...',home:'होम',symptoms:'लक्षण',encyclopedia:'विश्वकोश',quiz:'प्रश्नोत्तरी',progress:'प्रगति',bookmarks:'बुकमार्क',teacher:'शिक्षक'},
-  bn:{search:'রোগ, জীবাণু বা উপসর্গ খুঁজুন...',home:'হোম',symptoms:'উপসর্গ',encyclopedia:'বিশ্বকোষ',quiz:'কুইজ',progress:'অগ্রগতি',bookmarks:'বুকমার্ক',teacher:'শিক্ষক'},
-  ta:{search:'நோய், நோய்க்கிருமி அல்லது அறிகுறி தேடுங்கள்...',home:'முகப்பு',symptoms:'அறிகுறிகள்',encyclopedia:'கலைக்களஞ்சியம்',quiz:'வினாடி வினா',progress:'முன்னேற்றம்',bookmarks:'புக்மார்க்',teacher:'ஆசிரியர்'}
-};
-
-const hindiDiseaseNames={
-  malaria:'मलेरिया',dengue:'डेंगू',tuberculosis:'तपेदिक',typhoid:'टाइफाइड',covid19:'कोविड-19',
-  cholera:'हैजा',leprosy:'कुष्ठ रोग',tetanus:'धनुष्टंकार',pneumonia:'निमोनिया',
-  whoopingcough:'काली खांसी',filariasis:'फाइलेरिया',kalazar:'काला-आज़ार',
-  tapeworm:'फीताकृमि',ringworm:'दाद',candidiasis:'थ्रश',anaemia:'रक्ताल्पता',
-  rickets:'सूखा रोग',scurvy:'स्कर्वी',kwashiorkor:'क्वाशिओरकोर',
-  sicklecell:'सिकल सेल रोग',haemophilia:'हीमोफीलिया',diabetes:'मधुमेह',
-  hypertension:'उच्च रक्तचाप',obesity:'मोटापा',copd:'सीओपीडी',
-  hiv:'एचआईवी/एड्स',hepatitisB:'हेपेटाइटिस बी',hepatitisC:'हेपेटाइटिस सी',
-  chickenpox:'छोटी माता',measles:'खसरा',rabies:'रेबीज',influenza:'फ्लू',
-  mumps:'गलसुआ',chikungunya:'चिकनगुनिया',nipah:'निपाह वायरस',
-  plague:'प्लेग',diphtheria:'डिफ्थीरिया',meningitis:'मस्तिष्क ज्वर',
-  hepatitisA:'हेपेटाइटिस ए',kidneystones:'गुर्दे की पथरी',livercirrhosis:'यकृत सिरोसिस',
-  pellagra:'पेलाग्रा',beriberi:'बेरी-बेरी',leptospirosis:'लेप्टोस्पायरोसिस'
-};
-
-let currentLang='en';
-function setLang(lang){
-  currentLang=lang;
-  localStorage.setItem('pp_lang',lang);
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active-lang'));
-  const btn=document.getElementById('lang-'+lang);
-  if(btn)btn.classList.add('active-lang');
-  // Update search placeholder
-  const t=translations[lang]||translations.en;
-  document.getElementById('globalSearch').placeholder=t.search;
-  // Toggle hindi class for disease name display
-  document.body.classList.remove('hindi');
-  if(lang==='hi'){
-    document.body.classList.add('hindi');
-    Object.assign(hindiNames,hindiDiseaseNames);
-  } else {
-    // Clear hindi names if switching back
-    if(lang==='en') Object.keys(hindiNames).forEach(k=>delete hindiNames[k]);
-  }
-  // Refresh current view
-  renderEnc();
-  const types=['viral','bacterial','parasitic','fungal','nutritional','genetic','environmental','std'];
-  types.forEach(t=>{const el=document.getElementById('h-'+t);if(el)el.innerHTML=DB.filter(d=>d.type===t).map(dCard).join('');});
-}
-
-// Override old toggleHindi to use new setLang
-function toggleHindi(){
-  if(currentLang==='hi')setLang('en');else setLang('hi');
-}
-
-// ===== PWA INSTALL =====
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();deferredPrompt=e;
-  const banner=document.getElementById('pwa-banner');
-  if(banner)banner.style.display='block';
-});
-function installPWA(){
-  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.then(()=>{deferredPrompt=null;const b=document.getElementById('pwa-banner');if(b)b.style.display='none';});}
-}
-function dismissPWA(){const b=document.getElementById('pwa-banner');if(b)b.style.display='none';}
-
-// ===== PDF EXPORT =====
-function exportPDF(diseaseId){
-  const d=DB.find(x=>x.id===diseaseId);
-  if(!d)return;
-  const ph=document.getElementById('print-header');
-  if(ph)ph.innerHTML=`<div class="print-header"><h1>PathoPedia — ${d.name}</h1><p>Scientific Name: ${d.sci} | Type: ${d.type} | NCERT: ${d.ncert.class}</p><p>Generated by PathoPedia — Complete Disease Encyclopedia for Indian Students</p></div>`;
-  window.print();
-}
 
 init();
-// Restore language
-const savedLang=localStorage.getItem('pp_lang');
-if(savedLang&&savedLang!=='en')setLang(savedLang);
 </script>
-<!-- PWA Install Banner -->
-<div id="pwa-banner" class="pwa-banner">
-  <div style="font-weight:600;margin-bottom:4px">📱 Install PathoPedia</div>
-  <div style="font-size:11px;opacity:0.85">Add to your home screen for offline access</div>
-  <div>
-    <button onclick="installPWA()">Install App</button>
-    <button onclick="dismissPWA()">Later</button>
-  </div>
-</div>
-<!-- Print Header (shown only when printing) -->
-<div id="print-header" class="print-only"></div>
 </body>
 </html>
