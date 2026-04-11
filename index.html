@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="PathoPedia">
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22PathoPedia%22%2C%22short_name%22%3A%22PathoPedia%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f0f4f8%22%2C%22theme_color%22%3A%22%231a6b4a%22%7D">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PathoPedia Phase 4 — Complete Disease Encyclopedia</title>
+<title>PathoPedia Phase 5 — Complete Disease Encyclopedia</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -124,6 +124,36 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 @media print{.header,.search-section,.nav-tabs,.back-btn,.t-btn,.check-btn{display:none!important}body{background:#fff}.detail-section{break-inside:avoid}}
 
 /* ── Phase 4/5 additions ── */
+/* ── Phase 6 CSS ── */
+/* Flashcards */
+.fc-scene{width:100%;perspective:1000px;margin-bottom:14px;cursor:pointer}
+.fc-card{width:100%;min-height:200px;position:relative;transform-style:preserve-3d;transition:transform 0.6s}
+.fc-card.flipped{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;width:100%;min-height:200px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:2px solid var(--border)}
+.fc-front{background:var(--card);color:var(--text)}
+.fc-back{background:linear-gradient(135deg,#1a6b4a,#0f4532);color:#fff;transform:rotateY(180deg)}
+.fc-nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.fc-btn{padding:8px 16px;border:1.5px solid var(--primary);background:var(--card);color:var(--primary);border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s}
+.fc-btn:hover,.fc-btn.active-fc{background:var(--primary);color:#fff}
+.fc-know{background:#dcfce7;border-color:#16a34a;color:#166534}
+.fc-unknown{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+.fc-know:hover{background:#16a34a;color:#fff}
+.fc-unknown:hover{background:#dc2626;color:#fff}
+.fc-progress{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+/* NCERT Linker */
+.ncert-class-btn{padding:9px 18px;border:1.5px solid var(--border);background:var(--card);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;color:var(--text);transition:all .2s}
+.ncert-class-btn:hover,.ncert-class-btn.active-nc{background:var(--primary);color:#fff;border-color:var(--primary)}
+.ncert-chapter-card{background:var(--card);border-radius:11px;padding:14px;border:1px solid var(--border);margin-bottom:10px;cursor:pointer;transition:all .2s}
+.ncert-chapter-card:hover{border-color:var(--primary);box-shadow:0 4px 14px rgba(26,107,74,.1)}
+.ncert-chapter-card h3{font-size:14px;font-weight:600;color:var(--primary);margin-bottom:8px}
+/* India Map */
+.india-map-wrap{display:flex;gap:16px;flex-wrap:wrap}
+.india-svg-col{flex:0 0 320px;min-width:260px}
+.india-state-panel{flex:1;min-width:220px;background:var(--card);border-radius:11px;padding:16px;border:1px solid var(--border)}
+.india-state{cursor:pointer;transition:all .2s;stroke:#fff;stroke-width:1}
+.india-state:hover,.india-state.active-state{stroke:#1a6b4a;stroke-width:2.5;filter:brightness(0.85)}
+.state-label{font-size:7px;fill:#1a202c;pointer-events:none;font-family:'Outfit',sans-serif;font-weight:600}
+
 .bookmark-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:0 4px;line-height:1;color:var(--muted);transition:color .2s}
 .bookmark-btn.active{color:#f59e0b}
 .bm-card{background:var(--card);border-radius:11px;padding:14px;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:10px;margin-bottom:8px;transition:all .2s}
@@ -145,7 +175,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="header-top">
     <div class="logo">
       <div class="logo-icon">🔬</div>
-      <div><h1>PathoPedia</h1><span>60+ Diseases | NCERT | Class 6–12 | Phase 4</span></div>
+      <div><h1>PathoPedia</h1><span>60+ Diseases | NCERT | Class 6–12 | Phase 5</span></div>
     </div>
     <div class="header-right">
       <div id="prog-mini" style="font-size:11px;color:rgba(255,255,255,0.8)">📊 Loading...</div>
@@ -163,6 +193,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     <button class="nav-tab" onclick="showPage('teacher')">👩‍🏫 Teacher</button>
     <button class="nav-tab" onclick="showPage('bookmarks')">🔖 Bookmarks</button>
     <button class="nav-tab" onclick="showPage('bodymap')">🗺️ Body Map</button>
+    <button class="nav-tab" onclick="showPage('flashcards')">🎮 Flashcards</button>
+    <button class="nav-tab" onclick="showPage('ncertlinker')">📖 NCERT</button>
+    <button class="nav-tab" onclick="showPage('indiamap')">🇮🇳 India Map</button>
   </div>
 </div>
 <div class="search-section">
@@ -266,6 +299,46 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 </div></div>
 
 
+
+<!-- FLASHCARDS PAGE -->
+<div id="page-flashcards" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🎮 Flashcard Mode</h2>
+    <p style="font-size:12px;color:var(--muted)">Tap card to flip. Mark ✓ Know or ✗ Review to track mastery.</p>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+    <select class="ws-select" id="fc-cat"><option value="all">All Categories</option><option value="bacterial">Bacterial</option><option value="viral">Viral</option><option value="fungal">Fungal</option><option value="parasitic">Parasitic</option><option value="nutritional">Nutritional</option><option value="genetic">Genetic</option><option value="environmental">Environmental</option><option value="std">STD</option></select>
+    <select class="ws-select" id="fc-mode"><option value="pathogen">Pathogen quiz</option><option value="symptoms">Symptoms quiz</option><option value="vector">Vector quiz</option><option value="ncert">NCERT class quiz</option></select>
+    <button class="ws-btn" onclick="startFlashcards()">Start ▶</button>
+    <button class="ws-btn" style="background:var(--secondary)" onclick="resetFlashcards()">Reset 🔄</button>
+  </div>
+  <div id="fc-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"></div>
+  <div id="fc-content"></div>
+</div></div>
+
+<!-- NCERT LINKER PAGE -->
+<div id="page-ncertlinker" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">📖 NCERT Chapter Linker</h2>
+    <p style="font-size:12px;color:var(--muted)">Browse diseases by your NCERT class and chapter. Perfect for exam prep.</p>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="ncert-class-tabs"></div>
+  <div id="ncert-chapter-list"></div>
+</div></div>
+
+<!-- INDIA MAP PAGE -->
+<div id="page-indiamap" class="page"><div class="main">
+  <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
+    <h2 style="font-size:17px;font-weight:600;color:var(--text)">🇮🇳 India Disease Map</h2>
+    <p style="font-size:12px;color:var(--muted)">Click any state to see diseases most prevalent there. Based on NVBDCP, NHM and NCERT data.</p>
+  </div>
+  <div class="india-map-wrap">
+    <div class="india-svg-col" id="india-svg-container"></div>
+    <div class="india-state-panel" id="india-state-panel">
+      <div style="font-size:13px;color:var(--muted);text-align:center;margin-top:30px">👈 Click any state on the map to see its disease burden</div>
+    </div>
+  </div>
+</div></div>
 <div id="page-bookmarks" class="page"><div class="main">
   <div style="background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);margin-bottom:14px">
     <h2 style="font-size:17px;font-weight:600;color:var(--text)">🔖 My Bookmarks</h2>
@@ -565,11 +638,14 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach((t,i)=>{
-    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','quiz','progress','teacher','bookmarks','bodymap'][i]===id);
+    t.classList.toggle('active',['home','symptoms','encyclopedia','categories','quiz','progress','teacher','bookmarks','bodymap','flashcards','ncertlinker','indiamap'][i]===id);
   });
   curPage=id;
   if(id==='progress') renderProgress();
   if(id==='bookmarks') renderBookmarks();
+  if(id==='flashcards') initFlashcardsPage();
+  if(id==='ncertlinker') initNcertLinker();
+  if(id==='indiamap') initIndiaMap();
 }
 
 function showDisease(id){
@@ -612,6 +688,7 @@ function setFilter(f,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
   renderEnc();
+  showPage('encyclopedia');
 }
 
 function toggleSym(el,s){
@@ -1107,6 +1184,338 @@ self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r
   navigator.serviceWorker.register(swUrl).catch(()=>{});
 }
 
+
+// ═══════════════════════════════════════════════════════════
+// PHASE 6 — FLASHCARD MODE
+// ═══════════════════════════════════════════════════════════
+let fcDeck=[], fcIdx=0, fcKnown=new Set(), fcUnknown=new Set();
+let fcKnownStore = JSON.parse(localStorage.getItem('pp_fc_known')||'[]');
+fcKnown = new Set(fcKnownStore);
+
+function saveFcKnown(){localStorage.setItem('pp_fc_known',JSON.stringify([...fcKnown]));}
+
+function initFlashcardsPage(){
+  document.getElementById('fc-stats').innerHTML='';
+  document.getElementById('fc-content').innerHTML=
+    '<div style="text-align:center;padding:30px;color:var(--muted);font-size:13px">Choose a category and mode above, then press <b>Start ▶</b></div>';
+  renderFcStats();
+}
+
+function renderFcStats(){
+  const el=document.getElementById('fc-stats');
+  if(!el)return;
+  const total=DB.length;
+  const known=fcKnown.size;
+  const pct=Math.round(known/total*100);
+  el.innerHTML=`
+    <div style="background:var(--card);border-radius:10px;padding:12px 16px;border:1px solid var(--border);font-size:12px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <span style="color:var(--success);font-weight:600">✓ Know: ${known}</span>
+      <span style="color:var(--danger);font-weight:600">✗ Review: ${fcUnknown.size}</span>
+      <span style="color:var(--muted)">Total: ${total}</span>
+      <div style="flex:1;min-width:100px"><div class="prog-bar-wrap" style="margin:0"><div class="prog-bar-fill" style="width:${pct}%"></div></div></div>
+      <span style="font-weight:600;color:var(--primary)">${pct}% mastered</span>
+    </div>`;
+}
+
+function startFlashcards(){
+  const cat=document.getElementById('fc-cat').value;
+  const mode=document.getElementById('fc-mode').value;
+  fcDeck = (cat==='all'?DB:DB.filter(d=>d.type===cat)).map(d=>({...d,mode}));
+  // Shuffle
+  for(let i=fcDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcDeck[i],fcDeck[j]]=[fcDeck[j],fcDeck[i]];}
+  fcIdx=0;
+  renderFlashcard();
+}
+
+function resetFlashcards(){
+  fcKnown=new Set();fcUnknown=new Set();saveFcKnown();renderFcStats();
+  document.getElementById('fc-content').innerHTML='<div style="text-align:center;padding:20px;color:var(--success);font-size:14px;font-weight:600">Progress reset! Start a new session.</div>';
+}
+
+function renderFlashcard(){
+  if(!fcDeck.length){
+    document.getElementById('fc-content').innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)">No cards found. Choose a category above.</div>';
+    return;
+  }
+  if(fcIdx>=fcDeck.length){
+    const kn=fcDeck.filter(d=>fcKnown.has(d.id)).length;
+    const unk=fcDeck.filter(d=>fcUnknown.has(d.id)).length;
+    document.getElementById('fc-content').innerHTML=`
+      <div style="background:var(--card);border-radius:14px;padding:28px;border:1px solid var(--border);text-align:center">
+        <div style="font-size:48px;margin-bottom:10px">🎉</div>
+        <h3 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px">Session Complete!</h3>
+        <div style="font-size:28px;font-weight:700;color:var(--primary);margin-bottom:4px">${kn}/${fcDeck.length}</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:18px">cards marked as Known</div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <button class="fc-btn" onclick="fcIdx=0;renderFlashcard()">Repeat All 🔄</button>
+          <button class="fc-btn" style="border-color:var(--danger);color:var(--danger)" onclick="fcDeck=fcDeck.filter(d=>fcUnknown.has(d.id)||!fcKnown.has(d.id));fcIdx=0;renderFlashcard()">Only Review Cards ✗</button>
+          <button class="fc-btn" onclick="showPage('quiz')">Take a Quiz 🧠</button>
+        </div>
+      </div>`;
+    renderFcStats();
+    return;
+  }
+  const d=fcDeck[fcIdx];
+  const mode=d.mode||'pathogen';
+  let question='', answer='', hint='';
+  if(mode==='pathogen'){
+    question=`What is the causative agent (pathogen) of <b>${dName(d)}</b>?`;
+    answer=`<div style="font-size:22px;margin-bottom:6px">${d.icon}</div><div style="font-size:17px;font-weight:700;margin-bottom:6px">${d.sci}</div><div style="font-size:13px;opacity:0.85">Type: ${d.pathogen}</div>`;
+    hint=d.type;
+  } else if(mode==='symptoms'){
+    question=`Name 3 early symptoms of <b>${dName(d)}</b>`;
+    answer=`<div style="font-size:22px;margin-bottom:8px">${d.icon}</div><div style="font-size:14px;font-weight:600;margin-bottom:6px">${dName(d)}</div>${d.symptomsEarly.slice(0,4).map(s=>`<div style="background:rgba(255,255,255,0.15);border-radius:6px;padding:4px 10px;margin:3px;font-size:12px;display:inline-block">• ${s}</div>`).join('')}`;
+    hint=`${d.type} disease`;
+  } else if(mode==='vector'){
+    question=`How is <b>${dName(d)}</b> transmitted?`;
+    answer=`<div style="font-size:22px;margin-bottom:8px">${d.icon}</div><div style="font-size:14px;font-weight:700;margin-bottom:8px">${d.vector}</div><div style="font-size:12px;opacity:0.85">${d.transmission.slice(0,2).join(' | ')}</div>`;
+    hint=d.type;
+  } else if(mode==='ncert'){
+    question=`Which NCERT class covers <b>${dName(d)}</b>?<br><span style="font-size:12px;color:var(--muted)">Key terms hint: ${d.ncert.keyTerms.split(',')[0].trim()}</span>`;
+    answer=`<div style="font-size:22px;margin-bottom:8px">${d.icon}</div><div style="font-size:16px;font-weight:700;margin-bottom:6px">${d.ncert.class}</div><div style="font-size:12px;opacity:0.85">${d.ncert.keyTerms}</div>`;
+    hint=d.type;
+  }
+  const isKnown=fcKnown.has(d.id);
+  const isUnknown=fcUnknown.has(d.id);
+  document.getElementById('fc-content').innerHTML=`
+    <div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)">
+      <span>Card ${fcIdx+1} of ${fcDeck.length}</span>
+      <span class="badge badge-${d.type}">${d.type}</span>
+      <span>${isKnown?'✓ Known':isUnknown?'✗ Review':hint}</span>
+    </div>
+    <div class="prog-bar-wrap" style="margin-bottom:12px"><div class="prog-bar-fill" style="width:${(fcIdx/fcDeck.length)*100}%"></div></div>
+    <div class="fc-scene" onclick="this.querySelector('.fc-card').classList.toggle('flipped')" title="Click to flip">
+      <div class="fc-card">
+        <div class="fc-front">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:14px">Tap card to reveal answer</div>
+          <div style="font-size:16px;font-weight:500;color:var(--text);line-height:1.5">${question}</div>
+          <div style="margin-top:16px;font-size:26px">${d.icon}</div>
+        </div>
+        <div class="fc-back">
+          <div style="font-size:11px;opacity:0.7;margin-bottom:12px">ANSWER</div>
+          ${answer}
+          <div style="margin-top:14px;font-size:11px;opacity:0.7">Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav" style="margin-top:14px">
+      <button class="fc-btn fc-know" onclick="markFc('${d.id}','know')">✓ Know</button>
+      <button class="fc-btn fc-unknown" onclick="markFc('${d.id}','unknown')">✗ Review Again</button>
+      <button class="fc-btn" onclick="fcIdx++;renderFlashcard()">Skip →</button>
+      <button class="fc-btn" onclick="showDisease('${d.id}')">📖 Full Detail</button>
+    </div>
+    <div class="fc-progress">${fcDeck.slice(0,Math.min(fcDeck.length,40)).map((c,i)=>
+      `<div style="width:16px;height:16px;border-radius:50%;background:${fcKnown.has(c.id)?'#16a34a':fcUnknown.has(c.id)?'#dc2626':i===fcIdx?'var(--primary)':'var(--border)'}"></div>`
+    ).join('')}</div>`;
+}
+
+function markFc(id, result){
+  if(result==='know'){fcKnown.add(id);fcUnknown.delete(id);}
+  else{fcUnknown.add(id);fcKnown.delete(id);}
+  saveFcKnown();
+  fcIdx++;
+  renderFlashcard();
+  renderFcStats();
+}
+
+// ═══════════════════════════════════════════════════════════
+// PHASE 6 — NCERT CHAPTER LINKER
+// ═══════════════════════════════════════════════════════════
+function initNcertLinker(){
+  const classes=['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
+  const tabsEl=document.getElementById('ncert-class-tabs');
+  if(!tabsEl)return;
+  tabsEl.innerHTML=classes.map((c,i)=>`<button class="ncert-class-btn${i===3?' active-nc':''}" onclick="showNcertClass('${c}',this)">${c}</button>`).join('');
+  showNcertClass('Class 9',tabsEl.querySelectorAll('.ncert-class-btn')[3]);
+}
+
+function showNcertClass(cls, btn){
+  document.querySelectorAll('.ncert-class-btn').forEach(b=>b.classList.remove('active-nc'));
+  if(btn)btn.classList.add('active-nc');
+  
+  // Group diseases by chapter for this class
+  const filtered=DB.filter(d=>d.ncert&&d.ncert.class&&d.ncert.class.includes(cls.replace('Class ','')));
+  
+  // Extract chapters
+  const chapters={};
+  filtered.forEach(d=>{
+    const raw=d.ncert.class;
+    // Extract chapter references like "Ch.13", "Ch.8"
+    const chMatches=raw.match(/Ch\.?\s*\d+/g)||['General'];
+    chMatches.forEach(ch=>{
+      const key=ch.replace(/\s/g,'').replace('Ch.','Chapter ').replace('Ch','Chapter ');
+      if(!chapters[key]) chapters[key]=[];
+      if(!chapters[key].find(x=>x.id===d.id)) chapters[key].push(d);
+    });
+  });
+
+  const listEl=document.getElementById('ncert-chapter-list');
+  if(!listEl)return;
+  
+  if(!filtered.length){
+    listEl.innerHTML=`<div style="background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px">No diseases specifically tagged for ${cls} in current database. Try Class 9 or Class 12 for most content.</div>`;
+    return;
+  }
+
+  // NCERT chapter descriptions
+  const chapterDesc={
+    'Chapter 13':'Why Do We Fall Ill — Diseases and their causes',
+    'Chapter 8':'Human Health and Disease — Pathogens, immunity, drugs',
+    'Chapter 5':'Principles of Inheritance and Variation — Genetic disorders',
+    'Chapter 14':'Improvement in Food Resources',
+    'Chapter 2':'Is Matter Around Us Pure',
+    'Chapter 15':'Diversity in Living Organisms',
+    '2':'Nutrition in Animals',
+    'General':'General curriculum reference',
+  };
+
+  listEl.innerHTML=`
+    <div style="background:var(--card);border-radius:12px;padding:14px;border:1px solid var(--border);margin-bottom:14px;display:flex;align-items:center;gap:12px">
+      <div style="font-size:32px">📚</div>
+      <div><div style="font-size:15px;font-weight:600;color:var(--text)">${cls} — Diseases</div>
+      <div style="font-size:12px;color:var(--muted)">${filtered.length} diseases | Click any to view full detail</div></div>
+    </div>
+    ${Object.entries(chapters).map(([ch,diseases])=>`
+    <div class="ncert-chapter-card">
+      <h3>📖 ${ch} <span style="font-size:11px;color:var(--muted);font-weight:400">— ${chapterDesc[ch.replace('Chapter ','')] || ch}</span></h3>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:10px">${diseases.length} disease(s) in this chapter</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        ${diseases.map(d=>`<div onclick="showDisease('${d.id}')" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:18px">${d.icon}</span>
+          <div><div style="font-size:12px;font-weight:600;color:var(--text)">${dName(d)}</div>
+          <div style="font-size:10px;color:var(--muted);font-style:italic">${d.sci.split(' ').slice(0,2).join(' ')}</div>
+          <div style="font-size:10px;margin-top:2px"><span class="badge badge-${d.type}" style="font-size:9px">${d.type}</span></div></div>
+        </div>`).join('')}
+      </div>
+      <div style="margin-top:10px;padding:8px;background:var(--bg);border-radius:7px;font-size:11px;color:var(--muted)">
+        <b>Exam Questions:</b> ${diseases.flatMap(d=>d.ncert.examQ||[]).slice(0,2).join(' | ')}
+      </div>
+    </div>`).join('')}`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// PHASE 6 — INDIA DISEASE MAP
+// ═══════════════════════════════════════════════════════════
+const INDIA_STATES = {
+  'Jammu & Kashmir':{x:105,y:18,w:52,h:30,fill:'#bfdbfe',diseases:['tuberculosis','influenza','cholera']},
+  'Himachal Pradesh':{x:130,y:48,w:32,h:22,fill:'#dbeafe',diseases:['tuberculosis','influenza']},
+  'Punjab':{x:108,y:55,w:28,h:20,fill:'#fef9c3',diseases:['typhoid','tuberculosis','dengue']},
+  'Uttarakhand':{x:152,y:55,w:30,h:22,fill:'#dbeafe',diseases:['tuberculosis','cholera']},
+  'Haryana':{x:118,y:72,w:30,h:22,fill:'#fef9c3',diseases:['dengue','typhoid','chikungunya']},
+  'Delhi':{x:138,y:78,w:14,h:12,fill:'#fee2e2',diseases:['dengue','covid19','chikungunya','typhoid']},
+  'Rajasthan':{x:88,y:80,w:60,h:55,fill:'#fde68a',diseases:['plague','leprosy','kidneystones','malaria']},
+  'Uttar Pradesh':{x:148,y:72,w:68,h:45,fill:'#bbf7d0',diseases:['japaneseEncephalitis','typhoid','dengue','polio','cholera']},
+  'Bihar':{x:196,y:95,w:44,h:32,fill:'#bbf7d0',diseases:['japaneseEncephalitis','kalazar','tuberculosis','beriberi']},
+  'Sikkim':{x:228,y:80,w:14,h:12,fill:'#e0f2fe',diseases:['tuberculosis','anaemia']},
+  'Arunachal Pradesh':{x:268,y:65,w:48,h:35,fill:'#d1fae5',diseases:['malaria','tuberculosis']},
+  'Nagaland':{x:298,y:92,w:22,h:18,fill:'#d1fae5',diseases:['malaria','tuberculosis']},
+  'Manipur':{x:294,y:108,w:20,h:18,fill:'#d1fae5',diseases:['hiv','tuberculosis','malaria']},
+  'Mizoram':{x:290,y:124,w:18,h:16,fill:'#d1fae5',diseases:['tuberculosis','malaria']},
+  'Tripura':{x:270,y:118,w:16,h:14,fill:'#d1fae5',diseases:['malaria','tuberculosis']},
+  'Meghalaya':{x:248,y:100,w:28,h:18,fill:'#d1fae5',diseases:['tuberculosis','cholera']},
+  'Assam':{x:244,y:85,w:50,h:22,fill:'#bbf7d0',diseases:['japaneseEncephalitis','kalazar','cholera','filariasis']},
+  'West Bengal':{x:218,y:100,w:34,h:50,fill:'#bbf7d0',diseases:['kalazar','cholera','dengue','filariasis','thalassemia']},
+  'Jharkhand':{x:194,y:120,w:36,h:28,fill:'#fef9c3',diseases:['malaria','tuberculosis','sicklecell','kalazar']},
+  'Odisha':{x:194,y:148,w:42,h:38,fill:'#fde68a',diseases:['malaria','cholera','filariasis','kalazar']},
+  'Madhya Pradesh':{x:120,y:118,w:70,h:48,fill:'#fde68a',diseases:['malaria','dengue','tuberculosis','sicklecell']},
+  'Chhattisgarh':{x:164,y:130,w:42,h:46,fill:'#fde68a',diseases:['malaria','sicklecell','tuberculosis']},
+  'Gujarat':{x:72,y:120,w:54,h:48,fill:'#fde68a',diseases:['malaria','dengue','plague','thalassemia','chikungunya']},
+  'Maharashtra':{x:110,y:155,w:70,h:50,fill:'#fed7aa',diseases:['dengue','leptospirosis','chikungunya','hiv','tuberculosis']},
+  'Goa':{x:108,y:200,w:12,h:10,fill:'#e0f2fe',diseases:['leptospirosis','dengue']},
+  'Karnataka':{x:114,y:200,w:56,h:46,fill:'#fed7aa',diseases:['dengue','chikungunya','filariasis','tuberculosis']},
+  'Andhra Pradesh':{x:160,y:185,w:54,h:48,fill:'#fef9c3',diseases:['dengue','malaria','chikungunya','pellagra','cholera']},
+  'Telangana':{x:152,y:168,w:44,h:28,fill:'#fef9c3',diseases:['malaria','fluorosis','dengue','tuberculosis']},
+  'Tamil Nadu':{x:144,y:225,w:50,h:52,fill:'#fed7aa',diseases:['dengue','chikungunya','filariasis','leprosy','tuberculosis']},
+  'Kerala':{x:126,y:230,w:24,h:52,fill:'#bbf7d0',diseases:['nipah','leptospirosis','dengue','chikungunya','hepatitisA']},
+  'Punjab':{x:108,y:55,w:28,h:20,fill:'#fef9c3',diseases:['tuberculosis','typhoid','dengue']},
+};
+
+const STATE_DISEASE_DESC = {
+  'Jammu & Kashmir':'High-altitude region. TB is significant due to cold, crowded conditions.',
+  'Rajasthan':'Arid climate — plague (Surat 1994 nearby), leprosy elimination efforts, kidney stones from dehydration.',
+  'Uttar Pradesh':'Highest burden of Japanese Encephalitis in India. Major contributor to polio elimination efforts.',
+  'Bihar':'Endemic for Kala-azar (visceral leishmaniasis). JE and beriberi in flood plains.',
+  'Assam':'JE endemic, malaria prevalent, cholera during floods. Thalassemia in tribal populations.',
+  'Kerala':'Site of 2018 Nipah outbreak (Kozhikode). Leptospirosis during monsoon flooding common.',
+  'West Bengal':'Kala-azar endemic. Cholera historically. High thalassemia carrier rate (7%).',
+  'Odisha':'Highest malaria burden in India. Filariasis and cholera endemic in tribal areas.',
+  'Gujarat':'High thalassemia carrier rate (3%). Plague history (Surat). Dengue and malaria.',
+  'Maharashtra':'Leptospirosis from Mumbai floods. HIV prevalence. Dengue and chikungunya peaks.',
+  'Karnataka':'Dengue capital — Bengaluru high-risk. Chikungunya. Filariasis in coastal.',
+  'Chhattisgarh':'Malaria and sickle cell high in tribal populations. Malnutrition.',
+  'Manipur':'Highest HIV prevalence in NE India. Malaria and TB also prevalent.',
+  'Tamil Nadu':'Dengue and filariasis burden. Leprosy elimination ongoing. TB significant.',
+  'Andhra Pradesh':'Pellagra reported in jowar-eating areas. Dengue, malaria, chikungunya prevalent.',
+  'Jharkhand':'Malaria, kala-azar, sickle cell anaemia in tribal districts.',
+};
+
+function initIndiaMap(){
+  const container=document.getElementById('india-svg-container');
+  if(!container||container.innerHTML.trim()) return;
+  
+  // Build SVG map with rectangles for each state (schematic)
+  let stateRects='';
+  let stateLabels='';
+  
+  Object.entries(INDIA_STATES).forEach(([state, data])=>{
+    const safeId=state.replace(/[^a-zA-Z]/g,'_');
+    stateRects+=`<rect class="india-state" id="is_${safeId}" x="${data.x}" y="${data.y}" width="${data.w}" height="${data.h}" 
+      rx="4" fill="${data.fill}" onclick="selectIndiaState('${state.replace(/'/g,"\\'")}')"/>`;
+    const cx=data.x+data.w/2, cy=data.y+data.h/2;
+    const abbr=state.split(' ').map(w=>w[0]).join('').substring(0,3);
+    stateLabels+=`<text class="state-label" x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle">${abbr}</text>`;
+  });
+  
+  container.innerHTML=`
+    <div style="background:var(--card);border-radius:12px;border:1px solid var(--border);padding:10px;overflow:auto">
+      <svg viewBox="60 10 310 310" style="width:100%;max-width:320px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ocean background -->
+        <rect x="60" y="10" width="310" height="310" fill="#e0f2fe" rx="8"/>
+        <!-- India land mass approximation -->
+        <path d="M105,18 L157,18 L190,30 L230,35 L280,60 L320,70 L340,95 L320,130 L310,160 L300,200 L280,240 L260,270 L230,295 L200,310 L170,315 L145,305 L120,285 L100,260 L90,230 L82,200 L72,170 L75,140 L80,110 L85,80 L95,55 Z" fill="#f0fdf4" stroke="#9ca3af" stroke-width="1"/>
+        ${stateRects}
+        ${stateLabels}
+        <!-- Legend -->
+        <text x="65" y="308" font-size="7" fill="#64748b" font-family="sans-serif">Tap state for disease info</text>
+      </svg>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;padding:6px;font-size:10px;color:var(--muted)">
+        <span style="background:#bbf7d0;padding:1px 6px;border-radius:4px">High burden</span>
+        <span style="background:#fde68a;padding:1px 6px;border-radius:4px">Moderate</span>
+        <span style="background:#bfdbfe;padding:1px 6px;border-radius:4px">Lower burden</span>
+      </div>
+    </div>`;
+}
+
+function selectIndiaState(stateName){
+  // Highlight selected
+  document.querySelectorAll('.india-state').forEach(el=>el.classList.remove('active-state'));
+  const safeId=stateName.replace(/[^a-zA-Z]/g,'_');
+  const el=document.getElementById('is_'+safeId);
+  if(el)el.classList.add('active-state');
+  
+  const data=INDIA_STATES[stateName];
+  const panel=document.getElementById('india-state-panel');
+  if(!data||!panel){return;}
+  
+  const diseases=data.diseases.map(id=>DB.find(d=>d.id===id)).filter(Boolean);
+  const desc=STATE_DISEASE_DESC[stateName]||'Click a disease to learn more.';
+  
+  panel.innerHTML=`
+    <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:6px">📍 ${stateName}</h3>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5">${desc}</p>
+    <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px">Prevalent Diseases (${diseases.length}):</div>
+    ${diseases.map(d=>`<div onclick="showDisease('${d.id}')" style="display:flex;align-items:center;gap:8px;padding:9px;background:var(--bg);border-radius:8px;margin-bottom:6px;cursor:pointer;border:1px solid var(--border);transition:all .2s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:20px">${d.icon}</span>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:600;color:var(--text)">${dName(d)}</div>
+        <div style="font-size:10px;color:var(--muted)">${d.indiaData.states}</div>
+      </div>
+      <span class="badge badge-${d.type}">${d.type}</span>
+    </div>`).join('')}
+    <div style="margin-top:12px;padding:8px;background:var(--primary-light);border-radius:7px;font-size:11px;color:var(--text)">
+      <b>Data source:</b> NVBDCP, NHM India, NCDC — for educational reference
+    </div>`;
+}
 
 
 init();
